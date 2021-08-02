@@ -1,6 +1,9 @@
 import '../styles/index.scss';
 import '../styles/variables.scss';
+import {motion} from 'framer-motion';
 import Header from "./Header.js";
+import HeaderLink from "./HeaderLink.js";
+import HeaderLinks from "./HeaderLinks.js";
 import Main from "./Main.js";
 import Section from "./Section.js";
 import SectionInside from "./SectionInside.js";
@@ -11,11 +14,11 @@ function HomePage() {
   return (
     <div className="">
       <Header>
-        <ul className="header__links">
-          <li className="header__link">Lorem</li>
-          <li className="header__link">Ipsum</li>
-          <li className="header__link">Dolor</li>
-        </ul>
+         <HeaderLinks>
+           <HeaderLink>Home</HeaderLink>
+           <HeaderLink>Train</HeaderLink>
+           <HeaderLink>About</HeaderLink>
+         </HeaderLinks>
         <div className="header__account">
           <div className="header__account-image"></div>
           <span className="header__account-name">Алексей</span>
