@@ -1,0 +1,36 @@
+@import './variables.scss';
+
+.main {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  padding-left: 150px;
+  padding-right: 150px;
+  margin-top: 50px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.section__title {
+  font-family: 'SF-Pro-Display-Bold';
+  font-size: $extraLargeTitle;
+  margin-bottom: 25px;
+  margin-left: 45px;
+}
+
+.section__main {
+  min-height: 500px;
+  padding: 45px;
+  padding-top: 35px;
+  border-radius: 30px;
+  background-color: #fff;
+}
+
+.section__inner-title {
+  font-size: $title3;
+  font-family: 'SF-Pro-Display-Medium';
+}
