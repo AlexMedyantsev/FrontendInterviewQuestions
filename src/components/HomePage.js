@@ -1,6 +1,7 @@
 import '../styles/index.scss';
 import '../styles/variables.scss';
 import React from 'react';
+import {colors} from "../utils/const.js";
 import {motion} from 'framer-motion';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {docco, a11yDark} from 'react-syntax-highlighter/dist/esm/styles/hljs';
@@ -10,6 +11,7 @@ import HeaderLink from "./HeaderLink.js";
 import HeaderLinks from "./HeaderLinks.js";
 import Main from "./Main.js";
 import Section from "./Section.js";
+import SectionTitle from "./SectionTitle.js";
 import SectionInside from "./SectionInside.js";
 import SectionInsideTitle from "./SectionInsideTitle.js";
 import SectionInsideInfo from "./SectionInsideInfo.js";
@@ -30,21 +32,20 @@ function HomePage() {
         </div>
       </Header>
       <Main>
-        <Section width={'48%'} height={'1000px'} outsideTitle={'Вопросы по JSX'} titleColor={'rgb(255, 59, 48)'}>
+      <Section width={'48%'} minHeight={'500px'}>
+          <SectionTitle outsideTitle={'Доброе Утро'} titleColor={colors.darkPink} hasClickHandler={true}></SectionTitle>
           <SectionInside>
-            <SectionInsideTitle titleColor={'rgb(255, 69, 58)'}></SectionInsideTitle>
+            <SectionInsideTitle titleColor={colors.lightPink}></SectionInsideTitle>
             <SectionInsideInfo>
-              {/* <CodeSnippet>
-                <SyntaxHighlighter showLineNumbers={true}  language="javascript" customStyle={{padding: '0.8em', lineHeight: '27px', paddingTop: '1em'}} style={a11yDark}>
-                  {codeString}
-                </SyntaxHighlighter>
-              </CodeSnippet> */}
             </SectionInsideInfo>
           </SectionInside>
         </Section>
-        <Section width={'48%'} height={'1000px'} outsideTitle={'Повторить'} titleColor={'rgb(255, 59, 48)'}>
+        <Section width={'48%'} minHeight={'500px'}>
+          <SectionTitle outsideTitle={'Повторить'} titleColor={colors.darkTeal} hasClickHandler={true}></SectionTitle>
           <SectionInside>
-            <SectionInsideTitle titleColor={'rgb(255, 69, 58)'}></SectionInsideTitle>
+            <SectionInsideTitle titleColor={colors.lightTeal}></SectionInsideTitle>
+            <SectionInsideInfo>
+            </SectionInsideInfo>
           </SectionInside>
         </Section>
       </Main>

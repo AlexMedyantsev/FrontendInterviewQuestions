@@ -5,7 +5,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-content: center;
+  align-items: center;
   padding-left: 150px;
   padding-right: 150px;
   margin-top: 50px;
@@ -21,10 +21,12 @@
   font-size: $extraLargeTitle;
   margin-bottom: 25px;
   margin-left: 45px;
+  cursor: pointer;
 }
 
 .section__main {
   min-height: 500px;
+  margin-bottom: 40px;
   padding: 45px;
   padding-top: 35px;
   border-radius: 30px;
