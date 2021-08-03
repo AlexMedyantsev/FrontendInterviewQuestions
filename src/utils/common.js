@@ -1,5 +1,4 @@
 import { useRef, useEffect } from 'react';
-import {Note} from "./const";
 
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
@@ -24,17 +23,6 @@ export function usePrevious(value) {
   }, [value]);
 
   return ref.current;
-}
-
-export function onAddMoreButtonClick(setNotes, setNewNoteId) {
-  const creationDate = new Date();
-  // Generating ID using current Date
-  const id = "id" + Math.random().toString(16).slice(2)
-  // Creating Empty Note
-  const newNote = new Note(id, creationDate)
-
-  setNotes(newNote)
-  setNewNoteId(newNote.id);
 }
 
 export function getWidth() {

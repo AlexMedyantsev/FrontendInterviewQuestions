@@ -8,13 +8,12 @@ import {throttle} from "lodash";
 import thunk from 'redux-thunk';
 import {createAPI} from "./api.js";
 // import {Operation} from "./reducer/notes/notes.js";
-import {ActionCreator as ActionCreatorCondition} from "./reducer/notes/notes.js";
 import {loadState, saveState} from "./reducer/local-storage.js";
 import App from "./components/App.js"
 
 const onError = (responce) => {
-  store.dispatch(ActionCreatorCondition.setErrorMessage(responce));
-  store.dispatch(ActionCreatorCondition.changeErrorFlag());
+  // store.dispatch(ActionCreatorCondition.setErrorMessage(responce));
+  // store.dispatch(ActionCreatorCondition.changeErrorFlag());
 };
 
 const api = createAPI(onError);
