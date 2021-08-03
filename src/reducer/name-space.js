@@ -1,7 +1,5 @@
 const NameSpace = {
-  NOTES: `NOTES`,
-  SEARCH: `SEARCH`,
-  INTERFACE: `INTERFACE`,
+  UI: `UI`,
 };
 
 export default NameSpace;
