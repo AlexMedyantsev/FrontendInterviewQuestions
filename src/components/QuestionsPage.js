@@ -13,9 +13,8 @@ import Section from "./Section.js";
 import SectionInside from "./SectionInside.js";
 import SectionInsideTitle from "./SectionInsideTitle.js";
 import SectionInsideInfo from "./SectionInsideInfo.js";
-import Footer from "./Footer.js";
 
-function HomePage() {
+function QuestionsPage({children}) {
   return (
     <React.Fragment>
       <Header>
@@ -30,27 +29,21 @@ function HomePage() {
         </div>
       </Header>
       <Main>
-        <Section width={'48%'} height={'1000px'} outsideTitle={'Вопросы по JSX'} titleColor={'rgb(255, 59, 48)'}>
+        <Section width={'48%'} height={'1000px'} outsideTitle={'HTML'} titleColor={`$lightTeal`}>
           <SectionInside>
             <SectionInsideTitle titleColor={'rgb(255, 69, 58)'}></SectionInsideTitle>
             <SectionInsideInfo>
-              {/* <CodeSnippet>
-                <SyntaxHighlighter showLineNumbers={true}  language="javascript" customStyle={{padding: '0.8em', lineHeight: '27px', paddingTop: '1em'}} style={a11yDark}>
-                  {codeString}
-                </SyntaxHighlighter>
-              </CodeSnippet> */}
             </SectionInsideInfo>
           </SectionInside>
         </Section>
-        <Section width={'48%'} height={'1000px'} outsideTitle={'Повторить'} titleColor={'rgb(255, 59, 48)'}>
+        <Section width={'48%'} height={'1000px'} outsideTitle={'CSS'} titleColor={'rgb(255, 59, 48)'}>
           <SectionInside>
             <SectionInsideTitle titleColor={'rgb(255, 69, 58)'}></SectionInsideTitle>
           </SectionInside>
         </Section>
       </Main>
-      <Footer></Footer>
     </React.Fragment>
   )
 }
 
-export default HomePage;
+export default QuestionsPage;

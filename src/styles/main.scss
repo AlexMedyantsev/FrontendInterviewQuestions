@@ -4,6 +4,7 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   align-content: center;
   padding-left: 150px;
   padding-right: 150px;
@@ -33,4 +34,15 @@
 .section__inner-title {
   font-size: $title3;
   font-family: 'SF-Pro-Display-Medium';
+}
+
+.section__info {
+  width: 100%;
+}
+
+.code {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
 }

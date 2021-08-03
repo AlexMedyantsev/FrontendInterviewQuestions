@@ -1,14 +1,17 @@
 import '../styles/App.scss';
 import {motion} from "framer-motion";
+import {Link} from "react-router-dom";
 
-function HeaderLink({children}) {
+function HeaderLink({children, linkTo}) {
   return (
-    <motion.li className="header__link"
-      whileHover={{
-        scale: 1.1,
-        transition: {duration: 0.2},
-      }}
-      whileTap={{scale: 0.95}}>{children}</motion.li>
+    <Link to={linkTo} className="header__link">
+      <motion.li 
+        whileHover={{
+          scale: 1.1,
+          transition: {duration: 0.2},
+        }}
+        whileTap={{scale: 0.95}}>{children}</motion.li>
+    </Link>
   );
 }
 
