@@ -3,11 +3,11 @@ import '../styles/global/variables.scss';
 import QuestionItem from './QuestionItem';
 import {titleClickHandler} from "../utils/common.js";
 
-function QuestionList({componentToRender, questions, changeActiveQuestionSection}) {
+function QuestionList({ComponentToRender, questions, changeActiveQuestionSection}) {
   return (
     <ul className="section__list">
       {questions.map((question) => {
-        return <componentToRender
+        return <ComponentToRender
           key={question.name}
           hasClickHandler={true}
           changeActiveQuestionSection={changeActiveQuestionSection}

@@ -50,7 +50,7 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
         </SmallSectionListContainer>
 
         <SectionListContainer>
-          <SectionList  componentToRender={<QuestionItem/>} questions={questions} changeActiveQuestionSection={changeActiveQuestionSection}/>
+          <SectionList  ComponentToRender={QuestionItem} questions={questions} changeActiveQuestionSection={changeActiveQuestionSection}/>
         </SectionListContainer>
       </Main>
     </React.Fragment>
