@@ -35,7 +35,6 @@ export const colors = {
   lightRed: 'rgba(255,69,58)',
   darkRed: 'rgba(255,59,48)',
 
-
   lightGray1: 'rgba(142, 142, 147)',
   darkGray1: 'rgba(142, 142, 147)',
 
@@ -54,4 +53,35 @@ export const colors = {
   lightGray6: 'rgba(242, 242, 247)',
   darkGray6: 'rgba(28, 28, 30)',
 }
+
+export const questions = [
+  {
+    name: 'HTML',
+    outsideTitleText: 'HTML',
+    outsideTitleColor: colors.lightPink,
+    insideTitleText: 'Повторите вопросы className',
+    insideTitleColor: colors.lightPink,
+  },
+  {
+    name: 'CSS',
+    outsideTitleText: 'CSS',
+    outsideTitleColor: colors.darkIndigo,
+    insideTitleText: 'Повторите вопросы className',
+    insideTitleColor: colors.lightIndigo,
+  },
+  {
+    name: 'JS',
+    outsideTitleText: 'JS',
+    outsideTitleColor: colors.darkOrange,
+    insideTitleText: 'Повторите вопросы className',
+    insideTitleColor: colors.lightOrange,
+  },
+  {
+    name: 'React',
+    outsideTitleText: 'React',
+    outsideTitleColor: colors.lightBlue,
+    insideTitleText: 'Повторите вопросы className',
+    insideTitleColor: colors.darkBlue,
+  },
+]
 

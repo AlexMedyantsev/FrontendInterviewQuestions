@@ -1,4 +1,4 @@
-import '../styles/main.scss';
+import '../styles/index.scss';
 
 function App(props) {
   return (

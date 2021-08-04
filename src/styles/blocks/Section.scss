@@ -1,0 +1,11 @@
+.section__list-container {
+  width: 100%;
+}
+
+.section__list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}

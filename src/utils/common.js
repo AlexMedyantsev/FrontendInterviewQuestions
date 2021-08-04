@@ -4,7 +4,6 @@ export const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
-
 export function useFirstRender() {
   const firstRender = useRef(true);
 
@@ -43,4 +42,8 @@ export function getHeight() {
     document.documentElement.offsetHeight,
     document.documentElement.clientHeight
   );
+}
+
+export function titleClickHandler(sectionName, callback ) {
+  callback(sectionName)
 }

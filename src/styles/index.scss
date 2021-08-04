@@ -1,6 +1,13 @@
-@import './fonts.scss';
-@import './variables.scss';
-@import './reset.scss';
+@import './global/fonts.scss';
+@import './global/variables.scss';
+@import './global/reset.scss';
+
+@import './header.scss';
+@import './blocks/Main.scss';
+@import './blocks/Section.scss';
+@import './blocks/Title.scss';
+@import './blocks/Question.scss';
+
 
 body {
   margin: 0;

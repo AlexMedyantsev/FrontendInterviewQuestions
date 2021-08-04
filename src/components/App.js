@@ -1,4 +1,4 @@
-import '../styles/App.scss';
+import '../styles/index.scss';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import history from "../history.js";
 import HomePage from "./HomePage.js"

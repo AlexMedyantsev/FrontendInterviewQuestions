@@ -1,22 +1,26 @@
 import '../styles/index.scss';
-import '../styles/variables.scss';
+import '../styles/global/variables.scss';
+import {connect} from "react-redux";
 import React from 'react';
-import {colors} from "../utils/const.js";
-import {motion} from 'framer-motion';
+import {colors, questions} from "../utils/const.js";
+// import {motion} from 'framer-motion';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {docco, a11yDark} from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import CodeSnippet from "./CodeSnippet.js";
+import {ActionCreator as ActionCreatorUI} from "../reducer/ui/ui.js";
 import Header from "./Header.js";
 import HeaderLink from "./HeaderLink.js";
 import HeaderLinks from "./HeaderLinks.js";
 import Main from "./Main.js";
-import Section from "./Section.js";
-import SectionTitle from "./SectionTitle.js";
-import SectionInside from "./SectionInside.js";
-import SectionInsideTitle from "./SectionInsideTitle.js";
-import SectionInsideInfo from "./SectionInsideInfo.js";
+import QuestionItem from "./QuestionItem.js";
+import SmallSectionList from "./SmallSectionList.js";
+import SmallSectionListContainer from "./SmallSectionListContainer.js";
+import SmallSection from "./SmallSection.js";
+import SmallSectionInsideTitle from "./SmallSectionInsideTitle.js";
+import SectionListContainer from "./SectionListContainer.js";
+import SectionList from "./SectionList.js";
 
-function QuestionsPage() {
+function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
   return (
     <React.Fragment>
       <Header>
@@ -31,38 +35,38 @@ function QuestionsPage() {
         </div>
       </Header>
       <Main>
-        <Section width={'48%'} minHeight={'500px'}>
-          <SectionTitle outsideTitle={'HTML'} titleColor={colors.darkOrange} hasClickHandler={true}></SectionTitle>
-          <SectionInside>
-            <SectionInsideTitle titleColor={colors.lightOrange}></SectionInsideTitle>
-          </SectionInside>
-        </Section>
+        <SmallSectionListContainer>
+          <SmallSectionList>
+            <SmallSection hasClickHandler={true} titleText={'CSS'} titleColor={colors.lightIndigo}>
+              <SmallSectionInsideTitle />
+            </SmallSection>
+            <SmallSection hasClickHandler={true} titleText={'React'} titleColor={colors.lightCyan}>
+              <SmallSectionInsideTitle />
+            </SmallSection>
+            <SmallSection hasClickHandler={true} titleText={'JS'} titleColor={colors.lightRed}>
+              <SmallSectionInsideTitle />
+            </SmallSection>
+          </SmallSectionList>
+        </SmallSectionListContainer>
 
-        <Section width={'48%'} minHeight={'500px'}  >
-          <SectionTitle outsideTitle={'CSS'} titleColor={colors.darkIndigo} hasClickHandler={true}></SectionTitle>
-          <SectionInside>
-            <SectionInsideTitle titleColor={colors.lightIndigo}></SectionInsideTitle>
-          </SectionInside>
-        </Section>
-        <Section width={'48%'} minHeight={'500px'}>
-          <SectionTitle  outsideTitle={'JS'} titleColor={colors.darkRed} hasClickHandler={true}></SectionTitle>
-          <SectionInside>
-            <SectionInsideTitle titleColor={colors.lightRed}></SectionInsideTitle>
-            <SectionInsideInfo>
-            </SectionInsideInfo>
-          </SectionInside>
-        </Section>
-        <Section width={'48%'} minHeight={'500px'}>
-          <SectionTitle outsideTitle={'React'} titleColor={colors.darkTeal} hasClickHandler={true}></SectionTitle>
-          <SectionInside>
-            <SectionInsideTitle titleColor={colors.lightTeal}></SectionInsideTitle>
-            <SectionInsideInfo>
-            </SectionInsideInfo>
-          </SectionInside>
-        </Section>
+        <SectionListContainer>
+          <SectionList  componentToRender={<QuestionItem/>} questions={questions} changeActiveQuestionSection={changeActiveQuestionSection}/>
+        </SectionListContainer>
       </Main>
     </React.Fragment>
   )
 }
 
-export default QuestionsPage;
+const mapStateToProps = (state) => {
+  return {
+    activeQuestionSection: state.UI.activeQuestionSection,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => (
+  {
+    changeActiveQuestionSection: (section) => dispatch(ActionCreatorUI.changeActiveQuestionSection(section)),
+  }
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionsPage);
