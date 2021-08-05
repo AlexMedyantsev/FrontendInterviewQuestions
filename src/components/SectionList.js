@@ -1,26 +1,24 @@
 import '../styles/index.scss';
-import '../styles/global/variables.scss';
 import QuestionItem from './QuestionItem';
 import {titleClickHandler} from "../utils/common.js";
 
-function QuestionList({ComponentToRender, questions, changeActiveQuestionSection}) {
+function SectionList({ComponentToRender, arrayToRender, changeActiveQuestionSection}) {
   return (
     <ul className="section__list">
-      {questions.map((question) => {
+      {arrayToRender.map((item) => {
         return <ComponentToRender
-          key={question.name}
+          key={item.name}
           hasClickHandler={true}
-          changeActiveQuestionSection={changeActiveQuestionSection}
           clickHandler={titleClickHandler}
-          ClickHandler={titleClickHandler}
-          outsideTitleText={question.outsideTitleText}
-          outsideTitleColor={question.outsideTitleColor}
-          insideTitleText={question.insideTitleText}
-          insideTitleColor={question.insideTitleColor}
+          changeActiveQuestionSection={changeActiveQuestionSection}
+          outsideTitleText={item.outsideTitleText}
+          outsideTitleColor={item.outsideTitleColor}
+          insideTitleText={item.insideTitleText}
+          insideTitleColor={item.insideTitleColor}
         />
       })}
     </ul>
   )
 }
 
-export default QuestionList;
+export default SectionList;

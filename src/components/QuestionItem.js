@@ -16,10 +16,10 @@ function QuestionItem({
   return (
     <motion.li className="question__item"
       whileHover={{
-        scale: 1.1,
+        scale: 1.01,
         transition: {duration: 0.2},
       }}
-      whileTap={{scale: 0.95}}
+      whileTap={{scale: 0.99}}
     >
 
       <div className="question__item-inner-container question__item-inner-container--top">

@@ -1,9 +1,8 @@
 import '../styles/index.scss';
-import '../styles/global/variables.scss';
 
-function SmallSectionInsideTitle({children, titleColor, titleText}) {
+function SmallSectionInsideTitle({titleColor, titleText, activeQuestionSection}) {
   return (
-    <span className="section__small-inside-title" style={{color: titleColor}}>
+    <span className="section__small-inside-title" style={titleText === activeQuestionSection ? {color: 'white'} : {color: titleColor}}>
       {titleText}
     </span>
   )

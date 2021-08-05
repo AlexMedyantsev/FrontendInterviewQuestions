@@ -1,35 +1,24 @@
 import '../styles/index.scss';
-import '../styles/global/variables.scss';
 import React from 'react';
 import {motion} from "framer-motion";
-import {titleClickHandler} from '../utils/common.js';
-import {ActionCreator as ActionCreatorUI} from "../reducer/ui/ui.js";
-import {connect} from "react-redux";
+import SmallSectionInsideTitle from './SmallSectionInsideTitle';
 
 
-function SmallSection({children, hasClickHandler, titleText, titleColor, changeActiveQuestionSection}) {
+function SmallSection({hasClickHandler, clickHandler, titleText, titleColor, changeActiveQuestionSection, activeQuestionSection}) {
   return (
     <motion.li className="section__small"
       whileHover={{scale: 1.05}}
       whileTap={{scale: 0.95}}
-      onClick={hasClickHandler === true ? () => titleClickHandler(titleText, changeActiveQuestionSection) : ''}
+      onClick={hasClickHandler === true ? () => clickHandler(titleText, changeActiveQuestionSection) : ''}
+      style={titleText === activeQuestionSection ? {backgroundColor: titleColor} : {backgroundColor: 'white'}}
     >
-      {React.Children.map(children, (child) =>
-        React.cloneElement(child, {titleText, titleColor, changeActiveQuestionSection})
-      )}
+      <SmallSectionInsideTitle 
+        titleText={titleText}
+        titleColor={titleColor}
+        activeQuestionSection={activeQuestionSection}
+      />
     </motion.li>
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    // activeQuestionSection: state.UI.activeQuestionSection
-  }
-}
-
-const mapDispatchToProps = (dispatch) => (
-  {
-    changeActiveQuestionSection: (section) => dispatch(ActionCreatorUI.changeActiveQuestionSection(section)),
-  }
-)
-export default connect(null, mapDispatchToProps)(SmallSection);
+export default SmallSection;

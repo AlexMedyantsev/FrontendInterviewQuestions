@@ -1,4 +1,4 @@
-import '../styles/App.scss';
+import '../styles/index.scss';
 import {motion} from "framer-motion";
 import {Link} from "react-router-dom";
 

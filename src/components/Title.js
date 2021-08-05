@@ -1,5 +1,5 @@
 import '../styles/index.scss';
-import '../styles/global/variables.scss';
+
 
 function Title({
   titleText,
