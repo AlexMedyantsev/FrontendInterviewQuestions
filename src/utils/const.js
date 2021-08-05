@@ -85,3 +85,20 @@ export const questions = [
   },
 ]
 
+export const mainMenuSections = [
+  {
+    name: 'Доброе Утро',
+    outsideTitleText: 'Доброе Утро',
+    outsideTitleColor: colors.lightPink,
+    insideTitleText: 'Lorem Ipsum Dolor',
+    insideTitleColor: colors.lightPink,
+  },
+  {
+    name: 'Доброе Вечер',
+    outsideTitleText: 'Доброе Вечер',
+    outsideTitleColor: colors.lightPink,
+    insideTitleText: 'Lorem Ipsum Dolor',
+    insideTitleColor: colors.lightPink,
+  }
+]
+

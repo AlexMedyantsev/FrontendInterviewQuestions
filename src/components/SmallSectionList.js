@@ -1,10 +1,19 @@
 import '../styles/index.scss';
-import '../styles/global/variables.scss';
 
-function SmallSectionList({children}) {
+
+function SmallSectionList({arrayToRender, ComponentToRender,activeQuestionSection, changeActiveQuestionSection}) {
   return (
     <ul className="section__small-list">
-      {children}
+      {arrayToRender.map((item) => {
+        return <ComponentToRender
+          key={item.name}
+          hasClickHandler={true}
+          clickHandler={changeActiveQuestionSection}
+          activeQuestionSection={activeQuestionSection}
+          titleText={item.outsideTitleText}
+          titleColor={item.outsideTitleColor}
+        />
+      })}
     </ul>
   )
 }

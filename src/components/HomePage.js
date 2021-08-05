@@ -1,18 +1,22 @@
 import '../styles/index.scss';
-import '../styles/global/variables.scss';
 import React from 'react';
-import {colors} from "../utils/const.js";
+import {connect} from "react-redux";
+import {ActionCreator as ActionCreatorUI} from "../reducer/ui/ui.js";
+import {colors, mainMenuSections} from "../utils/const.js";
 import {motion} from 'framer-motion';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {docco, a11yDark} from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import CodeSnippet from "./CodeSnippet.js";
 import Header from "./Header.js";
 import HeaderLink from "./HeaderLink.js";
-import HeaderLinks from "./HeaderLinks.js";
+import HeaderLinks from "./HeaderLinks.js"
 import Main from "./Main.js";
 import Footer from "./Footer.js";
+import SectionListContainer from "./SectionListContainer.js";
+import SectionList from "./SectionList.js";
+import QuestionItem from "./QuestionItem.js";
 
-function HomePage() {
+function HomePage({changeActiveQuestionSection}) {
   return (
     <React.Fragment>
       <Header>
@@ -27,10 +31,16 @@ function HomePage() {
         </div>
       </Header>
       <Main>
+        <SectionListContainer>
+          <SectionList ComponentToRender={QuestionItem}
+            arrayToRender={mainMenuSections}
+            changeActiveQuestionSection={changeActiveQuestionSection}
+          />
+        </SectionListContainer>
       </Main>
-        <Footer></Footer>
+      <Footer></Footer>
     </React.Fragment >
-      )
+  )
 }
 
 export default HomePage;

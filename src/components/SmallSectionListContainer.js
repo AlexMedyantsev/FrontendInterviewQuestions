@@ -1,5 +1,5 @@
 import '../styles/index.scss';
-import '../styles/global/variables.scss';
+
 import {ActionCreator as ActionCreatorUI} from "../reducer/ui/ui.js";
 import {connect} from "react-redux";
 import React from 'react';
@@ -11,16 +11,5 @@ function SmallSectionListContainer({children, activeQuestionSection}) {
     </div>
   )
 }
-const mapStateToProps = (state) => {
-  return {
-    activeQuestionSection: state.UI.activeQuestionSection
-  }
-}
 
-const mapDispatchToProps = (dispatch) => (
-  {
-    changeActiveQuestionSection: (section) => dispatch(ActionCreatorUI.changeActiveQuestionSection(section)),
-  }
-)
-
-export default connect(mapStateToProps, mapDispatchToProps)(SmallSectionListContainer);
+export default SmallSectionListContainer;
