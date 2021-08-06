@@ -9,7 +9,7 @@ import Header from "./Header.js";
 import HeaderLink from "./HeaderLink.js";
 import HeaderLinks from "./HeaderLinks.js";
 import Main from "./Main.js";
-import QuestionItem from "./QuestionItem.js";
+import SectionItem from "./SectionItem.js";
 import SmallTabList from "./SmallTabList.js";
 import SmallTabListContainer from "./SmallTabListContainer.js";
 import SmallTab from "./SmallTab.js";
@@ -43,7 +43,7 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
 
         <SectionListContainer>
           <SectionList
-            ComponentToRender={QuestionItem}
+            ComponentToRender={SectionItem}
             arrayToRender={questions}
             hideable={true}
             activeQuestionSection={activeQuestionSection}

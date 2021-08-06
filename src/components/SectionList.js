@@ -1,5 +1,4 @@
 import '../styles/index.scss';
-import QuestionItem from './QuestionItem';
 import {titleClickHandler} from "../utils/common.js";
 
 function SectionList({ComponentToRender, arrayToRender, activeQuestionSection, changeActiveQuestionSection, hideable}) {

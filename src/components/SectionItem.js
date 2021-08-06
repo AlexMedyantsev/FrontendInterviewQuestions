@@ -3,7 +3,7 @@ import {motion} from "framer-motion";
 import Title from './Title.js';
 import SubTitle from './SubTitle.js';
 
-function QuestionItem({
+function SectionItem({
   hasClickHandler,
   clickHandler,
   activeQuestionSection,
@@ -51,4 +51,4 @@ function QuestionItem({
   );
 }
 
-export default QuestionItem;
+export default SectionItem;
