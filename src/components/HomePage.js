@@ -16,7 +16,7 @@ import SectionListContainer from "./SectionListContainer.js";
 import SectionList from "./SectionList.js";
 import QuestionItem from "./QuestionItem.js";
 
-function HomePage({changeActiveQuestionSection}) {
+function HomePage({changeActiveQuestionSection, activeQuestionSection}) {
   return (
     <React.Fragment>
       <Header>
@@ -32,8 +32,11 @@ function HomePage({changeActiveQuestionSection}) {
       </Header>
       <Main>
         <SectionListContainer>
-          <SectionList ComponentToRender={QuestionItem}
+          <SectionList
+            ComponentToRender={QuestionItem}
             arrayToRender={mainMenuSections}
+            hideable={false}
+            activeQuestionSection={activeQuestionSection}
             changeActiveQuestionSection={changeActiveQuestionSection}
           />
         </SectionListContainer>

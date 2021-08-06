@@ -3,7 +3,7 @@ import '../styles/index.scss';
 
 function SmallSectionList({arrayToRender, ComponentToRender,activeQuestionSection, changeActiveQuestionSection}) {
   return (
-    <ul className="section__small-list">
+    <ul className="section__small-list" style={activeQuestionSection ? {display: 'flex'} : {display: 'none'}}>
       {arrayToRender.map((item) => {
         return <ComponentToRender
           key={item.name}

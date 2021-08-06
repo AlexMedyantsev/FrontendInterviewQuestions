@@ -12,6 +12,7 @@ function App({activeQuestionSection, changeActiveQuestionSection}) {
       <Switch>
         <Route exact path="/">
           <HomePage
+            activeQuestionSection={activeQuestionSection}
             changeActiveQuestionSection={changeActiveQuestionSection}
           />
         </Route>
