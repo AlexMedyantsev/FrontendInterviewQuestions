@@ -1,7 +1,6 @@
 import '../styles/index.scss';
 import React from 'react';
-import {colors, questions} from "../utils/const.js";
-// import {motion} from 'framer-motion';
+import {questions} from "../utils/const.js";
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {docco, a11yDark} from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import CodeSnippet from "./CodeSnippet.js";
@@ -19,15 +18,6 @@ import SectionListContainer from "./SectionListContainer.js";
 import SectionList from "./SectionList.js";
 
 function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
-
-  // let generateArray = (array, key) => {
-  //   let newArray = [];
-
-  //   array.map(arrayItem => generateArray.push(arrayItem.key));
-
-  //   return newArray;
-  // }
-
   return (
     <React.Fragment>
       <Header>
@@ -56,6 +46,8 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
           <SectionList
             ComponentToRender={QuestionItem}
             arrayToRender={questions}
+            hideable={true}
+            activeQuestionSection={activeQuestionSection}
             changeActiveQuestionSection={changeActiveQuestionSection}
           />
         </SectionListContainer>
