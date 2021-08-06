@@ -1,5 +1,5 @@
 import '../styles/index.scss';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {questions} from "../utils/const.js";
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {docco, a11yDark} from 'react-syntax-highlighter/dist/esm/styles/hljs';
@@ -17,6 +17,10 @@ import SectionListContainer from "./SectionListContainer.js";
 import SectionList from "./SectionList.js";
 
 function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
+  useEffect(() => {
+    changeActiveQuestionSection('React');
+  }, []);
+
   return (
     <React.Fragment>
       <Header>
@@ -32,7 +36,7 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
       </Header>
       <Main>
         <SmallTabListContainer activeQuestionSection={activeQuestionSection}>
-          <SmallTabList 
+          <SmallTabList
             arrayToRender={questions}
             ComponentToRender={SmallTab}
             activeQuestionSection={activeQuestionSection}
