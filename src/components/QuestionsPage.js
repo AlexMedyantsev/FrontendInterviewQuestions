@@ -10,10 +10,9 @@ import HeaderLink from "./HeaderLink.js";
 import HeaderLinks from "./HeaderLinks.js";
 import Main from "./Main.js";
 import QuestionItem from "./QuestionItem.js";
-import SmallSectionList from "./SmallSectionList.js";
-import SmallSectionListContainer from "./SmallSectionListContainer.js";
-import SmallSection from "./SmallSection.js";
-import SmallSectionInsideTitle from "./SmallSectionInsideTitle.js";
+import SmallTabList from "./SmallTabList.js";
+import SmallTabListContainer from "./SmallTabListContainer.js";
+import SmallTab from "./SmallTab.js";
 import SectionListContainer from "./SectionListContainer.js";
 import SectionList from "./SectionList.js";
 
@@ -32,15 +31,15 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
         </div>
       </Header>
       <Main>
-        <SmallSectionListContainer activeQuestionSection={activeQuestionSection}>
-          <SmallSectionList 
+        <SmallTabListContainer activeQuestionSection={activeQuestionSection}>
+          <SmallTabList 
             arrayToRender={questions}
-            ComponentToRender={SmallSection}
+            ComponentToRender={SmallTab}
             activeQuestionSection={activeQuestionSection}
             changeActiveQuestionSection={changeActiveQuestionSection}
             activeQuestionSection={activeQuestionSection}
           />
-        </SmallSectionListContainer>
+        </SmallTabListContainer>
 
         <SectionListContainer>
           <SectionList

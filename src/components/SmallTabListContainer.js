@@ -4,7 +4,7 @@ import {ActionCreator as ActionCreatorUI} from "../reducer/ui/ui.js";
 import {connect} from "react-redux";
 import React from 'react';
 
-function SmallSectionListContainer({children, activeQuestionSection}) {
+function SmallTabListContainer({children, activeQuestionSection}) {
   return (
     <div className={`small__section-container${activeQuestionSection ? "--visible" : ""}`}>
       {children}
@@ -12,4 +12,4 @@ function SmallSectionListContainer({children, activeQuestionSection}) {
   )
 }
 
-export default SmallSectionListContainer;
+export default SmallTabListContainer;

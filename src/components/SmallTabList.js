@@ -1,7 +1,7 @@
 import '../styles/index.scss';
 
 
-function SmallSectionList({arrayToRender, ComponentToRender,activeQuestionSection, changeActiveQuestionSection}) {
+function SmallTabList({arrayToRender, ComponentToRender,activeQuestionSection, changeActiveQuestionSection}) {
   return (
     <ul className="section__small-list" style={activeQuestionSection ? {display: 'flex'} : {display: 'none'}}>
       {arrayToRender.map((item) => {
@@ -18,4 +18,4 @@ function SmallSectionList({arrayToRender, ComponentToRender,activeQuestionSectio
   )
 }
 
-export default SmallSectionList;
+export default SmallTabList;

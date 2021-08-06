@@ -1,10 +1,10 @@
 import '../styles/index.scss';
 import React from 'react';
 import {motion} from "framer-motion";
-import SmallSectionInsideTitle from './SmallSectionInsideTitle';
+import SmallTabInsideTitle from './SmallTabInsideTitle';
 
 
-function SmallSection({hasClickHandler, clickHandler, titleText, titleColor, changeActiveQuestionSection, activeQuestionSection}) {
+function SmallTab({hasClickHandler, clickHandler, titleText, titleColor, changeActiveQuestionSection, activeQuestionSection}) {
   return (
     <motion.li className="section__small"
       whileHover={{scale: 1.05}}
@@ -12,7 +12,7 @@ function SmallSection({hasClickHandler, clickHandler, titleText, titleColor, cha
       onClick={hasClickHandler === true ? () => clickHandler(titleText, changeActiveQuestionSection) : ''}
       style={titleText === activeQuestionSection ? {backgroundColor: titleColor} : {backgroundColor: 'white'}}
     >
-      <SmallSectionInsideTitle 
+      <SmallTabInsideTitle 
         titleText={titleText}
         titleColor={titleColor}
         activeQuestionSection={activeQuestionSection}
@@ -21,4 +21,4 @@ function SmallSection({hasClickHandler, clickHandler, titleText, titleColor, cha
   )
 }
 
-export default SmallSection;
+export default SmallTab;
