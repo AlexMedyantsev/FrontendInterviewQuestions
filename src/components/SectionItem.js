@@ -17,7 +17,7 @@ function SectionItem({
 
   return (
     <motion.li
-      className={outsideTitleText === activeQuestionSection ? "question__item question__item--active" : 'question__item'}
+      className={outsideTitleText === activeQuestionSection ? "section__item section__item--active" : 'section__item'}
       style={hideable ? outsideTitleText === activeQuestionSection ? {display: 'flex'} : {display: 'none'} : {display: 'flex'}}
       whileHover={{
         scale: 1.01,
@@ -26,7 +26,7 @@ function SectionItem({
       whileTap={{scale: 0.99}}
     >
       {/* Card outside */}
-      <div className="question__item-inner-container question__item-inner-container--top">
+      <div className="section__item-inner-container section__item-inner-container--top">
         <Title
           hasClickHandler={hasClickHandler}
           clickHandler={clickHandler}
@@ -37,7 +37,7 @@ function SectionItem({
       </div>
 
       {/* Card inside */}
-      <div className="question__item-inner-container question__item-inner-container--bottom">
+      <div className="section__item-inner-container section__item-inner-container--bottom">
         <SubTitle
           hasClickHandler={hasClickHandler}
           clickHandler={clickHandler}

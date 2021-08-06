@@ -1,34 +1,6 @@
-.question__item {
-  width: 48%;
-  min-height: 450px;
+.question {
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
-
-  &--active {
-    width: 100%;
-  }
-}
-
-.question__list-container {
-  width: 100%;
-}
-
-.question__item-inner-container {
-  &--top {
-    height: 75px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: 25px;
-  }
-
-  &--bottom {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    padding: 25px;
-    border-radius: 30px;
-    background-color: #fff;
-  }
 }
