@@ -23,7 +23,7 @@ function SectionItem({
       className={outsideTitleText === activeQuestionSection ? "section__item section__item--active" : 'section__item'}
       style={hideable ? outsideTitleText === activeQuestionSection ? {display: 'flex'} : {display: 'none'} : {display: 'flex'}}
       whileHover={{
-        scale: 1.01,
+        scale: 1.00,
         transition: {duration: 0.2},
       }}
     >

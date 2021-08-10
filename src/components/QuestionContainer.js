@@ -1,6 +1,7 @@
-import '../styles/index.scss';
-import React, {useState} from 'react';
+import '../styles/index.scss'
+import React, {useState} from 'react'
 import Question from "./Question.js"
+import {motion} from "framer-motion"
 
 function QuestionContainer({question, color}) {
   const [cardState, changeCardState] = useState(
@@ -32,7 +33,7 @@ function QuestionContainer({question, color}) {
 
       {/* Вопрос */}
       {cardState.isOpen &&
-        <div className="question__container">
+        <div className="question__container question__container--question">
           <Question
             composition={question.questionComposition}
             string={null}
@@ -42,7 +43,7 @@ function QuestionContainer({question, color}) {
 
       {/* Ответ */}
       {cardState.isAnswerShown &&
-        <div className="question__container">
+        <div className="question__container question__container--answer">
           <Question
             composition={question.answerComposition}
             string={'Ответ: '}
@@ -50,26 +51,33 @@ function QuestionContainer({question, color}) {
         </div>
       }
 
-      {/* Кнопка разворачивающая/сворачивающая ответ */}
-      {cardState.isOpen &&
-        <button
-          onClick={() => rollOutAnswerHandler()}
-          className={cardState.isAnswerShown ? 'card-button card-button--close' : 'card-button card-button--open'}
-        >
-          {cardState.isAnswerShown ? 'Скрыть ответ' : 'Показать ответ'}
-        </button>
-      }
+      <div className="card__buttons-container">
 
-      {/* Кнопка сворачивания карточки */}
-      {
-        cardState.isOpen &&
-        <button
-          onClick={() => rollOutCardHandler()}
-          className={cardState.isOpen ? 'card-button card-button--close' : 'card-button card-button--open'}
-        >
-          Свернуть карточку
-        </button>
-      }
+        {/* Кнопка разворачивающая/сворачивающая ответ */}
+        {cardState.isOpen &&
+          <motion.button
+            whileTap={{scale: 0.95}}
+            whileHover={{scale: 1.05, transition: {duration: 0.2}}}
+            onClick={() => rollOutAnswerHandler()}
+            className={cardState.isAnswerShown ? 'card-button card-button--close' : 'card-button card-button--open'}
+          >
+            {cardState.isAnswerShown ? 'Скрыть ответ' : 'Показать ответ'}
+          </motion.button>
+        }
+
+        {/* Кнопка сворачивания карточки */}
+        {
+          cardState.isOpen &&
+          <motion.button
+            whileTap={{scale: 0.95}}
+            whileHover={{scale: 1.05, transition: {duration: 0.2}}}
+            onClick={() => rollOutCardHandler()}
+            className={cardState.isOpen ? 'card-button card-button--close' : 'card-button card-button--open'}
+          >
+            Свернуть карточку
+          </motion.button>
+        }
+      </div>
 
     </div>
   )

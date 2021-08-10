@@ -10,7 +10,6 @@
   margin-bottom: 25px;
   color: white;
   font-family: 'SF-Pro-Display-Bold';
-  cursor: pointer;
   margin-left: 20px;
 
   &--rolled {
@@ -33,12 +32,21 @@
   bottom: 0;
   left: 50px;
   max-width: 200px;
-  height: 40px;
+  min-height: 40px;
   margin-top: 15px;
   margin-bottom: 15px;
   border-radius: 10px;
   border: 0;
-  background-color: rgba(255, 255, 255, 0.7)
+  background-color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+
+  &:not(:nth-of-type(1)) {
+    margin-left: 15px;
+  }
+}
+
+.card__buttons-container {
+  display: flex;
 }
 
 .question__list {
@@ -52,4 +60,11 @@
 .question__container {
   width: 100%;
   margin-top: 0px;
+
+  &--answer {
+    margin-top: 20px;
+    padding-top: 30px;
+    border-top: 1px solid white;
+    border-radius: 1px;
+  }
 }
