@@ -14,7 +14,7 @@ import Main from "./Main.js";
 import Footer from "./Footer.js";
 import SectionListContainer from "./SectionListContainer.js";
 import SectionList from "./SectionList.js";
-import QuestionItem from "./QuestionItem.js";
+import QuestionItem from "./SectionItem.js";
 
 function HomePage({changeActiveQuestionSection, activeQuestionSection}) {
   return (

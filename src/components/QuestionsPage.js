@@ -1,23 +1,23 @@
 import '../styles/index.scss';
-import React from 'react';
-import {questions} from "../utils/const.js";
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import {docco, a11yDark} from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import CodeSnippet from "./CodeSnippet.js";
+import React, {useEffect} from 'react';
+import {sectionTabs} from "../utils/const.js";
 
 import Header from "./Header.js";
 import HeaderLink from "./HeaderLink.js";
 import HeaderLinks from "./HeaderLinks.js";
 import Main from "./Main.js";
-import QuestionItem from "./QuestionItem.js";
-import SmallSectionList from "./SmallSectionList.js";
-import SmallSectionListContainer from "./SmallSectionListContainer.js";
-import SmallSection from "./SmallSection.js";
-import SmallSectionInsideTitle from "./SmallSectionInsideTitle.js";
+import SectionItem from "./SectionItem.js";
+import SmallTabList from "./SmallTabList.js";
+import SmallTabListContainer from "./SmallTabListContainer.js";
+import SmallTab from "./SmallTab.js";
 import SectionListContainer from "./SectionListContainer.js";
 import SectionList from "./SectionList.js";
 
 function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
+  useEffect(() => {
+    changeActiveQuestionSection('JS');
+  }, []);
+
   return (
     <React.Fragment>
       <Header>
@@ -32,20 +32,20 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
         </div>
       </Header>
       <Main>
-        <SmallSectionListContainer activeQuestionSection={activeQuestionSection}>
-          <SmallSectionList 
-            arrayToRender={questions}
-            ComponentToRender={SmallSection}
+        <SmallTabListContainer activeQuestionSection={activeQuestionSection}>
+          <SmallTabList
+            arrayToRender={sectionTabs}
+            ComponentToRender={SmallTab}
             activeQuestionSection={activeQuestionSection}
             changeActiveQuestionSection={changeActiveQuestionSection}
             activeQuestionSection={activeQuestionSection}
           />
-        </SmallSectionListContainer>
+        </SmallTabListContainer>
 
         <SectionListContainer>
           <SectionList
-            ComponentToRender={QuestionItem}
-            arrayToRender={questions}
+            ComponentToRender={SectionItem}
+            arrayToRender={sectionTabs}
             hideable={true}
             activeQuestionSection={activeQuestionSection}
             changeActiveQuestionSection={changeActiveQuestionSection}
