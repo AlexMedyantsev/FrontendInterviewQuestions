@@ -24,7 +24,6 @@
 .question__rolled-text {
   margin-bottom: 5px;
   width: 100%;
-  flex-grow: 1;
 }
 
 .card-button {
@@ -69,6 +68,10 @@
     border-top: 1px solid white;
     border-radius: 1px;
   }
+}
+
+.question__text {
+  line-height: 24px;
 }
 
 @media (max-width: 768px) {

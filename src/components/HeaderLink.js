@@ -2,9 +2,9 @@ import '../styles/index.scss';
 import {motion} from "framer-motion";
 import {Link} from "react-router-dom";
 
-function HeaderLink({children, linkTo}) {
+function HeaderLink({children, linkTo, active}) {
   return (
-    <Link to={linkTo} className="header__link">
+    <Link to={linkTo} className={active ? "header__link header__link--active" : "header__link"}>
       <motion.li 
         whileHover={{
           scale: 1.1,
