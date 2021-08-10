@@ -1,7 +1,7 @@
 import CodeSnippet from './CodeSnippet.js';
 import React from 'react'
 
-function Question({composition}) {
+function Question({composition, string}) {
   return (
     <React.Fragment>
       {composition.map((item) => {
@@ -10,6 +10,7 @@ function Question({composition}) {
             key={item.text}
             className="question__text"
           >
+            {string}
             {item.text}
           </div>;
         }

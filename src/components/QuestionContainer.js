@@ -3,19 +3,28 @@ import React, {useState} from 'react';
 import Question from "./Question.js"
 
 function QuestionContainer({question, color}) {
-  const [cardState, changeCardState] = useState({
-    isOpen: false,
-  })
+  const [cardState, changeCardState] = useState(
+    {
+      isAnswerShown: false,
+      isOpen: false,
+    }
+  )
 
   let rollOutCardHandler = () => {
-    changeCardState({isOpen: !cardState.isOpen})
+    changeCardState({...cardState, isOpen: !cardState.isOpen})
   }
+
+  let rollOutAnswerHandler = () => {
+    changeCardState({...cardState, isAnswerShown: !cardState.isAnswerShown})
+  }
+
 
   return (
     <div
       className={cardState.isOpen ? "question" : "question question--rolled"}
       style={{backgroundColor: color}}
     >
+      {/* Заголовок вопроса отобр. при свернутой карточке */}
       {
         !cardState.isOpen &&
         <span onClick={() => rollOutCardHandler()} className="question__rolled-text">{question.questionTitle}</span>
@@ -23,26 +32,43 @@ function QuestionContainer({question, color}) {
 
       {/* Вопрос */}
       {cardState.isOpen &&
-        <React.Fragment>
-          <div className="question__container">
-            <Question
-              composition={question.questionComposition}
-            />
-          </div>
-
-          <div className="question__container">
-            <Question
-              composition={question.answerComposition}
-            />
-          </div>
-        </React.Fragment>
+        <div className="question__container">
+          <Question
+            composition={question.questionComposition}
+            string={null}
+          />
+        </div>
       }
+
+      {/* Ответ */}
+      {cardState.isAnswerShown &&
+        <div className="question__container">
+          <Question
+            composition={question.answerComposition}
+            string={'Ответ: '}
+          />
+        </div>
+      }
+
+      {/* Кнопка разворачивающая/сворачивающая ответ */}
+      {cardState.isOpen &&
+        <button
+          onClick={() => rollOutAnswerHandler()}
+          className={cardState.isAnswerShown ? 'card-button card-button--close' : 'card-button card-button--open'}
+        >
+          {cardState.isAnswerShown ? 'Скрыть ответ' : 'Показать ответ'}
+        </button>
+      }
+
+      {/* Кнопка сворачивания карточки */}
       {
         cardState.isOpen &&
         <button
           onClick={() => rollOutCardHandler()}
           className={cardState.isOpen ? 'card-button card-button--close' : 'card-button card-button--open'}
-        ></button>
+        >
+          Свернуть карточку
+        </button>
       }
 
     </div>
