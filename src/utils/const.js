@@ -144,7 +144,9 @@ export const questions = [
     questionTitle: 'Вопрос по JS 2. To Test the limits of container one most exceed its boundaries',
     questionCode: `// null, undefined, boolean, string, number, string, object, symbol`,
     questionAnswer: 'Какие типы данных есть в JS2?',
-    answerCode: `// null, undefined, boolean, string, number, string, object, symbol`,
+    answerCode: `const x = function(x) {
+ return x + 2;
+}`,
     get questionComposition() {
       return [
         {
@@ -164,7 +166,7 @@ export const questions = [
           text: this.questionAnswer,
           type: 'text',
         }, {
-          code: this.questionCode,
+          code: this.answerCode,
           codeType: 'javascript',
           type: 'code',
         }
@@ -198,7 +200,7 @@ export const questions = [
           text: this.questionAnswer,
           type: 'text',
         }, {
-          code: this.questionCode,
+          code: this.answerCode,
           codeType: 'javascript',
           type: 'code',
         }
@@ -232,7 +234,45 @@ export const questions = [
           text: this.questionAnswer,
           type: 'text',
         }, {
+          code: this.answerCode,
+          type: 'code',
+        }
+      ]
+    },
+    answeredRightTimes: 0,
+    answeredWrongTimes: 0,
+  },
+  {
+    type: 'CSS',
+    questionTitle: 'Какие типы данных есть в CSS?',
+    questionCode: `.red {
+  color: red;
+}`,
+    questionAnswer: 'Вот такие типы данных есть в CSS',
+    answerCode: `.red {
+  color: red;
+}`,
+    get questionComposition() {
+      return [
+        {
+          text: this.questionTitle,
+          type: 'text',
+        },
+        {
           code: this.questionCode,
+          codeType: 'css',
+          type: 'code',
+        },
+      ]
+    },
+    get answerComposition() {
+      return [
+        {
+          text: this.questionAnswer,
+          type: 'text',
+        }, {
+          code: this.answerCode,
+          codeType: 'css',
           type: 'code',
         }
       ]

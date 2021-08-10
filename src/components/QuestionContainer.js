@@ -19,9 +19,13 @@ function QuestionContainer({question, color}) {
     changeCardState({...cardState, isAnswerShown: !cardState.isAnswerShown})
   }
 
+  let closeAllHandler = () => {
+    changeCardState({isOpen: false, isAnswerShown: false})
+  }
 
   return (
-    <div
+    <motion.div
+      // animate={cardState.isOpen ? {width: '47%'} : {width: '30%'}}
       className={cardState.isOpen ? "question" : "question question--rolled"}
       style={{backgroundColor: color}}
     >
@@ -57,7 +61,7 @@ function QuestionContainer({question, color}) {
         {cardState.isOpen &&
           <motion.button
             whileTap={{scale: 0.95}}
-            whileHover={{scale: 1.05, transition: {duration: 0.2}}}
+            whileHover={{scale: 1.05, backgroundColor: 'rgba(255,255,255,0.85)', transition: {duration: 0.2}}}
             onClick={() => rollOutAnswerHandler()}
             className={cardState.isAnswerShown ? 'card-button card-button--close' : 'card-button card-button--open'}
           >
@@ -70,8 +74,8 @@ function QuestionContainer({question, color}) {
           cardState.isOpen &&
           <motion.button
             whileTap={{scale: 0.95}}
-            whileHover={{scale: 1.05, transition: {duration: 0.2}}}
-            onClick={() => rollOutCardHandler()}
+            whileHover={{scale: 1.05, backgroundColor: 'rgba(255,255,255,0.85)', transition: {duration: 0.2}}}
+            onClick={() => closeAllHandler()}
             className={cardState.isOpen ? 'card-button card-button--close' : 'card-button card-button--open'}
           >
             Свернуть карточку
@@ -79,7 +83,7 @@ function QuestionContainer({question, color}) {
         }
       </div>
 
-    </div>
+    </motion.div>
   )
 }
 

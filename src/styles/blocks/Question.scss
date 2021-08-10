@@ -23,6 +23,8 @@
 
 .question__rolled-text {
   margin-bottom: 5px;
+  width: 100%;
+  flex-grow: 1;
 }
 
 .card-button {
@@ -68,3 +70,20 @@
     border-radius: 1px;
   }
 }
+
+@media (max-width: 768px) {
+  .question {
+    width: 100%;
+    margin-left: 0px;
+
+    &--rolled {
+      width: 100%;
+    }
+  }
+
+  .question__list {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {}
