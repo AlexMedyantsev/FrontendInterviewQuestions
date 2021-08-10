@@ -6,6 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 35px;
   padding-left: 150px;
   padding-right: 150px;
   box-sizing: border-box;
@@ -13,7 +14,6 @@
 
 .header__links {
   display: flex;
-
 }
 
 .header__link {
@@ -24,6 +24,11 @@
 
   &:not(:nth-of-type(1)) {
     margin-left: 100px;
+  }
+
+  &--active {
+    font-size: $title2; 
+    color: $lightPink
   }
 }
 
@@ -55,3 +60,25 @@
   align-items: center;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .header {
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-bottom: 15px;
+  }
+
+  .header__link {
+    font-size: 16px;
+
+    &:not(:nth-of-type(1)) {
+      margin-left: 25px;
+    }
+  }
+
+  .header__account-name {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {}
