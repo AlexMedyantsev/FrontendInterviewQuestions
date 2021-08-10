@@ -15,7 +15,7 @@ import SectionList from "./SectionList.js";
 
 function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
   useEffect(() => {
-    changeActiveQuestionSection('React');
+    changeActiveQuestionSection('JS');
   }, []);
 
   return (

@@ -2,6 +2,9 @@ import '../styles/index.scss';
 import {motion} from "framer-motion";
 import Title from './Title.js';
 import SubTitle from './SubTitle.js';
+import QuestionContainer from './QuestionContainer.js';
+import {questions} from "../utils/const.js"
+import QuestionList from './QuestionList';
 
 function SectionItem({
   hasClickHandler,
@@ -23,7 +26,6 @@ function SectionItem({
         scale: 1.01,
         transition: {duration: 0.2},
       }}
-      whileTap={{scale: 0.99}}
     >
       {/* Card outside */}
       <div className="section__item-inner-container section__item-inner-container--top">
@@ -38,12 +40,16 @@ function SectionItem({
 
       {/* Card inside */}
       <div className="section__item-inner-container section__item-inner-container--bottom">
-        <SubTitle
+        {/* <SubTitle
           hasClickHandler={hasClickHandler}
           clickHandler={clickHandler}
           subTitleText={insideTitleText}
           subTitleColor={insideTitleColor}
           reduxCallback={changeActiveQuestionSection}
+        /> */}
+        <QuestionList
+          questions={questions.filter(question => question.type === outsideTitleText)}
+          color={outsideTitleColor}
         />
       </div>
 

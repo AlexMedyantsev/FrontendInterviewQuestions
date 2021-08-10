@@ -54,7 +54,7 @@ export const colors = {
   darkGray6: 'rgba(28, 28, 30)',
 }
 
-export const questions = [
+export const sectionTabs = [
   {
     name: 'HTML',
     outsideTitleText: 'HTML',
@@ -81,7 +81,7 @@ export const questions = [
     outsideTitleText: 'React',
     outsideTitleColor: colors.lightBlue,
     insideTitleText: 'Повторите вопросы className',
-    insideTitleColor: colors.darkBlue,
+    insideTitleColor: colors.lightBlue,
   },
 ]
 
@@ -99,6 +99,146 @@ export const mainMenuSections = [
     outsideTitleColor: colors.lightPink,
     insideTitleText: 'Lorem Ipsum Dolor',
     insideTitleColor: colors.lightPink,
+  }
+]
+
+export const questions = [
+  {
+    type: 'JS',
+    questionTitle: 'Какие типы данных есть в JS?',
+    questionCode: `// null, undefined, boolean, string, number, string, object, symbol`,
+    questionAnswer: 'Какие типы данных есть в JS?',
+    answerCode: `// null, undefined, boolean, string, number, string, object, symbol`,
+    get questionComposition() {
+      return [
+        {
+          text: this.questionTitle,
+          type: 'text',
+        },
+        {
+          code: this.questionCode,
+          codeType: 'javascript',
+          type: 'code',
+        },
+      ]
+    },
+    get answerComposition() {
+      return [
+        {
+          text: this.questionAnswer,
+          type: 'text',
+        }, {
+          code: this.questionCode,
+          codeType: 'javascript',
+          type: 'code',
+        }
+      ]
+    },
+    answeredRightTimes: 0,
+    answeredWrongTimes: 0,
+  },
+
+
+  {
+    type: 'JS',
+    questionTitle: 'Вопрос по JS 2. To Test the limits of container one most exceed its boundaries',
+    questionCode: `// null, undefined, boolean, string, number, string, object, symbol`,
+    questionAnswer: 'Какие типы данных есть в JS2?',
+    answerCode: `// null, undefined, boolean, string, number, string, object, symbol`,
+    get questionComposition() {
+      return [
+        {
+          text: this.questionTitle,
+          type: 'text',
+        },
+        {
+          code: this.questionCode,
+          codeType: 'javascript',
+          type: 'code',
+        },
+      ]
+    },
+    get answerComposition() {
+      return [
+        {
+          text: this.questionAnswer,
+          type: 'text',
+        }, {
+          code: this.questionCode,
+          codeType: 'javascript',
+          type: 'code',
+        }
+      ]
+    },
+    answeredRightTimes: 0,
+    answeredWrongTimes: 0,
+  },
+  {
+    type: 'JS',
+    questionTitle: 'Вопрос по JS 3',
+    questionCode: `// null, undefined, boolean, string, number, string, object, symbol`,
+    questionAnswer: 'Какие типы данных есть в JS3?',
+    answerCode: `// null, undefined, boolean, string, number, string, object, symbol`,
+    get questionComposition() {
+      return [
+        {
+          text: this.questionTitle,
+          type: 'text',
+        },
+        {
+          code: this.questionCode,
+          codeType: 'javascript',
+          type: 'code',
+        },
+      ]
+    },
+    get answerComposition() {
+      return [
+        {
+          text: this.questionAnswer,
+          type: 'text',
+        }, {
+          code: this.questionCode,
+          codeType: 'javascript',
+          type: 'code',
+        }
+      ]
+    },
+    answeredRightTimes: 0,
+    answeredWrongTimes: 0,
+  },
+  {
+    type: 'HTML',
+    questionTitle: 'Какие типы данных есть в JS?',
+    questionCode: `<div class="red"></div>`,
+    questionAnswer: 'Вот такие',
+    answerCode: `<div class="red"></div>`,
+    get questionComposition() {
+      return [
+        {
+          text: this.questionTitle,
+          type: 'text',
+        },
+        {
+          code: this.questionCode,
+          codeType: 'html',
+          type: 'code',
+        },
+      ]
+    },
+    get answerComposition() {
+      return [
+        {
+          text: this.questionAnswer,
+          type: 'text',
+        }, {
+          code: this.questionCode,
+          type: 'code',
+        }
+      ]
+    },
+    answeredRightTimes: 0,
+    answeredWrongTimes: 0,
   }
 ]
 
