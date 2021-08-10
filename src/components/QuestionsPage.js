@@ -1,9 +1,6 @@
 import '../styles/index.scss';
 import React, {useEffect} from 'react';
-import {questions} from "../utils/const.js";
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import {docco, a11yDark} from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import CodeSnippet from "./CodeSnippet.js";
+import {sectionTabs} from "../utils/const.js";
 
 import Header from "./Header.js";
 import HeaderLink from "./HeaderLink.js";
@@ -37,7 +34,7 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
       <Main>
         <SmallTabListContainer activeQuestionSection={activeQuestionSection}>
           <SmallTabList
-            arrayToRender={questions}
+            arrayToRender={sectionTabs}
             ComponentToRender={SmallTab}
             activeQuestionSection={activeQuestionSection}
             changeActiveQuestionSection={changeActiveQuestionSection}
@@ -48,7 +45,7 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
         <SectionListContainer>
           <SectionList
             ComponentToRender={SectionItem}
-            arrayToRender={questions}
+            arrayToRender={sectionTabs}
             hideable={true}
             activeQuestionSection={activeQuestionSection}
             changeActiveQuestionSection={changeActiveQuestionSection}
