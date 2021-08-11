@@ -21,9 +21,9 @@ function HomePage({changeActiveQuestionSection, activeQuestionSection}) {
     <React.Fragment>
       <Header>
         <HeaderLinks>
-          <HeaderLink linkTo={'/'} active={true}>Главная</HeaderLink>
-          <HeaderLink linkTo={'/questions'} active={false}>Вопросы</HeaderLink>
-          <HeaderLink linkTo={'/progress'} active={false}>Прогресс</HeaderLink>
+          <HeaderLink linkTo={'/'}>Главная</HeaderLink>
+          <HeaderLink linkTo={'/questions'}>Вопросы</HeaderLink>
+          <HeaderLink linkTo={'/progress'}>Прогресс</HeaderLink>
         </HeaderLinks>
         <div className="header__account">
           <div className="header__account-image"></div>
