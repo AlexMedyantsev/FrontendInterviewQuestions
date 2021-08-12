@@ -1,17 +1,15 @@
 import '../styles/index.scss';
 
 
-function SmallTabList({arrayToRender, ComponentToRender,activeQuestionSection, changeActiveQuestionSection}) {
+function SmallTabList({arrayToRender, ComponentToRender, reduxCallback, triggerProp}) {
   return (
-    <ul className="section__small-list" style={activeQuestionSection ? {display: 'flex'} : {display: 'none'}}>
+    <ul className="section__small-list" style={triggerProp ? {display: 'flex'} : {display: 'none'}}>
       {arrayToRender.map((item) => {
         return <ComponentToRender
-          key={item.name}
+          mappedItem={item}
           hasClickHandler={true}
-          clickHandler={changeActiveQuestionSection}
-          activeQuestionSection={activeQuestionSection}
-          titleText={item.outsideTitleText}
-          titleColor={item.outsideTitleColor}
+          reduxCallback={reduxCallback}
+          triggerProp={triggerProp}
         />
       })}
     </ul>
