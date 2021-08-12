@@ -1,5 +1,6 @@
 import '../styles/index.scss'
 import React, {useState} from 'react'
+import PropTypes from 'prop-types'
 import Question from "./Question.js"
 import {motion} from "framer-motion"
 
@@ -85,6 +86,16 @@ function QuestionContainer({question, color}) {
 
     </motion.div>
   )
+}
+
+QuestionContainer.propTypes = {
+  question: PropTypes.shape({
+    questionTitle: PropTypes.string.isRequired,
+    questionComposition: PropTypes.array.isRequired,
+    answerComposition: PropTypes.array.isRequired,
+
+  }),
+  color: PropTypes.string.isRequired
 }
 
 export default QuestionContainer;

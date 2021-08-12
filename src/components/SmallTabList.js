@@ -1,21 +1,26 @@
 import '../styles/index.scss';
+import PropTypes from 'prop-types';
 
-
-function SmallTabList({arrayToRender, ComponentToRender,activeQuestionSection, changeActiveQuestionSection}) {
+function SmallTabList({arrayToRender, ComponentToRender, reduxCallback, triggerProp}) {
   return (
-    <ul className="section__small-list" style={activeQuestionSection ? {display: 'flex'} : {display: 'none'}}>
+    <ul className="section__small-list" style={triggerProp ? {display: 'flex'} : {display: 'none'}}>
       {arrayToRender.map((item) => {
         return <ComponentToRender
-          key={item.name}
+          mappedItem={item}
           hasClickHandler={true}
-          clickHandler={changeActiveQuestionSection}
-          activeQuestionSection={activeQuestionSection}
-          titleText={item.outsideTitleText}
-          titleColor={item.outsideTitleColor}
+          reduxCallback={reduxCallback}
+          triggerProp={triggerProp}
         />
       })}
     </ul>
   )
 }
+SmallTabList.propTypes = {
+  arrayToRender: PropTypes.array.isRequired, 
+  componentToRender: PropTypes.func.isRequired, 
+  triggerProp: PropTypes.string.isRequired,
+  reduxCallback: PropTypes.func.isRequired
+}
+
 
 export default SmallTabList;

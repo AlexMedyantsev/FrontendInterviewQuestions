@@ -1,5 +1,6 @@
 import '../styles/index.scss';
 import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
 import {sectionTabs} from "../utils/const.js";
 
 import Header from "./Header.js";
@@ -22,9 +23,9 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
     <React.Fragment>
       <Header>
         <HeaderLinks>
-          <HeaderLink linkTo={'/'} active={false}>Главная</HeaderLink>
-          <HeaderLink linkTo={'/questions'} active={true}>Вопросы</HeaderLink>
-          <HeaderLink linkTo={'/progress'} active={false}>Прогресс</HeaderLink>
+          <HeaderLink linkTo={'/'}>Главная</HeaderLink>
+          <HeaderLink linkTo={'/questions'}>Вопросы</HeaderLink>
+          <HeaderLink linkTo={'/progress'}>Прогресс</HeaderLink>
         </HeaderLinks>
         <div className="header__account">
           <div className="header__account-image"></div>
@@ -32,13 +33,12 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
         </div>
       </Header>
       <Main>
-        <SmallTabListContainer activeQuestionSection={activeQuestionSection}>
+        <SmallTabListContainer triggerProp={activeQuestionSection}>
           <SmallTabList
             arrayToRender={sectionTabs}
             ComponentToRender={SmallTab}
-            activeQuestionSection={activeQuestionSection}
-            changeActiveQuestionSection={changeActiveQuestionSection}
-            activeQuestionSection={activeQuestionSection}
+            triggerProp={activeQuestionSection}
+            reduxCallback={changeActiveQuestionSection}
           />
         </SmallTabListContainer>
 
@@ -47,13 +47,17 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
             ComponentToRender={SectionItem}
             arrayToRender={sectionTabs}
             hideable={true}
-            activeQuestionSection={activeQuestionSection}
-            changeActiveQuestionSection={changeActiveQuestionSection}
+            hideableTriggerProp={activeQuestionSection}
           />
         </SectionListContainer>
       </Main>
     </React.Fragment>
   )
+}
+
+QuestionsPage.propTypes = {
+  changeActiveQuestionSection: PropTypes.func.isRequired,
+  activeQuestionSection: PropTypes.string.isRequired,
 }
 
 export default QuestionsPage;

@@ -1,11 +1,18 @@
-import '../styles/index.scss';
+import '../styles/index.scss'
+import PropTypes from 'prop-types'
 
-function SmallTabInsideTitle({titleColor, titleText, activeQuestionSection}) {
+function SmallTabInsideTitle({titleColor, titleText, triggerProp}) {
   return (
-    <span className="section__small-inside-title" style={titleText === activeQuestionSection ? {color: 'white'} : {color: titleColor}}>
+    <span className="section__small-inside-title" style={titleText === triggerProp ? {color: 'white'} : {color: titleColor}}>
       {titleText}
     </span>
   )
 }
 
-export default SmallTabInsideTitle;
+SmallTabInsideTitle.propTypes = {
+  titleColor: PropTypes.string.isRequired,
+  titleText: PropTypes.string.isRequired,
+  triggerProp: PropTypes.string.isRequired
+}
+
+export default SmallTabInsideTitle

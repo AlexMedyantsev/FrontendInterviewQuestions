@@ -1,12 +1,7 @@
 import '../styles/index.scss';
 import React from 'react';
-import {connect} from "react-redux";
-import {ActionCreator as ActionCreatorUI} from "../reducer/ui/ui.js";
-import {colors, mainMenuSections} from "../utils/const.js";
-import {motion} from 'framer-motion';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import {docco, a11yDark} from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import CodeSnippet from "./CodeSnippet.js";
+import PropTypes from 'prop-types';
+import {mainMenuSections} from "../utils/const.js";
 import Header from "./Header.js";
 import HeaderLink from "./HeaderLink.js";
 import HeaderLinks from "./HeaderLinks.js"
@@ -21,9 +16,9 @@ function HomePage({changeActiveQuestionSection, activeQuestionSection}) {
     <React.Fragment>
       <Header>
         <HeaderLinks>
-          <HeaderLink linkTo={'/'} active={true}>Главная</HeaderLink>
-          <HeaderLink linkTo={'/questions'} active={false}>Вопросы</HeaderLink>
-          <HeaderLink linkTo={'/progress'} active={false}>Прогресс</HeaderLink>
+          <HeaderLink linkTo={'/'}>Главная</HeaderLink>
+          <HeaderLink linkTo={'/questions'}>Вопросы</HeaderLink>
+          <HeaderLink linkTo={'/progress'}>Прогресс</HeaderLink>
         </HeaderLinks>
         <div className="header__account">
           <div className="header__account-image"></div>
@@ -36,14 +31,18 @@ function HomePage({changeActiveQuestionSection, activeQuestionSection}) {
             ComponentToRender={QuestionItem}
             arrayToRender={mainMenuSections}
             hideable={false}
-            activeQuestionSection={activeQuestionSection}
-            changeActiveQuestionSection={changeActiveQuestionSection}
+            hideableTriggerProp={undefined}
           />
         </SectionListContainer>
       </Main>
       <Footer></Footer>
     </React.Fragment >
   )
+}
+
+HomePage.propTypes = {
+  changeActiveQuestionSection: PropTypes.func.isRequired,
+  activeQuestionSection: PropTypes.string.isRequired,
 }
 
 export default HomePage;

@@ -1,4 +1,5 @@
 import CodeSnippet from './CodeSnippet.js';
+import PropTypes from 'prop-types'
 import React from 'react'
 
 function Question({composition, string}) {
@@ -24,6 +25,11 @@ function Question({composition, string}) {
       })}
     </React.Fragment>
   )
+}
+
+Question.propTypes = {
+  composition: PropTypes.arrayOf(PropTypes.object).isRequired, 
+  string: PropTypes.string.isRequired
 }
 
 export default Question;
