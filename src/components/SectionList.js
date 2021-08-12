@@ -1,21 +1,14 @@
 import '../styles/index.scss';
 import {titleClickHandler} from "../utils/common.js";
 
-function SectionList({ComponentToRender, arrayToRender, activeQuestionSection, changeActiveQuestionSection, hideable}) {
+function SectionList({ComponentToRender, arrayToRender, hideableTriggerProp, hideable}) {
   return (
     <ul className="section__list">
       {arrayToRender.map((item) => {
         return <ComponentToRender
-          key={item.name}
+          mappedItem={item}
           hideable={hideable}
-          hasClickHandler={true}
-          clickHandler={titleClickHandler}
-          activeQuestionSection={activeQuestionSection}
-          changeActiveQuestionSection={changeActiveQuestionSection}
-          outsideTitleText={item.outsideTitleText}
-          outsideTitleColor={item.outsideTitleColor}
-          insideTitleText={item.insideTitleText}
-          insideTitleColor={item.insideTitleColor}
+          hideableTriggerProp={hideableTriggerProp}
         />
       })}
     </ul>

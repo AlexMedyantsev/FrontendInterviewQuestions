@@ -32,23 +32,26 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
         </div>
       </Header>
       <Main>
-        <SmallTabListContainer activeQuestionSection={activeQuestionSection}>
+        <SmallTabListContainer triggerProp={activeQuestionSection}>
           <SmallTabList
             arrayToRender={sectionTabs}
             ComponentToRender={SmallTab}
-            activeQuestionSection={activeQuestionSection}
-            changeActiveQuestionSection={changeActiveQuestionSection}
-            activeQuestionSection={activeQuestionSection}
+            triggerProp={activeQuestionSection}
+            reduxCallback={changeActiveQuestionSection}
           />
         </SmallTabListContainer>
 
         <SectionListContainer>
+          {/* <SectionList
+            ComponentToRender={SectionItem}
+            arrayToRender={sectionTabs}
+            hideable={true}
+          /> */}
           <SectionList
             ComponentToRender={SectionItem}
             arrayToRender={sectionTabs}
             hideable={true}
-            activeQuestionSection={activeQuestionSection}
-            changeActiveQuestionSection={changeActiveQuestionSection}
+            hideableTriggerProp={activeQuestionSection}
           />
         </SectionListContainer>
       </Main>
