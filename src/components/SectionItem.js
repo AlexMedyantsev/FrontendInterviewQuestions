@@ -48,16 +48,15 @@ function SectionItem({mappedItem: {outsideTitleText, outsideTitleColor }, hideab
 
 SectionItem.propTypes = {
   item: PropTypes.shape({
-    hasClickHandler: PropTypes.bool,
-    clickHandler: PropTypes.func,
-    activeQuestionSection: PropTypes.string,
-    changeActiveQuestionSection: PropTypes.func,
     outsideTitleText: PropTypes.string,
     outsideTitleColor: PropTypes.string,
     insideTitleText: PropTypes.string,
     insideTitleColor: PropTypes.string,
-    hideable: PropTypes.bool,
-  })
+  }),
+  hideable: PropTypes.bool,
+  hideableTriggerProp: PropTypes.string,
+  hasClickHandler: PropTypes.bool,
+  clickHandler: PropTypes.func,
 }
 
 export default SectionItem;

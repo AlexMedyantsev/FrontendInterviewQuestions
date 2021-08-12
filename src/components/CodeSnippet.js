@@ -1,4 +1,5 @@
 import '../styles/index.scss';
+import PropTypes from 'prop-types'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {docco, a11yDark} from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
@@ -10,6 +11,11 @@ function CodeSnippet({code, codeLanguage }) {
       </SyntaxHighlighter>
     </div>
   )
+}
+
+CodeSnippet.propTypes = {
+  code: PropTypes.string.isRequired,
+  codeLanguage: PropTypes.string.isRequired,
 }
 
 export default CodeSnippet;

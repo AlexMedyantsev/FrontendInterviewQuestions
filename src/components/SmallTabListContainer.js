@@ -1,8 +1,6 @@
-import '../styles/index.scss';
-
-import {ActionCreator as ActionCreatorUI} from "../reducer/ui/ui.js";
-import {connect} from "react-redux";
 import React from 'react';
+import PropTypes from 'prop-types';
+import '../styles/index.scss';
 
 function SmallTabListContainer({children, triggerProp}) {
   return (
@@ -10,6 +8,11 @@ function SmallTabListContainer({children, triggerProp}) {
       {children}
     </div>
   )
+}
+
+SmallTabListContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+  triggerProp: PropTypes.string.isRequired
 }
 
 export default SmallTabListContainer;

@@ -1,4 +1,5 @@
-import '../styles/index.scss';
+import '../styles/index.scss'
+import PropTypes from 'prop-types'
 
 function HeaderLinks({children}) {
   return (
@@ -8,4 +9,9 @@ function HeaderLinks({children}) {
   );
 }
 
-export default HeaderLinks;
+
+HeaderLinks.propTypes = {
+  children: PropTypes.node.isRequired,
+}
+
+export default HeaderLinks

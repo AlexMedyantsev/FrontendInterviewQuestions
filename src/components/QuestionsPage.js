@@ -1,5 +1,6 @@
 import '../styles/index.scss';
 import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
 import {sectionTabs} from "../utils/const.js";
 
 import Header from "./Header.js";
@@ -42,11 +43,6 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
         </SmallTabListContainer>
 
         <SectionListContainer>
-          {/* <SectionList
-            ComponentToRender={SectionItem}
-            arrayToRender={sectionTabs}
-            hideable={true}
-          /> */}
           <SectionList
             ComponentToRender={SectionItem}
             arrayToRender={sectionTabs}
@@ -57,6 +53,11 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
       </Main>
     </React.Fragment>
   )
+}
+
+QuestionsPage.propTypes = {
+  changeActiveQuestionSection: PropTypes.func.isRequired,
+  activeQuestionSection: PropTypes.string.isRequired,
 }
 
 export default QuestionsPage;

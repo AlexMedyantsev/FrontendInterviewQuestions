@@ -1,11 +1,16 @@
 import '../styles/index.scss';
+import PropTypes from 'prop-types'
 
-function App(props) {
+function Main({children}) {
   return (
     <main className="main">
-      {props.children}
+      {children}
     </main>
   );
 }
 
-export default App;
+Main.propTypes = {
+  children: PropTypes.node.isRequired,
+}
+
+export default Main;

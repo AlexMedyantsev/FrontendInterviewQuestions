@@ -1,5 +1,6 @@
 import '../styles/index.scss';
 import React from 'react';
+import PropTypes from 'prop-types';
 import {motion} from "framer-motion";
 import SmallTabInsideTitle from './SmallTabInsideTitle';
 
@@ -28,6 +29,16 @@ function SmallTab({mappedItem: {
       />
     </motion.li>
   )
+}
+
+SmallTab.propTypes = {
+  mappedItem: PropTypes.shape({
+    outsideTitleText: PropTypes.string,
+    outsideTitleColor: PropTypes.string
+  }).isRequired,
+  hasClickHandler: PropTypes.bool.isRequired,
+  triggerProp: PropTypes.string.isRequired,
+  reduxCallback: PropTypes.func.isRequired
 }
 
 export default SmallTab;

@@ -1,5 +1,6 @@
 import '../styles/index.scss';
 import React from 'react';
+import PropTypes from 'prop-types';
 import {mainMenuSections} from "../utils/const.js";
 import Header from "./Header.js";
 import HeaderLink from "./HeaderLink.js";
@@ -37,6 +38,11 @@ function HomePage({changeActiveQuestionSection, activeQuestionSection}) {
       <Footer></Footer>
     </React.Fragment >
   )
+}
+
+HomePage.propTypes = {
+  changeActiveQuestionSection: PropTypes.func.isRequired,
+  activeQuestionSection: PropTypes.string.isRequired,
 }
 
 export default HomePage;

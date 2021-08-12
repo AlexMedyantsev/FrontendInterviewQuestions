@@ -1,22 +1,23 @@
 import '../styles/index.scss';
-
+import PropTypes from 'prop-types';
 
 function SubTitle({
   subTitleText,
   subTitleColor,
-  hasClickHandler,
-  clickHandler,
-  reduxCallback
 }) {
   return (
     <span
       className="sub__title"
-      onClick={hasClickHandler ? () => clickHandler(subTitleText, reduxCallback) : ''}
       style={{color: subTitleColor}}
     >
       {subTitleText}
     </span>
   )
+}
+
+SubTitle.propTypes = {
+  subTitleText: PropTypes.string.isRequired,
+  subTitleColor: PropTypes.string.isRequired,
 }
 
 export default SubTitle;

@@ -1,5 +1,5 @@
 import '../styles/index.scss';
-
+import PropTypes from 'prop-types';
 
 function SmallTabList({arrayToRender, ComponentToRender, reduxCallback, triggerProp}) {
   return (
@@ -15,5 +15,12 @@ function SmallTabList({arrayToRender, ComponentToRender, reduxCallback, triggerP
     </ul>
   )
 }
+SmallTabList.propTypes = {
+  arrayToRender: PropTypes.array.isRequired, 
+  componentToRender: PropTypes.func.isRequired, 
+  triggerProp: PropTypes.string.isRequired,
+  reduxCallback: PropTypes.func.isRequired
+}
+
 
 export default SmallTabList;

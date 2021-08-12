@@ -1,5 +1,6 @@
 import '../styles/index.scss';
 import {titleClickHandler} from "../utils/common.js";
+import PropTypes from 'prop-types';
 
 function SectionList({ComponentToRender, arrayToRender, hideableTriggerProp, hideable}) {
   return (
@@ -13,6 +14,13 @@ function SectionList({ComponentToRender, arrayToRender, hideableTriggerProp, hid
       })}
     </ul>
   )
+}
+
+SectionList.propTypes = {
+  ComponentToRender: PropTypes.func.isRequired,
+  arrayToRender: PropTypes.array.isRequired,
+  hideableTriggerProp: PropTypes.string.isRequired,
+  hideable: PropTypes.bool.isRequired,
 }
 
 export default SectionList;
