@@ -9,6 +9,7 @@ import Main from "./Main.js";
 import Footer from "./Footer.js";
 import SectionListContainer from "./SectionListContainer.js";
 import SectionList from "./SectionList.js";
+import Training from "./Training.js";
 import QuestionItem from "./SectionItem.js";
 
 function HomePage({changeActiveQuestionSection, activeQuestionSection}) {
@@ -28,7 +29,7 @@ function HomePage({changeActiveQuestionSection, activeQuestionSection}) {
       <Main>
         <SectionListContainer>
           <SectionList
-            ComponentToRender={QuestionItem}
+            ComponentToRender={Training}
             arrayToRender={mainMenuSections}
             hideable={false}
             hideableTriggerProp={undefined}

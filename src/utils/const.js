@@ -87,18 +87,18 @@ export const sectionTabs = [
 
 export const mainMenuSections = [
   {
-    name: 'Доброе Утро',
-    outsideTitleText: 'Доброе Утро',
+    name: 'Начать Тренировку',
+    outsideTitleText: 'Начать Тренировку',
     outsideTitleColor: colors.lightPink,
     insideTitleText: 'Lorem Ipsum Dolor',
     insideTitleColor: colors.lightPink,
   },
   {
-    name: 'Доброе Вечер',
-    outsideTitleText: 'Доброе Вечер',
-    outsideTitleColor: colors.lightPink,
+    name: 'Узнать о результатах',
+    outsideTitleText: 'Узнать о результатах',
+    outsideTitleColor: colors.lightGreen,
     insideTitleText: 'Lorem Ipsum Dolor',
-    insideTitleColor: colors.lightPink,
+    insideTitleColor: colors.lightGreen,
   }
 ]
 
