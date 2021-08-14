@@ -1,15 +1,18 @@
 import '../styles/index.scss';
 import {titleClickHandler} from "../utils/common.js";
+import SectionItem from './SectionItem.js';
 import PropTypes from 'prop-types';
 
-function SectionList({ComponentToRender, arrayToRender, hideableTriggerProp, hideable}) {
+function SectionList({children, ComponentToRender, arrayToRender, hideableTriggerProp, hideable}) {
   return (
     <ul className="section__list">
       {arrayToRender.map((item) => {
-        return <ComponentToRender
+        return <SectionItem
+          ComponentToRender={ComponentToRender}
           mappedItem={item}
           hideable={hideable}
           hideableTriggerProp={hideableTriggerProp}
+          children={children}
         />
       })}
     </ul>

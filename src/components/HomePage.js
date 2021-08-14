@@ -1,7 +1,7 @@
 import '../styles/index.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
-import {mainMenuSections} from "../utils/const.js";
+import {mainMenuSections, questions} from "../utils/const.js";
 import Header from "./Header.js";
 import HeaderLink from "./HeaderLink.js";
 import HeaderLinks from "./HeaderLinks.js"
@@ -10,7 +10,7 @@ import Footer from "./Footer.js";
 import SectionListContainer from "./SectionListContainer.js";
 import SectionList from "./SectionList.js";
 import Training from "./Training.js";
-import QuestionItem from "./SectionItem.js";
+import QuestionList from "./QuestionList.js";
 
 function HomePage({changeActiveQuestionSection, activeQuestionSection}) {
   return (
@@ -29,11 +29,24 @@ function HomePage({changeActiveQuestionSection, activeQuestionSection}) {
       <Main>
         <SectionListContainer>
           <SectionList
-            ComponentToRender={Training}
+            // ComponentToRender={Training}
             arrayToRender={mainMenuSections}
             hideable={false}
             hideableTriggerProp={undefined}
-          />
+          >
+            <Training
+            />
+          </SectionList>
+          <SectionList
+            // ComponentToRender={Training}
+            arrayToRender={mainMenuSections}
+            hideable={false}
+            hideableTriggerProp={undefined}
+          >
+            <Training
+              questions={questions.filter(question => question.type === activeQuestionSection)}
+            />
+          </SectionList>
         </SectionListContainer>
       </Main>
       <Footer></Footer>

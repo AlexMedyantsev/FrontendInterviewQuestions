@@ -1,18 +1,18 @@
 import '../styles/index.scss';
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
-import {sectionTabs} from "../utils/const.js";
+import {sectionTabs, questions} from "../utils/const.js";
 
 import Header from "./Header.js";
 import HeaderLink from "./HeaderLink.js";
 import HeaderLinks from "./HeaderLinks.js";
 import Main from "./Main.js";
-import SectionItem from "./SectionItem.js";
 import SmallTabList from "./SmallTabList.js";
 import SmallTabListContainer from "./SmallTabListContainer.js";
 import SmallTab from "./SmallTab.js";
 import SectionListContainer from "./SectionListContainer.js";
 import SectionList from "./SectionList.js";
+import QuestionList from "./QuestionList.js";
 
 function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
   useEffect(() => {
@@ -44,14 +44,18 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
 
         <SectionListContainer>
           <SectionList
-            ComponentToRender={SectionItem}
+            // ComponentToRender={}
             arrayToRender={sectionTabs}
             hideable={true}
             hideableTriggerProp={activeQuestionSection}
-          />
+          >
+            <QuestionList
+              questions={questions.filter(question => question.type === activeQuestionSection)}
+            />
+          </SectionList>
         </SectionListContainer>
       </Main>
-    </React.Fragment>
+    </React.Fragment >
   )
 }
 

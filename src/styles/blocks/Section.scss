@@ -1,17 +1,22 @@
 .section__list-container {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .section__list {
-  width: 100%;
+  max-width: 100%;
+  min-width: 49%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: flex-start;
+  border: 1px solid red;
 }
 
 .section__item {
-  width: 48%;
+  width: 100%;
   min-height: 450px;
   display: flex;
   flex-direction: column;
