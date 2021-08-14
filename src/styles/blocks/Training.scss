@@ -1,0 +1,15 @@
+.training {
+  border: 1px solid red;
+  position: relative;
+}
+
+.training__settings-btn {
+  position: absolute;
+  content: '';
+  top: 0px;
+  right: 0px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+}

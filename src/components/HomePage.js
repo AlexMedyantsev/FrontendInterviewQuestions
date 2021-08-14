@@ -12,7 +12,14 @@ import SectionList from "./SectionList.js";
 import Training from "./Training.js";
 import QuestionList from "./QuestionList.js";
 
-function HomePage({changeActiveQuestionSection, activeQuestionSection}) {
+function HomePage(
+  {
+    changeActiveQuestionSection,
+    activeQuestionSection,
+    trainingCard,
+    changeTrainingCardUIState
+  }
+) {
   return (
     <React.Fragment>
       <Header>
@@ -29,23 +36,20 @@ function HomePage({changeActiveQuestionSection, activeQuestionSection}) {
       <Main>
         <SectionListContainer>
           <SectionList
-            // ComponentToRender={Training}
             arrayToRender={mainMenuSections}
             hideable={false}
             hideableTriggerProp={undefined}
           >
             <Training
+              trainingCard={trainingCard}
+              changeTrainingCardUIState={changeTrainingCardUIState}
             />
           </SectionList>
           <SectionList
-            // ComponentToRender={Training}
             arrayToRender={mainMenuSections}
             hideable={false}
             hideableTriggerProp={undefined}
           >
-            <Training
-              questions={questions.filter(question => question.type === activeQuestionSection)}
-            />
           </SectionList>
         </SectionListContainer>
       </Main>

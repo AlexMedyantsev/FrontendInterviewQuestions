@@ -1,19 +1,27 @@
 import '../styles/header.scss';
+import React from 'react'
 
-function Training(props) {
+function TrainingSettings({UIState, changeTrainingCardUIState}) {
 
   let generateArrayOfQuestionForTraining = () => {
 
   }
 
+  let closeSettingsClickHandler = () => {
+    changeTrainingCardUIState('mainMenu')
+  }
+
   return (
-    <div className="training">
-      <h1>Тренировка</h1>
+    <React.Fragment>
       <button
-        className="btn btn-primary"
-        onClick={() => {}}>Настройки</button>
-    </div>
+        className="training__settings-btn"
+        onClick={closeSettingsClickHandler}
+      >
+        Закрыть
+      </button>
+      <h1>Настройки</h1>
+    </React.Fragment>
   );
 }
 
-export default Training;
+export default TrainingSettings;

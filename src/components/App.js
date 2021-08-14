@@ -6,7 +6,12 @@ import history from "../history.js";
 import HomePage from "./HomePage.js"
 import QuestionsPage from "./QuestionsPage.js";
 
-function App({activeQuestionSection, changeActiveQuestionSection}) {
+function App({
+  activeQuestionSection,
+  changeActiveQuestionSection,
+  trainingCard,
+  changeTrainingCardUIState
+}) {
   return (
     <BrowserRouter history={history}>
       <Switch>
@@ -14,6 +19,8 @@ function App({activeQuestionSection, changeActiveQuestionSection}) {
           <HomePage
             activeQuestionSection={activeQuestionSection}
             changeActiveQuestionSection={changeActiveQuestionSection}
+            trainingCard={trainingCard}
+            changeTrainingCardUIState={changeTrainingCardUIState}
           />
         </Route>
         <Route exact path="/questions">
@@ -33,12 +40,14 @@ function App({activeQuestionSection, changeActiveQuestionSection}) {
 const mapStateToProps = (state) => {
   return {
     activeQuestionSection: state.UI.activeQuestionSection,
+    trainingCard: state.UI.trainingCard,
   }
 }
 
 const mapDispatchToProps = (dispatch) => (
   {
     changeActiveQuestionSection: (section) => dispatch(ActionCreatorUI.changeActiveQuestionSection(section)),
+    changeTrainingCardUIState: (state) => dispatch(ActionCreatorUI.changeTrainingCardUIState(state)),
   }
 )
 
