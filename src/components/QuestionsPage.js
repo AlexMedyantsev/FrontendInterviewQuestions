@@ -1,6 +1,8 @@
 import '../styles/index.scss';
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from "react-redux";
+import {ActionCreator as ActionCreatorUI} from "../reducer/ui/ui.js";
 import {sectionTabs, questions} from "../utils/const.js";
 
 import Header from "./Header.js";
@@ -51,6 +53,8 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
           >
             <QuestionList
               questions={questions.filter(question => question.type === activeQuestionSection)}
+              hasAnswerButtons={false}
+              hasCardStateButtons={true}
             />
           </SectionList>
         </SectionListContainer>
@@ -64,4 +68,16 @@ QuestionsPage.propTypes = {
   activeQuestionSection: PropTypes.string.isRequired,
 }
 
-export default QuestionsPage;
+const mapStateToProps = (state) => {
+  return {
+    activeQuestionSection: state.UI.activeQuestionSection,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => (
+  {
+    changeActiveQuestionSection: (section) => dispatch(ActionCreatorUI.changeActiveQuestionSection(section)),
+  }
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionsPage);

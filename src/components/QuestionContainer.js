@@ -3,8 +3,16 @@ import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import Question from "./Question.js"
 import {motion} from "framer-motion"
+import styled from 'styled-components';
 
-function QuestionContainer({question, color}) {
+function QuestionContainer({
+  question,
+  color,
+  width,
+  hasAnswerButtons,
+  hasCardStateButtons
+}) {
+
   const [cardState, changeCardState] = useState(
     {
       isAnswerShown: false,
@@ -24,8 +32,20 @@ function QuestionContainer({question, color}) {
     changeCardState({isOpen: false, isAnswerShown: false})
   }
 
+  let answeredRightClickHandler = () => {
+    
+  }
+
+  let needToRepeatClickHandler = () => {
+    
+  }
+
+  const Div = styled.div`
+  width: ${width};
+`;
+
   return (
-    <motion.div
+    <motion.Div
       // animate={cardState.isOpen ? {width: '47%'} : {width: '30%'}}
       className={cardState.isOpen ? "question" : "question question--rolled"}
       style={{backgroundColor: color}}
@@ -59,7 +79,7 @@ function QuestionContainer({question, color}) {
       <div className="card__buttons-container">
 
         {/* Кнопка разворачивающая/сворачивающая ответ */}
-        {cardState.isOpen &&
+        {cardState.isOpen && hasCardStateButtons &&
           <motion.button
             whileTap={{scale: 0.95}}
             whileHover={{scale: 1.05, backgroundColor: 'rgba(255,255,255,0.85)', transition: {duration: 0.2}}}
@@ -72,7 +92,7 @@ function QuestionContainer({question, color}) {
 
         {/* Кнопка сворачивания карточки */}
         {
-          cardState.isOpen &&
+          cardState.isOpen && hasCardStateButtons &&
           <motion.button
             whileTap={{scale: 0.95}}
             whileHover={{scale: 1.05, backgroundColor: 'rgba(255,255,255,0.85)', transition: {duration: 0.2}}}
@@ -82,9 +102,35 @@ function QuestionContainer({question, color}) {
             Свернуть карточку
           </motion.button>
         }
+
+         {/* Кнопка для подтверждения правильного Ответа  */}
+         {
+          cardState.isOpen && hasAnswerButtons &&
+          <motion.button
+            whileTap={{scale: 0.95}}
+            whileHover={{scale: 1.05, backgroundColor: 'rgba(255,255,255,0.85)', transition: {duration: 0.2}}}
+            onClick={() => closeAllHandler()}
+            className={cardState.isOpen ? 'card-button card-button--close' : 'card-button card-button--open'}
+          >
+            Я это знаю
+          </motion.button>
+        }
+
+        {/* Кнопка для подтверждения повторения вопроса  */}
+        {
+          cardState.isOpen && hasAnswerButtons &&
+          <motion.button
+            whileTap={{scale: 0.95}}
+            whileHover={{scale: 1.05, backgroundColor: 'rgba(255,255,255,0.85)', transition: {duration: 0.2}}}
+            onClick={() => closeAllHandler()}
+            className={cardState.isOpen ? 'card-button card-button--close' : 'card-button card-button--open'}
+          >
+            Нужно повторить
+          </motion.button>
+        }
       </div>
 
-    </motion.div>
+    </motion.Div>
   )
 }
 
