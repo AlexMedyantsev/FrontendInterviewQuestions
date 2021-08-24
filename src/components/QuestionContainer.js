@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Question from "./Question.js"
 import {motion} from "framer-motion"
 import styled from 'styled-components';
+import breakpoint from "../utils/breakpoints.js";
 
 function QuestionContainer({
   question,
@@ -32,32 +33,35 @@ function QuestionContainer({
     changeCardState({isOpen: false, isAnswerShown: false})
   }
 
-  let answeredRightClickHandler = () => {
-    
+  let rightAnswerClickHandler = () => {
+
   }
 
-  let needToRepeatClickHandler = () => {
-    
+  let wrongAnswerClickHandler = () => {
+
   }
 
-  const Div = styled.div`
+  const Div = styled(motion.div)`
   width: ${width};
+  @media (max-width: 768px) {
+    min-width: 100%;
+  }
 `;
 
   return (
-    <motion.Div
+    <Div
       // animate={cardState.isOpen ? {width: '47%'} : {width: '30%'}}
       className={cardState.isOpen ? "question" : "question question--rolled"}
       style={{backgroundColor: color}}
     >
       {/* Заголовок вопроса отобр. при свернутой карточке */}
-      {
+      {/* {
         !cardState.isOpen &&
         <span onClick={() => rollOutCardHandler()} className="question__rolled-text">{question.questionTitle}</span>
-      }
+      } */}
 
       {/* Вопрос */}
-      {cardState.isOpen &&
+      {
         <div className="question__container question__container--question">
           <Question
             composition={question.questionComposition}
@@ -79,7 +83,7 @@ function QuestionContainer({
       <div className="card__buttons-container">
 
         {/* Кнопка разворачивающая/сворачивающая ответ */}
-        {cardState.isOpen && hasCardStateButtons &&
+        {!cardState.isAnswerShown &&
           <motion.button
             whileTap={{scale: 0.95}}
             whileHover={{scale: 1.05, backgroundColor: 'rgba(255,255,255,0.85)', transition: {duration: 0.2}}}
@@ -92,7 +96,7 @@ function QuestionContainer({
 
         {/* Кнопка сворачивания карточки */}
         {
-          cardState.isOpen && hasCardStateButtons &&
+          cardState.isAnswerShown && hasCardStateButtons &&
           <motion.button
             whileTap={{scale: 0.95}}
             whileHover={{scale: 1.05, backgroundColor: 'rgba(255,255,255,0.85)', transition: {duration: 0.2}}}
@@ -103,14 +107,14 @@ function QuestionContainer({
           </motion.button>
         }
 
-         {/* Кнопка для подтверждения правильного Ответа  */}
-         {
-          cardState.isOpen && hasAnswerButtons &&
+        {/* Кнопка для подтверждения правильного Ответа  */}
+        {
+          cardState.isAnswerShown && hasAnswerButtons &&
           <motion.button
             whileTap={{scale: 0.95}}
             whileHover={{scale: 1.05, backgroundColor: 'rgba(255,255,255,0.85)', transition: {duration: 0.2}}}
-            onClick={() => closeAllHandler()}
-            className={cardState.isOpen ? 'card-button card-button--close' : 'card-button card-button--open'}
+            onClick={() => rightAnswerClickHandler()}
+            className={cardState.isOpen ? 'card-button card-button--right card-button--close' : 'card-button card-button--right card-button--open'}
           >
             Я это знаю
           </motion.button>
@@ -118,19 +122,19 @@ function QuestionContainer({
 
         {/* Кнопка для подтверждения повторения вопроса  */}
         {
-          cardState.isOpen && hasAnswerButtons &&
+          cardState.isAnswerShown && hasAnswerButtons &&
           <motion.button
             whileTap={{scale: 0.95}}
             whileHover={{scale: 1.05, backgroundColor: 'rgba(255,255,255,0.85)', transition: {duration: 0.2}}}
-            onClick={() => closeAllHandler()}
-            className={cardState.isOpen ? 'card-button card-button--close' : 'card-button card-button--open'}
+            onClick={() => wrongAnswerClickHandler()}
+            className={cardState.isOpen ? 'card-button card-button--wrong card-button--close' : 'card-button card-button--wrong card-button--open'}
           >
             Нужно повторить
           </motion.button>
         }
       </div>
 
-    </motion.Div>
+    </Div>
   )
 }
 

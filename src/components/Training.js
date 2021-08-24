@@ -1,6 +1,7 @@
 import '../styles/header.scss';
 import {connect} from "react-redux"
 import {ActionCreator as ActionCreatorUI} from "../reducer/ui/ui.js";
+import {ActionCreator as ActionCreatorTraining} from "../reducer/training/training.js";
 import TrainingMainMenu from "./TrainingMainMenu"
 import TrainingSettings from "./TrainingSettings"
 import TrainingQuiz from "./TrainingQuiz"
@@ -50,16 +51,16 @@ function Training({
 
 const mapStateToProps = (state) => {
   return {
-    trainingCard: state.UI.trainingCard,
+    trainingCard: state.TRAINING.trainingCard,
     questions: state.UI.questions,
-    arrayOfQuestionsForTraining: state.UI.arrayOfQuestionsForTraining,
+    arrayOfQuestionsForTraining: state.TRAINING.arrayOfQuestionsForTraining,
   }
 }
 
 const mapDispatchToProps = (dispatch) => (
   {
-    changeTrainingCardUIState: (state) => dispatch(ActionCreatorUI.changeTrainingCardUIState(state)),
-    setArrayOfQuestionsForTraining: (questions) => dispatch(ActionCreatorUI.setArrayOfQuestionsForTraining(questions))
+    changeTrainingCardUIState: (state) => dispatch(ActionCreatorTraining.changeTrainingCardUIState(state)),
+    setArrayOfQuestionsForTraining: (questions) => dispatch(ActionCreatorTraining.setArrayOfQuestionsForTraining(questions))
   }
 )
 
