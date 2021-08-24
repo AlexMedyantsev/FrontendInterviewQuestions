@@ -26,7 +26,7 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
       <Header>
         <HeaderLinks>
           <HeaderLink linkTo={'/'}>Главная</HeaderLink>
-          <HeaderLink linkTo={'/questions'}>Вопросы</HeaderLink>
+          <HeaderLink linkTo={'/questions'} active={true}>Вопросы</HeaderLink>
           <HeaderLink linkTo={'/progress'}>Прогресс</HeaderLink>
         </HeaderLinks>
         <div className="header__account">
@@ -46,13 +46,13 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
 
         <SectionListContainer>
           <SectionList
-            // ComponentToRender={}
             arrayToRender={sectionTabs}
             hideable={true}
             hideableTriggerProp={activeQuestionSection}
           >
             <QuestionList
               questions={questions.filter(question => question.type === activeQuestionSection)}
+              width={'48%'}
               hasAnswerButtons={false}
               hasCardStateButtons={true}
             />

@@ -25,7 +25,7 @@ function HomePage(
     <React.Fragment>
       <Header>
         <HeaderLinks>
-          <HeaderLink linkTo={'/'}>Главная</HeaderLink>
+          <HeaderLink linkTo={'/'} active={true}>Главная</HeaderLink>
           <HeaderLink linkTo={'/questions'}>Вопросы</HeaderLink>
           <HeaderLink linkTo={'/progress'}>Прогресс</HeaderLink>
         </HeaderLinks>
