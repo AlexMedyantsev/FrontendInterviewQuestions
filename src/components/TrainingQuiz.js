@@ -11,6 +11,9 @@ function TrainingQuiz({TrainingCard, changeTrainingCardUIState, arrayOfQuestions
       <QuestionContainer
         question={activeTrainingQuestion}
         color={'red'}
+        width={'100%'}
+        hasAnswerButtons={true}
+        hasCardStateButtons={false}
       />
     </React.Fragment>
   );
