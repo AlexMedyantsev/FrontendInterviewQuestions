@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import Question from "./Question.js"
 import {motion} from "framer-motion"
 import styled from 'styled-components';
-import breakpoint from "../utils/breakpoints.js";
 
 function QuestionContainer({
   question,
