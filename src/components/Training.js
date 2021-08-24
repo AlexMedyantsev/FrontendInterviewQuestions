@@ -1,16 +1,19 @@
 import '../styles/header.scss';
+import {connect} from "react-redux"
+import {ActionCreator as ActionCreatorUI} from "../reducer/ui/ui.js";
 import TrainingMainMenu from "./TrainingMainMenu"
 import TrainingSettings from "./TrainingSettings"
 import TrainingQuiz from "./TrainingQuiz"
 import TrainingQuizResults from "./TrainingQuizResults"
 
 
-function Training({trainingCard, changeTrainingCardUIState}) {
-
-  let generateArrayOfQuestionForTraining = () => {
-
-  }
-
+function Training({
+  trainingCard,
+  changeTrainingCardUIState,
+  arrayOfQuestionsForTraining,
+  setArrayOfQuestionsForTraining,
+  questions
+}) {
   return (
     <div className="training">
       {(() => {
@@ -18,6 +21,9 @@ function Training({trainingCard, changeTrainingCardUIState}) {
           return <TrainingMainMenu
             trainingCard={trainingCard}
             changeTrainingCardUIState={changeTrainingCardUIState}
+            arrayOfQuestionsForTraining={arrayOfQuestionsForTraining}
+            setArrayOfQuestionsForTraining={setArrayOfQuestionsForTraining}
+            questions={questions}
           />
         } else if (trainingCard.UIState === 'settings') {
           return <TrainingSettings
@@ -28,6 +34,7 @@ function Training({trainingCard, changeTrainingCardUIState}) {
           return <TrainingQuiz
             trainingCard={trainingCard}
             changeTrainingCardUIState={changeTrainingCardUIState}
+            arrayOfQuestionsForTraining={arrayOfQuestionsForTraining}
           />
         } else if (trainingCard.UIState === 'quizResults') {
           return <TrainingQuizResults
@@ -41,4 +48,19 @@ function Training({trainingCard, changeTrainingCardUIState}) {
   );
 }
 
-export default Training;
+const mapStateToProps = (state) => {
+  return {
+    trainingCard: state.UI.trainingCard,
+    questions: state.UI.questions,
+    arrayOfQuestionsForTraining: state.UI.arrayOfQuestionsForTraining,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => (
+  {
+    changeTrainingCardUIState: (state) => dispatch(ActionCreatorUI.changeTrainingCardUIState(state)),
+    setArrayOfQuestionsForTraining: (questions) => dispatch(ActionCreatorUI.setArrayOfQuestionsForTraining(questions))
+  }
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Training);

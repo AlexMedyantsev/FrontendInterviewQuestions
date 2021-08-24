@@ -10,7 +10,10 @@ function App({
   activeQuestionSection,
   changeActiveQuestionSection,
   trainingCard,
-  changeTrainingCardUIState
+  changeTrainingCardUIState,
+  questions,
+  arrayOfQuestionsForTraining,
+  setArrayOfQuestionsForTraining
 }) {
   return (
     <BrowserRouter history={history}>
@@ -21,6 +24,8 @@ function App({
             changeActiveQuestionSection={changeActiveQuestionSection}
             trainingCard={trainingCard}
             changeTrainingCardUIState={changeTrainingCardUIState}
+            questions={questions}
+            arrayOfQuestionsForTraining={arrayOfQuestionsForTraining}
           />
         </Route>
         <Route exact path="/questions">
@@ -41,6 +46,8 @@ const mapStateToProps = (state) => {
   return {
     activeQuestionSection: state.UI.activeQuestionSection,
     trainingCard: state.UI.trainingCard,
+    questions: state.UI.questions,
+    arrayOfQuestionsForTraining: state.UI.arrayOfQuestionsForTraining,
   }
 }
 
@@ -48,6 +55,7 @@ const mapDispatchToProps = (dispatch) => (
   {
     changeActiveQuestionSection: (section) => dispatch(ActionCreatorUI.changeActiveQuestionSection(section)),
     changeTrainingCardUIState: (state) => dispatch(ActionCreatorUI.changeTrainingCardUIState(state)),
+    setArrayOfQuestionsForTraining: (questions) => dispatch(ActionCreatorUI.setArrayOfQuestionsForTraining(questions))
   }
 )
 

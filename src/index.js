@@ -11,22 +11,15 @@ import {createAPI} from "./api.js";
 import {loadState, saveState} from "./reducer/local-storage.js";
 import App from "./components/App.js"
 
-const onError = (responce) => {
-  // store.dispatch(ActionCreatorCondition.setErrorMessage(responce));
-  // store.dispatch(ActionCreatorCondition.changeErrorFlag());
-};
-
-const api = createAPI(onError);
 
 const persistedState = loadState();
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({trace: true, traceLimit: 25}) || compose;
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({trace: true, traceLimit: 25}) || compose;
 
 const store = createStore(
   reducer,
   persistedState,
-  composeEnhancers(
-    applyMiddleware(thunk.withExtraArgument(api)),
-  )
+  // composeEnhancers(
+  // )
 );
 
 store.subscribe(throttle(() => {

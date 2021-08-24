@@ -1,15 +1,17 @@
 import '../styles/header.scss';
-import React from 'react'
+import "../styles/global/variables.scss"
+import React, {useState} from 'react';
+import QuestionList from "./QuestionList.js";
+import QuestionContainer from "./QuestionContainer.js";
 
-function TrainingQuiz({UIState, changeTrainingCardUIState}) {
-
-  let generateArrayOfQuestionForTraining = () => {
-
-  }
-
+function TrainingQuiz({TrainingCard, changeTrainingCardUIState, arrayOfQuestionsForTraining}) {
+  const [activeTrainingQuestion, changeActiveTrainingQuestion ] = useState(arrayOfQuestionsForTraining[0])
   return (
     <React.Fragment>
-      <h1>Главное меню</h1>
+      <QuestionContainer
+        question={activeTrainingQuestion}
+        color={'red'}
+      />
     </React.Fragment>
   );
 }

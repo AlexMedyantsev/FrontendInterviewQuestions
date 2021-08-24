@@ -26,13 +26,10 @@
   }
 }
 
-.section__list-container {
-  width: 100%;
-}
-
 .section__item-inner-container {
   &--top {
     height: 75px;
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;

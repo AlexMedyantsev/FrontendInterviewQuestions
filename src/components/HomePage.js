@@ -1,5 +1,6 @@
 import '../styles/index.scss';
 import React from 'react';
+import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
 import {mainMenuSections, questions} from "../utils/const.js";
 import Header from "./Header.js";
@@ -14,10 +15,10 @@ import QuestionList from "./QuestionList.js";
 
 function HomePage(
   {
-    changeActiveQuestionSection,
-    activeQuestionSection,
     trainingCard,
-    changeTrainingCardUIState
+    changeTrainingCardUIState,
+    arrayOfQuestionsForTraining,
+    questions
   }
 ) {
   return (
@@ -43,6 +44,7 @@ function HomePage(
             <Training
               trainingCard={trainingCard}
               changeTrainingCardUIState={changeTrainingCardUIState}
+              arrayOfQuestionsForTraining={arrayOfQuestionsForTraining}
             />
           </SectionList>
           <SectionList
@@ -63,4 +65,13 @@ HomePage.propTypes = {
   activeQuestionSection: PropTypes.string.isRequired,
 }
 
-export default HomePage;
+const mapStateToProps = (state) => {
+  return {
+    activeQuestionSection: state.UI.activeQuestionSection,
+    trainingCard: state.UI.trainingCard,
+    questions: state.UI.questions,
+    arrayOfQuestionsForTraining: state.UI.arrayOfQuestionsForTraining,
+  }
+}
+
+export default connect(mapStateToProps)(HomePage);
