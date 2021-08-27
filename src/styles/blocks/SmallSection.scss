@@ -8,7 +8,8 @@
     width: 100%;
     height: 75px;
     margin-bottom: 30px;
-    overflow-x: scroll;
+    overflow-x: visible;
+    overflow-y: visible;
   }
 }
 
@@ -41,6 +42,7 @@
 @media (max-width: 768px) {
   .small__section-container {
     width: 100%;
+    overflow-x: scroll;
   }
 
   .section__small-list {
