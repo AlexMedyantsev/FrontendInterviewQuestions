@@ -1,23 +1,28 @@
 import '../styles/index.scss';
 import React from "react";
 import {motion} from "framer-motion";
-import {questions} from "../utils/const.js"
 import PropTypes from 'prop-types';
 import Title from './Title.js';
+import styled from 'styled-components';
 import SubTitle from './SubTitle.js';
-import QuestionContainer from './QuestionContainer.js';
-import QuestionList from './QuestionList';
 
-function SectionItem({mappedItem: {
+const Li = styled(motion.li)`
+width: ${props => props.width};
+@media (max-width: 768px) {
+  min-width: 100%;
+}`;
+
+function SectionItem({
   outsideTitleText,
-  outsideTitleColor
-},
-  children, hideable, hideableTriggerProp, componentToRender}) {
+  outsideTitleColor,
+  width,
+  children
+}) {
 
   return (
-    <motion.li
-      className={outsideTitleText === hideableTriggerProp ? "section__item section__item--active" : 'section__item'}
-      style={hideable ? outsideTitleText === hideableTriggerProp ? {display: 'flex'} : {display: 'none'} : {display: 'flex'}}
+    <Li
+      className={"section__item section__item--active"}
+      width={width}
       whileHover={{
         scale: 1.00,
         transition: {duration: 0.2},
@@ -47,7 +52,7 @@ function SectionItem({mappedItem: {
           })}
       </div>
 
-    </motion.li>
+    </Li>
   );
 }
 
@@ -55,13 +60,8 @@ SectionItem.propTypes = {
   item: PropTypes.shape({
     outsideTitleText: PropTypes.string,
     outsideTitleColor: PropTypes.string,
-    insideTitleText: PropTypes.string,
-    insideTitleColor: PropTypes.string,
-  }),
-  hideable: PropTypes.bool,
-  hideableTriggerProp: PropTypes.string,
-  hasClickHandler: PropTypes.bool,
-  clickHandler: PropTypes.func,
+  }).isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 export default SectionItem;

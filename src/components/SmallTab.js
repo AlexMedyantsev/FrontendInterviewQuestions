@@ -12,7 +12,7 @@ function SmallTab({mappedItem: {
   hasClickHandler, triggerProp, reduxCallback}) {
 
   let smallTabClickHandler = (titleText) => {
-    reduxCallback(titleText);
+    reduxCallback({name: outsideTitleText, color: outsideTitleColor});
   }
 
   return (
