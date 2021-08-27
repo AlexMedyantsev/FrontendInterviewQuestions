@@ -3,7 +3,10 @@ import {questions} from "../../utils/const.js";
 import produce from 'immer';
 
 export const initialState = {
-  activeQuestionSection: null,
+  activeQuestionSection: {
+    name: null,
+    color: null,
+  },
   questions: questions,
 };
 

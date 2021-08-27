@@ -14,11 +14,12 @@ import SmallTabListContainer from "./SmallTabListContainer.js";
 import SmallTab from "./SmallTab.js";
 import SectionListContainer from "./SectionListContainer.js";
 import SectionList from "./SectionList.js";
+import SectionItem from "./SectionItem.js";
 import QuestionList from "./QuestionList.js";
 
 function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
   useEffect(() => {
-    changeActiveQuestionSection('JS');
+    changeActiveQuestionSection({name: sectionTabs[2].name, color: sectionTabs[2].outsideTitleColor});
   }, []);
 
   return (
@@ -39,23 +40,25 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
           <SmallTabList
             arrayToRender={sectionTabs}
             ComponentToRender={SmallTab}
-            triggerProp={activeQuestionSection}
+            triggerProp={activeQuestionSection.name}
             reduxCallback={changeActiveQuestionSection}
           />
         </SmallTabListContainer>
 
         <SectionListContainer>
-          <SectionList
-            arrayToRender={sectionTabs}
-            hideable={true}
-            hideableTriggerProp={activeQuestionSection}
-          >
-            <QuestionList
-              questions={questions.filter(question => question.type === activeQuestionSection)}
-              width={'48%'}
-              hasAnswerButtons={false}
-              hasCardStateButtons={true}
-            />
+          <SectionList>
+            <SectionItem
+              width={'100%'}
+              outsideTitleText={activeQuestionSection.name}
+              outsideTitleColor={activeQuestionSection.color}
+            >
+              <QuestionList
+                questions={questions.filter(question => question.type === activeQuestionSection.name)}
+                width={'48%'}
+                hasAnswerButtons={false}
+                hasCardStateButtons={true}
+              />
+            </SectionItem>
           </SectionList>
         </SectionListContainer>
       </Main>
