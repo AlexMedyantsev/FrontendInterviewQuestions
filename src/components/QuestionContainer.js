@@ -8,7 +8,7 @@ import {motion} from "framer-motion"
 import styled from 'styled-components';
 
 const Div = styled(motion.div)`
-width: ${'100%'};
+width: ${props => props.width};
 @media (max-width: 768px) {
   min-width: 100%;
 }
@@ -55,6 +55,7 @@ function QuestionContainer({
 
   return (
     <Div
+      width={width}
       // animate={cardState.isOpen ? {width: '47%'} : {width: '30%'}}
       className={cardState.isOpen ? "question" : "question question--rolled"}
       style={{backgroundColor: color}}
