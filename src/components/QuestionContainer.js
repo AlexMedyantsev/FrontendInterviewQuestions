@@ -1,10 +1,29 @@
 import '../styles/index.scss'
 import React, {useState} from 'react'
+import {connect} from "react-redux"
+import {ActionCreator as ActionCreatorTraining} from "../reducer/training/training.js"
 import PropTypes from 'prop-types'
 import Question from "./Question.js"
 import {motion} from "framer-motion"
+import styled from 'styled-components';
 
-function QuestionContainer({question, color}) {
+const Div = styled(motion.div)`
+width: ${props => props.width};
+@media (max-width: 768px) {
+  min-width: 100%;
+}
+`;
+
+function QuestionContainer({
+  question,
+  color,
+  width,
+  hasAnswerButtons,
+  hasCardStateButtons,
+  setActiveQuestionArrayIndex,
+  trainingCard
+}) {
+
   const [cardState, changeCardState] = useState(
     {
       isAnswerShown: false,
@@ -24,20 +43,31 @@ function QuestionContainer({question, color}) {
     changeCardState({isOpen: false, isAnswerShown: false})
   }
 
+  let rightAnswerClickHandler = () => {
+    let newIndex = trainingCard.activeQuestionIndex + 1;
+    setActiveQuestionArrayIndex(newIndex)
+  }
+
+  let wrongAnswerClickHandler = () => {
+    let newIndex = trainingCard.activeQuestionIndex + 1;
+    setActiveQuestionArrayIndex(newIndex)
+  }
+
   return (
-    <motion.div
+    <Div
+      width={width}
       // animate={cardState.isOpen ? {width: '47%'} : {width: '30%'}}
       className={cardState.isOpen ? "question" : "question question--rolled"}
       style={{backgroundColor: color}}
     >
       {/* Заголовок вопроса отобр. при свернутой карточке */}
-      {
+      {/* {
         !cardState.isOpen &&
         <span onClick={() => rollOutCardHandler()} className="question__rolled-text">{question.questionTitle}</span>
-      }
+      } */}
 
       {/* Вопрос */}
-      {cardState.isOpen &&
+      {
         <div className="question__container question__container--question">
           <Question
             composition={question.questionComposition}
@@ -59,7 +89,7 @@ function QuestionContainer({question, color}) {
       <div className="card__buttons-container">
 
         {/* Кнопка разворачивающая/сворачивающая ответ */}
-        {cardState.isOpen &&
+        {!cardState.isAnswerShown &&
           <motion.button
             whileTap={{scale: 0.95}}
             whileHover={{scale: 1.05, backgroundColor: 'rgba(255,255,255,0.85)', transition: {duration: 0.2}}}
@@ -72,7 +102,7 @@ function QuestionContainer({question, color}) {
 
         {/* Кнопка сворачивания карточки */}
         {
-          cardState.isOpen &&
+          cardState.isAnswerShown && hasCardStateButtons &&
           <motion.button
             whileTap={{scale: 0.95}}
             whileHover={{scale: 1.05, backgroundColor: 'rgba(255,255,255,0.85)', transition: {duration: 0.2}}}
@@ -82,9 +112,35 @@ function QuestionContainer({question, color}) {
             Свернуть карточку
           </motion.button>
         }
+
+        {/* Кнопка для подтверждения правильного Ответа  */}
+        {
+          cardState.isAnswerShown && hasAnswerButtons &&
+          <motion.button
+            whileTap={{scale: 0.95}}
+            whileHover={{scale: 1.05, backgroundColor: 'rgba(255,255,255,0.85)', transition: {duration: 0.2}}}
+            onClick={() => rightAnswerClickHandler()}
+            className={cardState.isOpen ? 'card-button card-button--right card-button--close' : 'card-button card-button--right card-button--open'}
+          >
+            Я это знаю
+          </motion.button>
+        }
+
+        {/* Кнопка для подтверждения повторения вопроса  */}
+        {
+          cardState.isAnswerShown && hasAnswerButtons &&
+          <motion.button
+            whileTap={{scale: 0.95}}
+            whileHover={{scale: 1.05, backgroundColor: 'rgba(255,255,255,0.85)', transition: {duration: 0.2}}}
+            onClick={() => wrongAnswerClickHandler()}
+            className={cardState.isOpen ? 'card-button card-button--wrong card-button--close' : 'card-button card-button--wrong card-button--open'}
+          >
+            Нужно повторить
+          </motion.button>
+        }
       </div>
 
-    </motion.div>
+    </Div>
   )
 }
 
@@ -98,4 +154,18 @@ QuestionContainer.propTypes = {
   color: PropTypes.string.isRequired
 }
 
-export default QuestionContainer;
+const mapStateToProps = (state) => {
+  return {
+    trainingCard: state.TRAINING.trainingCard,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => (
+  {
+    changeTrainingCardUIState: (state) => dispatch(ActionCreatorTraining.changeTrainingCardUIState(state)),
+    setArrayOfQuestionsForTraining: (questions) => dispatch(ActionCreatorTraining.setArrayOfQuestionsForTraining(questions)),
+    setActiveQuestionArrayIndex: (index) => dispatch(ActionCreatorTraining.setActiveQuestionArrayIndex(index))
+  }
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionContainer);

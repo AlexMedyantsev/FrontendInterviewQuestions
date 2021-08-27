@@ -8,7 +8,11 @@ import SubTitle from './SubTitle.js';
 import QuestionContainer from './QuestionContainer.js';
 import QuestionList from './QuestionList';
 
-function SectionItem({mappedItem: {outsideTitleText, outsideTitleColor }, hideable, hideableTriggerProp}) {
+function SectionItem({mappedItem: {
+  outsideTitleText,
+  outsideTitleColor
+},
+  children, hideable, hideableTriggerProp, componentToRender}) {
 
   return (
     <motion.li
@@ -36,10 +40,11 @@ function SectionItem({mappedItem: {outsideTitleText, outsideTitleColor }, hideab
           subTitleColor={insideTitleColor}
           reduxCallback={changeActiveQuestionSection}
         /> */}
-        <QuestionList
-          questions={questions.filter(question => question.type === outsideTitleText)}
-          color={outsideTitleColor}
-        />
+        {children &&
+          React.cloneElement(children, {
+            outsideTitleText: outsideTitleText,
+            color: outsideTitleColor
+          })}
       </div>
 
     </motion.li>

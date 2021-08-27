@@ -15,7 +15,8 @@ function Question({composition, string}) {
             {item.text}
           </div>;
         }
-        else if (item.type === 'code') {
+        // Обязательно проверяем на то, есть ли код вообще, чтобы не получить ошибку
+        else if (item.type === 'code' && item.code !== null) {
           return <CodeSnippet
             key={item.questionCode}
             code={item.code}

@@ -87,18 +87,18 @@ export const sectionTabs = [
 
 export const mainMenuSections = [
   {
-    name: 'Доброе Утро',
-    outsideTitleText: 'Доброе Утро',
+    name: 'Начать Тренировку',
+    outsideTitleText: 'Начать Тренировку',
     outsideTitleColor: colors.lightPink,
     insideTitleText: 'Lorem Ipsum Dolor',
     insideTitleColor: colors.lightPink,
   },
   {
-    name: 'Доброе Вечер',
-    outsideTitleText: 'Доброе Вечер',
-    outsideTitleColor: colors.lightPink,
+    name: 'Узнать о результатах',
+    outsideTitleText: 'Узнать о результатах',
+    outsideTitleColor: colors.lightGreen,
     insideTitleText: 'Lorem Ipsum Dolor',
-    insideTitleColor: colors.lightPink,
+    insideTitleColor: colors.lightGreen,
   }
 ]
 
@@ -252,6 +252,74 @@ export const questions = [
     answerCode: `.red {
   color: red;
 }`,
+    get questionComposition() {
+      return [
+        {
+          text: this.questionTitle,
+          type: 'text',
+        },
+        {
+          code: this.questionCode,
+          codeType: 'css',
+          type: 'code',
+        },
+      ]
+    },
+    get answerComposition() {
+      return [
+        {
+          text: this.questionAnswer,
+          type: 'text',
+        }, {
+          code: this.answerCode,
+          codeType: 'css',
+          type: 'code',
+        }
+      ]
+    },
+    answeredRightTimes: 0,
+    answeredWrongTimes: 0,
+  },
+  {
+    type: 'CSS',
+    questionTitle: 'Как работает наследование в CSS',
+    questionCode: null,
+    questionAnswer: 'Наследование работает так:',
+    answerCode: null,
+    get questionComposition() {
+      return [
+        {
+          text: this.questionTitle,
+          type: 'text',
+        },
+        {
+          code: this.questionCode,
+          codeType: 'css',
+          type: 'code',
+        },
+      ]
+    },
+    get answerComposition() {
+      return [
+        {
+          text: this.questionAnswer,
+          type: 'text',
+        }, {
+          code: this.answerCode,
+          codeType: 'css',
+          type: 'code',
+        }
+      ]
+    },
+    answeredRightTimes: 0,
+    answeredWrongTimes: 0,
+  },
+  {
+    type: 'CSS',
+    questionTitle: 'Как работают селекторы CSS? Назовите правила согласно которым применяются стили',
+    questionCode: null,
+    questionAnswer: 'Селекторы применяются следующим образом:',
+    answerCode: null,
     get questionComposition() {
       return [
         {

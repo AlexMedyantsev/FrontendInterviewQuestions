@@ -1,18 +1,20 @@
 import '../styles/index.scss';
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
-import {sectionTabs} from "../utils/const.js";
+import {connect} from "react-redux";
+import {ActionCreator as ActionCreatorUI} from "../reducer/ui/ui.js";
+import {sectionTabs, questions} from "../utils/const.js";
 
 import Header from "./Header.js";
 import HeaderLink from "./HeaderLink.js";
 import HeaderLinks from "./HeaderLinks.js";
 import Main from "./Main.js";
-import SectionItem from "./SectionItem.js";
 import SmallTabList from "./SmallTabList.js";
 import SmallTabListContainer from "./SmallTabListContainer.js";
 import SmallTab from "./SmallTab.js";
 import SectionListContainer from "./SectionListContainer.js";
 import SectionList from "./SectionList.js";
+import QuestionList from "./QuestionList.js";
 
 function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
   useEffect(() => {
@@ -24,7 +26,7 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
       <Header>
         <HeaderLinks>
           <HeaderLink linkTo={'/'}>Главная</HeaderLink>
-          <HeaderLink linkTo={'/questions'}>Вопросы</HeaderLink>
+          <HeaderLink linkTo={'/questions'} active={true}>Вопросы</HeaderLink>
           <HeaderLink linkTo={'/progress'}>Прогресс</HeaderLink>
         </HeaderLinks>
         <div className="header__account">
@@ -44,14 +46,20 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
 
         <SectionListContainer>
           <SectionList
-            ComponentToRender={SectionItem}
             arrayToRender={sectionTabs}
             hideable={true}
             hideableTriggerProp={activeQuestionSection}
-          />
+          >
+            <QuestionList
+              questions={questions.filter(question => question.type === activeQuestionSection)}
+              width={'48%'}
+              hasAnswerButtons={false}
+              hasCardStateButtons={true}
+            />
+          </SectionList>
         </SectionListContainer>
       </Main>
-    </React.Fragment>
+    </React.Fragment >
   )
 }
 
@@ -60,4 +68,16 @@ QuestionsPage.propTypes = {
   activeQuestionSection: PropTypes.string.isRequired,
 }
 
-export default QuestionsPage;
+const mapStateToProps = (state) => {
+  return {
+    activeQuestionSection: state.UI.activeQuestionSection,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => (
+  {
+    changeActiveQuestionSection: (section) => dispatch(ActionCreatorUI.changeActiveQuestionSection(section)),
+  }
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionsPage);

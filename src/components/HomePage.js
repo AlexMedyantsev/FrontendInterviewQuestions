@@ -1,7 +1,8 @@
 import '../styles/index.scss';
 import React from 'react';
+import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
-import {mainMenuSections} from "../utils/const.js";
+import {mainMenuSections, questions} from "../utils/const.js";
 import Header from "./Header.js";
 import HeaderLink from "./HeaderLink.js";
 import HeaderLinks from "./HeaderLinks.js"
@@ -9,14 +10,22 @@ import Main from "./Main.js";
 import Footer from "./Footer.js";
 import SectionListContainer from "./SectionListContainer.js";
 import SectionList from "./SectionList.js";
-import QuestionItem from "./SectionItem.js";
+import Training from "./Training.js";
+import QuestionList from "./QuestionList.js";
 
-function HomePage({changeActiveQuestionSection, activeQuestionSection}) {
+function HomePage(
+  {
+    trainingCard,
+    changeTrainingCardUIState,
+    arrayOfQuestionsForTraining,
+    questions
+  }
+) {
   return (
     <React.Fragment>
       <Header>
         <HeaderLinks>
-          <HeaderLink linkTo={'/'}>Главная</HeaderLink>
+          <HeaderLink linkTo={'/'} active={true}>Главная</HeaderLink>
           <HeaderLink linkTo={'/questions'}>Вопросы</HeaderLink>
           <HeaderLink linkTo={'/progress'}>Прогресс</HeaderLink>
         </HeaderLinks>
@@ -28,11 +37,22 @@ function HomePage({changeActiveQuestionSection, activeQuestionSection}) {
       <Main>
         <SectionListContainer>
           <SectionList
-            ComponentToRender={QuestionItem}
             arrayToRender={mainMenuSections}
             hideable={false}
             hideableTriggerProp={undefined}
-          />
+          >
+            <Training
+              trainingCard={trainingCard}
+              changeTrainingCardUIState={changeTrainingCardUIState}
+              arrayOfQuestionsForTraining={arrayOfQuestionsForTraining}
+            />
+          </SectionList>
+          <SectionList
+            arrayToRender={mainMenuSections}
+            hideable={false}
+            hideableTriggerProp={undefined}
+          >
+          </SectionList>
         </SectionListContainer>
       </Main>
       <Footer></Footer>
@@ -45,4 +65,13 @@ HomePage.propTypes = {
   activeQuestionSection: PropTypes.string.isRequired,
 }
 
-export default HomePage;
+const mapStateToProps = (state) => {
+  return {
+    activeQuestionSection: state.UI.activeQuestionSection,
+    trainingCard: state.UI.trainingCard,
+    questions: state.UI.questions,
+    arrayOfQuestionsForTraining: state.UI.arrayOfQuestionsForTraining,
+  }
+}
+
+export default connect(mapStateToProps)(HomePage);
