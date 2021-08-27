@@ -1,16 +1,27 @@
 import '../styles/index.scss'
 import React, {useState} from 'react'
+import {connect} from "react-redux"
+import {ActionCreator as ActionCreatorTraining} from "../reducer/training/training.js"
 import PropTypes from 'prop-types'
 import Question from "./Question.js"
 import {motion} from "framer-motion"
 import styled from 'styled-components';
+
+const Div = styled(motion.div)`
+width: ${'100%'};
+@media (max-width: 768px) {
+  min-width: 100%;
+}
+`;
 
 function QuestionContainer({
   question,
   color,
   width,
   hasAnswerButtons,
-  hasCardStateButtons
+  hasCardStateButtons,
+  setActiveQuestionArrayIndex,
+  trainingCard
 }) {
 
   const [cardState, changeCardState] = useState(
@@ -33,19 +44,14 @@ function QuestionContainer({
   }
 
   let rightAnswerClickHandler = () => {
-
+    let newIndex = trainingCard.activeQuestionIndex + 1;
+    setActiveQuestionArrayIndex(newIndex)
   }
 
   let wrongAnswerClickHandler = () => {
-
+    let newIndex = trainingCard.activeQuestionIndex + 1;
+    setActiveQuestionArrayIndex(newIndex)
   }
-
-  const Div = styled(motion.div)`
-  width: ${width};
-  @media (max-width: 768px) {
-    min-width: 100%;
-  }
-`;
 
   return (
     <Div
@@ -147,4 +153,18 @@ QuestionContainer.propTypes = {
   color: PropTypes.string.isRequired
 }
 
-export default QuestionContainer;
+const mapStateToProps = (state) => {
+  return {
+    trainingCard: state.TRAINING.trainingCard,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => (
+  {
+    changeTrainingCardUIState: (state) => dispatch(ActionCreatorTraining.changeTrainingCardUIState(state)),
+    setArrayOfQuestionsForTraining: (questions) => dispatch(ActionCreatorTraining.setArrayOfQuestionsForTraining(questions)),
+    setActiveQuestionArrayIndex: (index) => dispatch(ActionCreatorTraining.setActiveQuestionArrayIndex(index))
+  }
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionContainer);

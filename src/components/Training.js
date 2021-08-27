@@ -13,6 +13,8 @@ function Training({
   changeTrainingCardUIState,
   arrayOfQuestionsForTraining,
   setArrayOfQuestionsForTraining,
+  emptyArrayOfQuestionsForTraining,
+  setActiveQuestionArrayIndex,
   questions
 }) {
   return (
@@ -37,11 +39,12 @@ function Training({
             changeTrainingCardUIState={changeTrainingCardUIState}
             arrayOfQuestionsForTraining={arrayOfQuestionsForTraining}
           />
-        } else if (trainingCard.UIState === 'quizResults') {
+        } else if (trainingCard.UIState === 'results') {
           return <TrainingQuizResults
             trainingCard={trainingCard}
-
             changeTrainingCardUIState={changeTrainingCardUIState}
+            emptyArrayOfQuestionsForTraining={emptyArrayOfQuestionsForTraining}
+            setActiveQuestionArrayIndex={setActiveQuestionArrayIndex}
           />
         }
       })()}
@@ -60,7 +63,11 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => (
   {
     changeTrainingCardUIState: (state) => dispatch(ActionCreatorTraining.changeTrainingCardUIState(state)),
-    setArrayOfQuestionsForTraining: (questions) => dispatch(ActionCreatorTraining.setArrayOfQuestionsForTraining(questions))
+    setArrayOfQuestionsForTraining: (questions) => dispatch(ActionCreatorTraining.setArrayOfQuestionsForTraining(questions)),
+    setActiveQuestionArrayIndex: (index) => dispatch(ActionCreatorTraining.setActiveQuestionArrayIndex(index)),
+    emptyArrayOfQuestionsForTraining: (index) => dispatch(ActionCreatorTraining.emptyArrayOfQuestionsForTraining(index)),
+    setActiveQuestionArrayIndex: (index) => dispatch(ActionCreatorTraining.setActiveQuestionArrayIndex(index)),
+    
   }
 )
 

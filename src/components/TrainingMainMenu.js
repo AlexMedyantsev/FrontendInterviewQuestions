@@ -4,7 +4,6 @@ import React, {useEffect} from 'react'
 function TrainingMainMenu({
   trainingCard,
   changeTrainingCardUIState,
-  arrayOfQuestionsForTraining,
   setArrayOfQuestionsForTraining,
   questions
 }) {
@@ -28,10 +27,10 @@ function TrainingMainMenu({
   }
 
   useEffect(() => {
-    if (arrayOfQuestionsForTraining.length > 0) {
+    if (trainingCard.questions.length > 0) {
       changeTrainingCardUIState('quiz');
     }
-  }, [arrayOfQuestionsForTraining]);
+  }, [JSON.stringify(trainingCard.questions)]);
 
   return (
     <React.Fragment>

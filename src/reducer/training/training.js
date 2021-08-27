@@ -9,19 +9,21 @@ const trainingCard = {
     questionAmounts: 15,
   },
   questions: [],
+  activeQuestionIndex: 0,
 }
 
 export const initialState = {
   trainingCard: trainingCard,
   questions: questions,
-  arrayOfQuestionsForTraining: [],
 };
 
 export const ActionType = {
   CHANGE_TRAINING_CARD_UI_STATE: 'CHANGE_TRAINING_CARD_UI_STATE',
   CHANGE_TRAINING_CARD_SETTINGS_QUESTION_TYPES: 'CHANGE_TRAINING_CARD_SETTINGS_QUESTION_TYPES',
   CHANGE_TRAINING_CARD_SETTINGS_QUESTION_AMOUNT: 'CHANGE_TRAINING_CARD_SETTINGS_QUESTION_AMOUNT',
-  SET_ARRAY_OF_QUESTIONS_FOR_TRAINING: 'SET_ARRAY_OF_QUESTIONS_FOR_TRAINING'
+  SET_ARRAY_OF_QUESTIONS_FOR_TRAINING: 'SET_ARRAY_OF_QUESTIONS_FOR_TRAINING',
+  SET_ACTIVE_QUESTION_ARRAY_INDEX: 'SET_ACTIVE_QUESTION_ARRAY_INDEX',
+  EMPTY_ARRAY_OF_QUESTIONS_FOR_TRAINING: 'EMPTY_ARRAY_OF_QUESTIONS_FOR_TRAINING'
 }
 
 export const ActionCreator = {
@@ -32,6 +34,13 @@ export const ActionCreator = {
   setArrayOfQuestionsForTraining: (cardUIState) => ({
     type: ActionType.SET_ARRAY_OF_QUESTIONS_FOR_TRAINING,
     payload: cardUIState,
+  }),
+  setActiveQuestionArrayIndex: (cardUIState) => ({
+    type: ActionType.SET_ACTIVE_QUESTION_ARRAY_INDEX,
+    payload: cardUIState,
+  }),
+  emptyArrayOfQuestionsForTraining: () => ({
+    type: ActionType.EMPTY_ARRAY_OF_QUESTIONS_FOR_TRAINING,
   }),
 };
 
@@ -55,7 +64,17 @@ export const reducer = (state = initialState, action) => {
 
     case ActionType.SET_ARRAY_OF_QUESTIONS_FOR_TRAINING:
       return produce(state, draft => {
-        draft.arrayOfQuestionsForTraining = action.payload;
+        draft.trainingCard.questions = action.payload;
+      });
+
+    case ActionType.EMPTY_ARRAY_OF_QUESTIONS_FOR_TRAINING:
+      return produce(state, draft => {
+        draft.trainingCard.questions = [];
+      });
+
+    case ActionType.SET_ACTIVE_QUESTION_ARRAY_INDEX:
+      return produce(state, draft => {
+        draft.trainingCard.activeQuestionIndex = action.payload;
       });
 
     default:
