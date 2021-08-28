@@ -80,8 +80,18 @@
   }
 }
 
+.question__title-container {
+  font-family: 'SF-Pro-Display-Medium'
+}
+
 .question__text {
   line-height: 24px;
+  font-family: 'SF-Pro-Display-Regular';
+}
+
+.question__title {
+  line-height: 24px;
+  font-family: 'SF-Pro-Display-Medium';
 }
 
 @media (max-width: 768px) {

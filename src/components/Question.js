@@ -2,18 +2,19 @@ import CodeSnippet from './CodeSnippet.js';
 import PropTypes from 'prop-types'
 import React from 'react'
 
-function Question({composition, string}) {
+function Question({composition, string, className}) {
   return (
     <React.Fragment>
       {composition.map((item) => {
+        // Используем разные подходы для отрисовки различных типов данных
         if (item.type === 'text') {
-          return <div
+          return <pre
             key={item.text}
-            className="question__text"
+            className={className}
           >
             {string}
             {item.text}
-          </div>;
+          </pre>;
         }
         // Обязательно проверяем на то, есть ли код вообще, чтобы не получить ошибку
         else if (item.type === 'code' && item.code !== null) {

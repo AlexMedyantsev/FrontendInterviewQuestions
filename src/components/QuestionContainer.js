@@ -60,17 +60,13 @@ function QuestionContainer({
       className={cardState.isOpen ? "question" : "question question--rolled"}
       style={{backgroundColor: color}}
     >
-      {/* Заголовок вопроса отобр. при свернутой карточке */}
-      {/* {
-        !cardState.isOpen &&
-        <span onClick={() => rollOutCardHandler()} className="question__rolled-text">{question.questionTitle}</span>
-      } */}
 
       {/* Вопрос */}
       {
         <div className="question__container question__container--question">
           <Question
             composition={question.questionComposition}
+            className={'question__title'}
             string={null}
           />
         </div>
@@ -81,6 +77,7 @@ function QuestionContainer({
         <div className="question__container question__container--answer">
           <Question
             composition={question.answerComposition}
+            className={'question__text'}
             string={'Ответ: '}
           />
         </div>

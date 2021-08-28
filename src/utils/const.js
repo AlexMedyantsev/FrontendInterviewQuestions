@@ -58,9 +58,9 @@ export const sectionTabs = [
   {
     name: 'HTML',
     outsideTitleText: 'HTML',
-    outsideTitleColor: colors.lightPink,
+    outsideTitleColor: colors.darkOrange,
     insideTitleText: 'Повторите вопросы className',
-    insideTitleColor: colors.lightPink,
+    insideTitleColor: colors.lightOrange,
   },
   {
     name: 'CSS',
@@ -72,9 +72,9 @@ export const sectionTabs = [
   {
     name: 'JS',
     outsideTitleText: 'JS',
-    outsideTitleColor: colors.darkOrange,
+    outsideTitleColor: colors.darkGreen,
     insideTitleText: 'Повторите вопросы className',
-    insideTitleColor: colors.lightOrange,
+    insideTitleColor: colors.lightGreen,
   },
   {
     name: 'React',
@@ -202,10 +202,11 @@ export const questions = [
   },
   {
     type: 'HTML',
-    questionTitle: 'Какие типы данных есть в JS?',
-    questionCode: `<div class="red"></div>`,
-    questionAnswer: 'Вот такие',
-    answerCode: `<div class="red"></div>`,
+    questionTitle: 'Для чего отлично подойдут data-атрибуты?',
+    questionCode: null,
+    questionAnswer: `До того, как JavaScript-фреймворки стали популярны, фронтенд-разработчики использовали data-атрибуты чтобы хранить дополнительные данные прямо в DOM без хаков вроде нестандартных атрибутов или дополнительных свойств в DOM. Атрибуты этого семейства предназначены для хранения частных данных пользователя, для которых не существует более подходящих атрибутов или элементов, на странице или в приложении.
+    На сегодняшний день использование data-атрибутов не поощряется. Одной из причин является то, что пользователь может модифицировать данные в атрибуте, используя инспектор кода в браузере. Данные лучше хранить в самом JavaScript и обновлять DOM при помощи связывания данных через библиотеку или фреймворк.`,
+    answerCode: null,
     get questionComposition() {
       return [
         {
@@ -332,6 +333,119 @@ export const questions = [
         }, {
           code: this.answerCode,
           codeType: 'css',
+          type: 'code',
+        }
+      ]
+    },
+    answeredRightTimes: 0,
+    answeredWrongTimes: 0,
+  },
+  {
+    type: 'HTML',
+    questionTitle: `Что делает DOCTYPE?`,
+    questionCode: null,
+    questionAnswer: `<!DOCTYPE> — это сокращение от «document type» (тип документа). Он объявляется в HTML для того, чтобы различать стандартный режим или режим совместимости (quirks mode). Его наличие говорит браузеру работать со страницей в стандартном режиме.
+    Мораль истории — просто добавляй <!DOCTYPE html> в начало страницы.`,
+    answerCode: null,
+    get questionComposition() {
+      return [
+        {
+          text: this.questionTitle,
+          type: 'text',
+        },
+        {
+          code: this.questionCode,
+          codeType: 'html',
+          type: 'code',
+        },
+      ]
+    },
+    get answerComposition() {
+      return [
+        {
+          text: this.questionAnswer,
+          type: 'text',
+        }, {
+          code: this.answerCode,
+          codeType: 'html',
+          type: 'code',
+        }
+      ]
+    },
+    answeredRightTimes: 0,
+    answeredWrongTimes: 0,
+  },
+  {
+    type: 'HTML',
+    questionTitle: 'Как поддерживать страницу на нескольких языках?',
+    questionCode: null,
+    questionAnswer: `Когда к серверу делается HTTP-запрос, то браузер пользователя обычно отсылает информацию о предпочитаемом языке в заголовке Accept-Language. Сервер может использовать эту информацию, чтобы вернуть версию документа на подходящем языке, если такая возможность есть. В возвращенном HTML-документе обязательно должен быть указан атрибут lang у тега <html>, к примеру <html lang="en">.
+    На бэкенде HTML-разметка будет содержать плейсхолдер i18n, а контент для конкретного языка будет хранится в YML- или JSON-формате. Сервер динамически формирует HTML-страницу с контентом на конкретном языке, чаще всего при помощи бэкенд-фреймворка.`,
+    answerCode: null,
+    get questionComposition() {
+      return [
+        {
+          text: this.questionTitle,
+          type: 'text',
+        },
+        {
+          code: this.questionCode,
+          codeType: 'html',
+          type: 'code',
+        },
+      ]
+    },
+    get answerComposition() {
+      return [
+        {
+          text: this.questionAnswer,
+          type: 'text',
+        }, {
+          code: this.answerCode,
+          codeType: 'html',
+          type: 'code',
+        }
+      ]
+    },
+    answeredRightTimes: 0,
+    answeredWrongTimes: 0,
+  },
+  {
+    type: 'HTML',
+    questionTitle: 'Представьте HTML5 как открытую веб-платформу. Из каких блоков состоит HTML5?',
+    questionCode: null,
+    questionAnswer: `
+1. Семантика. Позволяет более точно описать из чего состоит контент
+2. Связанность. Позволяет общаться с сервером новыми и инновационными способами
+3. Офлайн и хранилище. Позволяют страницам хранить данные локально на клиентской стороне и более эффективно работать в офлайне 
+4. Мультимедиа. Ставит создание видео и аудио на первое место в вебе
+5. 2D- и 3D-графика и эффекты. Позволяет расширить возможности презентации
+6. Производительность и интеграция. Обеспечивает большую скорость оптимизации и лучшее использование аппаратных средств
+7. Доступ к устройствам. Позволяет взаимодействовать с различными устройствами ввода и вывода
+8. Стилизация. Позволяет создавать более сложные темы оформления
+    `,
+    answerCode: null,
+    get questionComposition() {
+      return [
+        {
+          text: this.questionTitle,
+          type: 'text',
+        },
+        {
+          code: this.questionCode,
+          codeType: 'html',
+          type: 'code',
+        },
+      ]
+    },
+    get answerComposition() {
+      return [
+        {
+          text: this.questionAnswer,
+          type: 'text',
+        }, {
+          code: this.answerCode,
+          codeType: 'html',
           type: 'code',
         }
       ]
