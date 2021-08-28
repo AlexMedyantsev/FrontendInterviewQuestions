@@ -41,8 +41,6 @@ function HomePage(
             <SectionItem
               objectToRender={trainingSection}
               width={'48%'}
-              hideable={false}
-              hideableTriggerProp={undefined}
             >
               <Training
                 trainingCard={trainingCard}

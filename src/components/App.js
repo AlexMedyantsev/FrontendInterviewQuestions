@@ -3,6 +3,7 @@ import {Switch, Route, BrowserRouter} from "react-router-dom"
 import history from "../history.js";
 import HomePage from "./HomePage.js"
 import QuestionsPage from "./QuestionsPage.js";
+import ProgressPage from "./ProgressPage.js";
 
 function App() {
   return (
@@ -16,9 +17,9 @@ function App() {
           <QuestionsPage
           />
         </Route>
-        {/* <Route exact path="/">
+        <Route exact path="/progress">
           <ProgressPage />
-        </Route> */}
+        </Route>
       </Switch>
     </BrowserRouter>
   );

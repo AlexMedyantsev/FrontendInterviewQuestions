@@ -49,6 +49,10 @@ function QuestionsPage({activeQuestionSection, changeActiveQuestionSection}) {
           <SectionList>
             <SectionItem
               width={'100%'}
+              objectToRender={{
+                outsideTitleText: activeQuestionSection.name,
+                outsideTitleColor: activeQuestionSection.color,
+              }}
               outsideTitleText={activeQuestionSection.name}
               outsideTitleColor={activeQuestionSection.color}
             >
