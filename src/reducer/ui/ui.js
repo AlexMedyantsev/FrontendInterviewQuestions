@@ -1,5 +1,4 @@
 import {extend} from "../../utils/common.js";
-import {questions} from "../../utils/const.js";
 import produce from 'immer';
 
 export const initialState = {
@@ -7,7 +6,6 @@ export const initialState = {
     name: null,
     color: null,
   },
-  questions: questions,
 };
 
 export const ActionType = {

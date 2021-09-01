@@ -13,13 +13,13 @@ import App from "./components/App.js"
 
 
 const persistedState = loadState();
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({trace: true, traceLimit: 25}) || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({trace: true, traceLimit: 25}) || compose;
 
 const store = createStore(
   reducer,
   persistedState,
-  // composeEnhancers(
-  // )
+  composeEnhancers(
+  )
 );
 
 store.subscribe(throttle(() => {

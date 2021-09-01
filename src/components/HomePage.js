@@ -40,7 +40,7 @@ function HomePage(
           <SectionList>
             <SectionItem
               objectToRender={trainingSection}
-              width={'48%'}
+              width={'80%'}
             >
               <Training
                 trainingCard={trainingCard}

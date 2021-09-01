@@ -40,7 +40,8 @@ function TrainingMainMenu({
   }
 
   let startClickHandler = () => {
-    setArrayOfQuestionsForTraining(generateArrayOfQuestionForTraining(questions))
+    let arrayOfQuestions = generateArrayOfQuestionForTraining(questions)
+    setArrayOfQuestionsForTraining(arrayOfQuestions)
   }
 
   useEffect(() => {

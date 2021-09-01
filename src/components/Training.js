@@ -55,7 +55,7 @@ function Training({
 const mapStateToProps = (state) => {
   return {
     trainingCard: state.TRAINING.trainingCard,
-    questions: state.UI.questions,
+    questions: state.DATA.questions,
     arrayOfQuestionsForTraining: state.TRAINING.arrayOfQuestionsForTraining,
   }
 }
@@ -66,7 +66,6 @@ const mapDispatchToProps = (dispatch) => (
     setArrayOfQuestionsForTraining: (questions) => dispatch(ActionCreatorTraining.setArrayOfQuestionsForTraining(questions)),
     setActiveQuestionArrayIndex: (index) => dispatch(ActionCreatorTraining.setActiveQuestionArrayIndex(index)),
     emptyArrayOfQuestionsForTraining: (index) => dispatch(ActionCreatorTraining.emptyArrayOfQuestionsForTraining(index)),
-    setActiveQuestionArrayIndex: (index) => dispatch(ActionCreatorTraining.setActiveQuestionArrayIndex(index)),
     
   }
 )
