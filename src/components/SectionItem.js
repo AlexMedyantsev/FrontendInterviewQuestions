@@ -12,9 +12,11 @@ width: ${props => props.width};
   min-width: 100%;
 }`;
 
-function SectionItem({
+function SectionItem({objectToRender: {
   outsideTitleText,
   outsideTitleColor,
+  name,
+},
   width,
   children
 }) {
@@ -48,7 +50,8 @@ function SectionItem({
         {children &&
           React.cloneElement(children, {
             outsideTitleText: outsideTitleText,
-            color: outsideTitleColor
+            color: outsideTitleColor,
+            language: name,
           })}
       </div>
 

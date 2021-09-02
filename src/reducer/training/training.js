@@ -1,12 +1,11 @@
 import {extend} from "../../utils/common.js";
-import {questions} from "../../utils/const.js";
 import produce from 'immer';
 
 const trainingCard = {
   UIState: 'mainMenu',
   settings: {
     questionTypes: ['HTML', 'JS'],
-    questionAmounts: 15,
+    questionAmount: 15,
   },
   questions: [],
   activeQuestionIndex: 0,
@@ -14,13 +13,14 @@ const trainingCard = {
 
 export const initialState = {
   trainingCard: trainingCard,
-  questions: questions,
+  // questions: questions,
 };
 
 export const ActionType = {
   CHANGE_TRAINING_CARD_UI_STATE: 'CHANGE_TRAINING_CARD_UI_STATE',
   CHANGE_TRAINING_CARD_SETTINGS_QUESTION_TYPES: 'CHANGE_TRAINING_CARD_SETTINGS_QUESTION_TYPES',
   CHANGE_TRAINING_CARD_SETTINGS_QUESTION_AMOUNT: 'CHANGE_TRAINING_CARD_SETTINGS_QUESTION_AMOUNT',
+  CHANGE_QUESTION_SCORE: 'CHANGE_QUESTION_SCORE',
   SET_ARRAY_OF_QUESTIONS_FOR_TRAINING: 'SET_ARRAY_OF_QUESTIONS_FOR_TRAINING',
   SET_ACTIVE_QUESTION_ARRAY_INDEX: 'SET_ACTIVE_QUESTION_ARRAY_INDEX',
   EMPTY_ARRAY_OF_QUESTIONS_FOR_TRAINING: 'EMPTY_ARRAY_OF_QUESTIONS_FOR_TRAINING'

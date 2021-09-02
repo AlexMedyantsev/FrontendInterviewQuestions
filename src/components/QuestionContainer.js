@@ -1,7 +1,8 @@
 import '../styles/index.scss'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {connect} from "react-redux"
 import {ActionCreator as ActionCreatorTraining} from "../reducer/training/training.js"
+import {ActionCreator as ActionCreatorData} from "../reducer/data/data.js"
 import PropTypes from 'prop-types'
 import Question from "./Question.js"
 import {motion} from "framer-motion"
@@ -16,14 +17,18 @@ width: ${props => props.width};
 
 function QuestionContainer({
   question,
+  questions,
   color,
   width,
   hasAnswerButtons,
   hasCardStateButtons,
   setActiveQuestionArrayIndex,
+  changeQuestionScore,
   trainingCard
 }) {
 
+  const [trigger, activateTrigger] = useState(trainingCard.activeQuestionIndex)
+  const [isFirstRender, changeIsFirstRender] = useState(true)
   const [cardState, changeCardState] = useState(
     {
       isAnswerShown: false,
@@ -44,14 +49,28 @@ function QuestionContainer({
   }
 
   let rightAnswerClickHandler = () => {
-    let newIndex = trainingCard.activeQuestionIndex + 1;
-    setActiveQuestionArrayIndex(newIndex)
+    changeQuestionScore({question: question, valueToAdd: 1})
+    activateTrigger(trigger + 1)
   }
 
   let wrongAnswerClickHandler = () => {
-    let newIndex = trainingCard.activeQuestionIndex + 1;
-    setActiveQuestionArrayIndex(newIndex)
+    changeQuestionScore({question: question, valueToAdd: -1})
+    activateTrigger(trigger + 1)
   }
+
+  useEffect(() => {
+    console.log(trigger)
+    if (!isFirstRender) {
+      let newIndex = trainingCard.activeQuestionIndex + 1;
+      setActiveQuestionArrayIndex(newIndex)
+    }
+    // let newIndex = trainingCard.activeQuestionIndex + 1;
+    // setActiveQuestionArrayIndex(newIndex)
+  }, [trigger])
+
+  useEffect(() => {
+    changeIsFirstRender(false)
+  }, []);
 
   return (
     <Div
@@ -60,17 +79,13 @@ function QuestionContainer({
       className={cardState.isOpen ? "question" : "question question--rolled"}
       style={{backgroundColor: color}}
     >
-      {/* Заголовок вопроса отобр. при свернутой карточке */}
-      {/* {
-        !cardState.isOpen &&
-        <span onClick={() => rollOutCardHandler()} className="question__rolled-text">{question.questionTitle}</span>
-      } */}
 
       {/* Вопрос */}
       {
         <div className="question__container question__container--question">
           <Question
             composition={question.questionComposition}
+            className={'question__title'}
             string={null}
           />
         </div>
@@ -81,6 +96,7 @@ function QuestionContainer({
         <div className="question__container question__container--answer">
           <Question
             composition={question.answerComposition}
+            className={'question__text'}
             string={'Ответ: '}
           />
         </div>
@@ -126,7 +142,7 @@ function QuestionContainer({
           </motion.button>
         }
 
-        {/* Кнопка для подтверждения повторения вопроса  */}
+        {/* Кнопка для отправки вопроса на повторение  */}
         {
           cardState.isAnswerShown && hasAnswerButtons &&
           <motion.button
@@ -157,12 +173,14 @@ QuestionContainer.propTypes = {
 const mapStateToProps = (state) => {
   return {
     trainingCard: state.TRAINING.trainingCard,
+    questions: state.DATA.questions,
   }
 }
 
 const mapDispatchToProps = (dispatch) => (
   {
     changeTrainingCardUIState: (state) => dispatch(ActionCreatorTraining.changeTrainingCardUIState(state)),
+    changeQuestionScore: (state) => dispatch(ActionCreatorData.changeQuestionScore(state)),
     setArrayOfQuestionsForTraining: (questions) => dispatch(ActionCreatorTraining.setArrayOfQuestionsForTraining(questions)),
     setActiveQuestionArrayIndex: (index) => dispatch(ActionCreatorTraining.setActiveQuestionArrayIndex(index))
   }

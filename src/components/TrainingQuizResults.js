@@ -19,7 +19,7 @@ function TrainingQuizResults({
   return (
     <React.Fragment>
       <h1>Тренировка завершена</h1>
-      <h2>Поздравляем, вы успешно закрепили 10 вопросов </h2>
+      <h2>Поздравляем, вы успешно закрепили {trainingCard.questions.length - 1} вопросов </h2>
       <button className="training__start-btn" onClick={endTrainingClickHandler}>
         Закончить
       </button>
