@@ -32,7 +32,6 @@ function Training({
           />
         } else if (trainingCard.UIState === 'settings') {
           return <TrainingSettings
-            trainingCard={trainingCard}
             changeTrainingCardUIState={changeTrainingCardUIState}
             addCallback={addTrainingCardQuestionType}
             removeCallback={removeTrainingCardQuestionType}

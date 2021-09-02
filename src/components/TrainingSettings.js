@@ -4,7 +4,6 @@ import Checkbox from "./Checkbox.js"
 import {trainingCardQuestionTypes} from "../utils/const.js"
 
 function TrainingSettings({
-  trainingCard,
   changeTrainingCardUIState,
   addCallback,
   removeCallback
