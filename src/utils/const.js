@@ -54,6 +54,10 @@ export const colors = {
   darkGray6: 'rgba(28, 28, 30)',
 }
 
+export const trainingCardQuestionTypes = [
+  'HTML', 'CSS', 'JS', 'React'
+]
+
 export const sectionTabs = [
   {
     name: 'HTML',
