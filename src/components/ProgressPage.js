@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/index.scss';
+import {connect} from 'react-redux'
 import Header from "./Header.js";
 import HeaderLink from "./HeaderLink.js";
 import HeaderLinks from "./HeaderLinks.js"
@@ -11,7 +12,7 @@ import {sectionTabs, questions} from "../utils/const.js";
 
 import Progress from "./Progress.js";
 
-function ProgressPage() {
+function ProgressPage({questions}) {
   return (
     <React.Fragment>
       <Header>
@@ -32,25 +33,33 @@ function ProgressPage() {
               objectToRender={sectionTabs[0]}
               width={'48%'}
             >
-              <Progress />
+              <Progress
+                questions={questions}
+              />
             </SectionItem>
             <SectionItem
               objectToRender={sectionTabs[1]}
               width={'48%'}
             >
-              <Progress />
+              <Progress
+                questions={questions}
+              />
             </SectionItem>
             <SectionItem
               objectToRender={sectionTabs[2]}
               width={'48%'}
             >
-              <Progress />
+              <Progress
+                questions={questions}
+              />
             </SectionItem>
             <SectionItem
               objectToRender={sectionTabs[3]}
               width={'48%'}
             >
-              <Progress />
+              <Progress
+                questions={questions}
+              />
             </SectionItem>
           </SectionList>
         </SectionListContainer>
@@ -59,4 +68,10 @@ function ProgressPage() {
   )
 }
 
-export default ProgressPage;
+const mapStateToProps = (state) => {
+  return {
+    questions: state.DATA.questions
+  }
+}
+
+export default connect(mapStateToProps)(ProgressPage);

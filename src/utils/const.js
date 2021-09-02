@@ -1172,7 +1172,7 @@ Sticky - Элемент также как и fixed пропадает из по�
   },
   {
     type: 'CSS',
-    questionTitle: ``,
+    questionTitle: `3`,
     questionCode: null,
     questionAnswer: `
 `,
@@ -1206,7 +1206,7 @@ Sticky - Элемент также как и fixed пропадает из по�
   },
   {
     type: 'HTML',
-    questionTitle: ``,
+    questionTitle: `2`,
     questionCode: null,
     questionAnswer: `
 `,
@@ -1240,7 +1240,7 @@ Sticky - Элемент также как и fixed пропадает из по�
   },
   {
     type: 'HTML',
-    questionTitle: ``,
+    questionTitle: `1`,
     questionCode: null,
     questionAnswer: `
 `,
