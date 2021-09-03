@@ -18,6 +18,8 @@
   width: 20px;
   height: 20px;
   background-color: red;
+  border-radius: 50%;
+  border: 0;
 }
 
 .training__start-btn {
@@ -30,4 +32,21 @@
   font-family: "SF-Pro-Display-Medium";
   font-size: 24px;
   cursor: pointer;
+}
+
+.training__question-amount-btn {
+  width: 40px;
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+
+  &--active {
+    background-color: $lightBlue;
+    border: 2px solid $lightBlue;
+  }
+
+  &:not(:nth-of-type(1)) {
+    margin-left: 25px;
+  }
 }

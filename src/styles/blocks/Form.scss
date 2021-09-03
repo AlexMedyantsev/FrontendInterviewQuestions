@@ -3,30 +3,43 @@
   justify-content: center;
   box-sizing: border-box;
   flex-wrap: wrap;
-  border: 3px solid green;
 }
 
 .form__label {
-  // width: 80%;
+  width: 100%;
+}
+
+.form__legend {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .form__container {
-  margin-bottom: 20px;
+  width: 100%;
 }
 
 .form__section {
-  border: 1px solid salmon;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+  min-height: 60px;
+  margin-bottom: 25px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #f1f1f1;
 
   &--checkboxes {
   }
 }
 
 .form__container {
-  width: 50%;
+  width: 100%;
 }
 
-.form__legend {
-  width: 50%;
+#scales {
+  &:not(:nth-of-type(1)) {
+    margin-left: 25px;
+  }
 }

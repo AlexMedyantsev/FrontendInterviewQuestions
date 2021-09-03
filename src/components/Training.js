@@ -11,6 +11,7 @@ import TrainingQuizResults from "./TrainingQuizResults"
 function Training({
   trainingCard,
   changeTrainingCardUIState,
+  changeTrainingCardQuestonAmount,
   arrayOfQuestionsForTraining,
   setArrayOfQuestionsForTraining,
   emptyArrayOfQuestionsForTraining,
@@ -32,10 +33,12 @@ function Training({
           />
         } else if (trainingCard.UIState === 'settings') {
           return <TrainingSettings
+            trainingCard={trainingCard}
             changeTrainingCardUIState={changeTrainingCardUIState}
             addCallback={addTrainingCardQuestionType}
             removeCallback={removeTrainingCardQuestionType}
-            />
+            changeTrainingCardQuestonAmount={changeTrainingCardQuestonAmount}
+          />
         } else if (trainingCard.UIState === 'quiz') {
           return <TrainingQuiz
             trainingCard={trainingCard}
@@ -71,7 +74,7 @@ const mapDispatchToProps = (dispatch) => (
     setArrayOfQuestionsForTraining: (questions) => dispatch(ActionCreatorTraining.setArrayOfQuestionsForTraining(questions)),
     emptyArrayOfQuestionsForTraining: (index) => dispatch(ActionCreatorTraining.emptyArrayOfQuestionsForTraining(index)),
     setActiveQuestionArrayIndex: (index) => dispatch(ActionCreatorTraining.setActiveQuestionArrayIndex(index)),
-
+    changeTrainingCardQuestonAmount: (index) => dispatch(ActionCreatorTraining.changeTrainingCardQuestonAmount(index)),
   }
 )
 

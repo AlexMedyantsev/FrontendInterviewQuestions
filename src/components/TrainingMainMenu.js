@@ -1,5 +1,6 @@
 import '../styles/header.scss';
 import React, {useEffect} from 'react'
+import Button from './Button';
 
 function TrainingMainMenu({
   trainingCard,
@@ -59,9 +60,10 @@ function TrainingMainMenu({
         </button>
         <h1>Главное меню</h1>
       </div>
-      <button className="training__start-btn" onClick={startClickHandler}>
-        Начать Тренировку
-      </button>
+      <Button
+      callback={startClickHandler}
+        text={'Начать тренировку'}
+      />
     </React.Fragment >
   );
 }
