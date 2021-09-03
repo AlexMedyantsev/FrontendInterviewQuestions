@@ -97,6 +97,14 @@ export const trainingSection = {
   insideTitleColor: colors.lightPink,
 }
 
+export const aboutProject = {
+  name: 'О проекте',
+  outsideTitleText: 'О проекте',
+  outsideTitleColor: colors.lightTeal,
+  insideTitleText: 'Lorem Ipsum Dolor',
+  insideTitleColor: colors.lightTeal,
+}
+
 export const questions = [
   {
     type: 'JS',

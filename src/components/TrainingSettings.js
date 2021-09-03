@@ -1,8 +1,7 @@
 import '../styles/header.scss';
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import Checkbox from "./Checkbox.js"
 import {trainingCardQuestionTypes} from "../utils/const.js"
-import Button from './Button';
 
 function TrainingSettings({
   trainingCard,
@@ -11,12 +10,14 @@ function TrainingSettings({
   addCallback,
   removeCallback
 }) {
+
   const closeSettingsClickHandler = () => {
     changeTrainingCardUIState('mainMenu')
   }
 
-  const questionAmountButtonClickhandler = (e) => {
-    changeTrainingCardQuestonAmount(e.target.value)
+  const questionAmountButtonClickhandler = (number) => (e) => {
+    e.preventDefault();
+    changeTrainingCardQuestonAmount(number)
   }
 
   return (
@@ -28,6 +29,7 @@ function TrainingSettings({
             {trainingCardQuestionTypes.map((type) => {
               return <Checkbox
                 value={type}
+                array={trainingCard.settings.questionTypes}
                 addCallback={addCallback}
                 removeCallback={removeCallback}
               />
@@ -42,6 +44,7 @@ function TrainingSettings({
                 "training__question-amount-btn training__question-amount-btn--active" :
                 "training__question-amount-btn"
               }
+              onClick={(e) => questionAmountButtonClickhandler(5)(e)}
             >
               5
             </button>
@@ -50,6 +53,7 @@ function TrainingSettings({
                 "training__question-amount-btn training__question-amount-btn--active" :
                 "training__question-amount-btn"
               }
+              onClick={(e) => questionAmountButtonClickhandler(10)(e)}
             >
               10
             </button>
@@ -58,16 +62,13 @@ function TrainingSettings({
                 "training__question-amount-btn training__question-amount-btn--active" :
                 "training__question-amount-btn"
               }
+              onClick={(e) => questionAmountButtonClickhandler(15)(e)}
             >
               15
             </button>
           </div>
         </section>
       </form>
-      <Button
-        callback={closeSettingsClickHandler}
-        text={'Сохранить настройки'}
-      />
     </React.Fragment>
   );
 }

@@ -9,24 +9,12 @@
   justify-content: space-between;
 }
 
-.training__settings-btn {
-  position: absolute;
-  content: '';
-  top: 0px;
-  right: 0px;
-  display: block;
-  width: 20px;
-  height: 20px;
-  background-color: red;
-  border-radius: 50%;
-  border: 0;
-}
-
 .training__start-btn {
   min-height: 25px;
   padding: 15px;
   background-color: $lightPink;
   border-radius: 10px;
+  border: 0;
   line-height: 20px;
   color: white;
   font-family: "SF-Pro-Display-Medium";
@@ -39,11 +27,13 @@
   display: inline-block;
   padding: 10px;
   cursor: pointer;
+  border: 1px solid gray;
   border-radius: 5px;
 
   &--active {
-    background-color: $lightBlue;
-    border: 2px solid $lightBlue;
+    background-color: rgb(20, 121, 251);
+    border: 2px solid rgb(20, 121, 251);
+    color: white;
   }
 
   &:not(:nth-of-type(1)) {

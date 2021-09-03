@@ -13,6 +13,7 @@
   width: 100%;
   display: block;
   margin-bottom: 10px;
+  line-height: 20px;
 }
 
 .form__container {
@@ -38,7 +39,7 @@
   width: 100%;
 }
 
-#scales {
+.checkbox {
   &:not(:nth-of-type(1)) {
     margin-left: 25px;
   }

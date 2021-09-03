@@ -1,11 +1,15 @@
 import '../styles/header.scss';
 import React, {useEffect} from 'react'
 import Button from './Button';
+import TrainingSettings from "./TrainingSettings.js"
 
 function TrainingMainMenu({
   trainingCard,
   changeTrainingCardUIState,
+  changeTrainingCardQuestonAmount,
   setArrayOfQuestionsForTraining,
+  addTrainingCardQuestionType,
+  removeTrainingCardQuestionType,
   questions
 }) {
 
@@ -36,10 +40,6 @@ function TrainingMainMenu({
     return splicedFinalArray
   }
 
-  let settingsClickHandler = () => {
-    changeTrainingCardUIState('settings')
-  }
-
   let startClickHandler = () => {
     let arrayOfQuestions = generateArrayOfQuestionForTraining(questions)
     setArrayOfQuestionsForTraining(arrayOfQuestions)
@@ -53,15 +53,18 @@ function TrainingMainMenu({
 
   return (
     <React.Fragment>
-      <div>
-        <button
-          className="training__settings-btn"
-          onClick={settingsClickHandler}>
-        </button>
+      {/* <div>
         <h1>Главное меню</h1>
-      </div>
+      </div> */}
+      <TrainingSettings
+        trainingCard={trainingCard}
+        changeTrainingCardUIState={changeTrainingCardUIState}
+        addCallback={addTrainingCardQuestionType}
+        removeCallback={removeTrainingCardQuestionType}
+        changeTrainingCardQuestonAmount={changeTrainingCardQuestonAmount}
+      />
       <Button
-      callback={startClickHandler}
+        callback={startClickHandler}
         text={'Начать тренировку'}
       />
     </React.Fragment >

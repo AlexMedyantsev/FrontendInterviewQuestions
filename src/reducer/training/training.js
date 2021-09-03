@@ -4,7 +4,7 @@ import produce from 'immer';
 const trainingCard = {
   UIState: 'mainMenu',
   settings: {
-    questionTypes: [],
+    questionTypes: ['HTML', 'CSS', 'JS', 'React'],
     questionAmount: 15,
   },
   questions: [],
@@ -32,6 +32,10 @@ export const ActionCreator = {
   changeTrainingCardUIState: (cardUIState) => ({
     type: ActionType.CHANGE_TRAINING_CARD_UI_STATE,
     payload: cardUIState,
+  }),
+  changeTrainingCardQuestonAmount: (amount) => ({
+    type: ActionType.CHANGE_TRAINING_CARD_SETTINGS_QUESTION_AMOUNT,
+    payload: amount,
   }),
   addTrainingCardQuestionType: (language) => ({
     type: ActionType.ADD_TRAINING_CARD_SETTINGS_QUESTION_TYPE,
@@ -67,6 +71,11 @@ export const reducer = (state = initialState, action) => {
         draft.trainingCard.settings.questionTypes = action.payload;
       });
 
+    case ActionType.CHANGE_TRAINING_CARD_SETTINGS_QUESTION_AMOUNT:
+      return produce(state, draft => {
+        draft.trainingCard.settings.questionAmount = action.payload;
+      });
+
     case ActionType.ADD_TRAINING_CARD_SETTINGS_QUESTION_TYPE:
       return produce(state, draft => {
         draft.trainingCard.settings.questionTypes = [...draft.trainingCard.settings.questionTypes, action.payload];
@@ -75,11 +84,6 @@ export const reducer = (state = initialState, action) => {
     case ActionType.REMOVE_TRAINING_CARD_SETTINGS_QUESTION_TYPE:
       return produce(state, draft => {
         draft.trainingCard.settings.questionTypes = draft.trainingCard.settings.questionTypes.filter(el => el !== action.payload);
-      });
-
-    case ActionType.CHANGE_TRAINING_CARD_SETTINGS_QUESTION_AMOUNT:
-      return produce(state, draft => {
-        draft.trainingCard.settings.questionAmount = action.payload;
       });
 
     case ActionType.SET_ARRAY_OF_QUESTIONS_FOR_TRAINING:

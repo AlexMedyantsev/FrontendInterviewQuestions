@@ -2,10 +2,13 @@ import React, {useEffect, useState} from 'react';
 
 function Checkbox({
   value,
+  array,
   addCallback,
   removeCallback,
 }) {
-  const [isChecked, changeIsChecked] = useState(true)
+  const [isChecked, changeIsChecked] = useState(
+    array.includes(value) ? true : false
+  )
 
   useEffect(() => {
     if (isChecked) {
@@ -23,7 +26,8 @@ function Checkbox({
     <React.Fragment>
       <input
         type="checkbox"
-        id="scales"
+        className="checkbox"
+        id={value}
         name={value}
         value={value}
         checked={isChecked}

@@ -29,16 +29,11 @@ function Training({
             changeTrainingCardUIState={changeTrainingCardUIState}
             arrayOfQuestionsForTraining={arrayOfQuestionsForTraining}
             setArrayOfQuestionsForTraining={setArrayOfQuestionsForTraining}
-            questions={questions}
-          />
-        } else if (trainingCard.UIState === 'settings') {
-          return <TrainingSettings
-            trainingCard={trainingCard}
-            changeTrainingCardUIState={changeTrainingCardUIState}
-            addCallback={addTrainingCardQuestionType}
-            removeCallback={removeTrainingCardQuestionType}
+            addTrainingCardQuestionType={addTrainingCardQuestionType}
+            removeTrainingCardQuestionType={removeTrainingCardQuestionType}
             changeTrainingCardQuestonAmount={changeTrainingCardQuestonAmount}
-          />
+            questions = {questions}
+            />
         } else if (trainingCard.UIState === 'quiz') {
           return <TrainingQuiz
             trainingCard={trainingCard}

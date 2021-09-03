@@ -2,7 +2,7 @@ import '../styles/index.scss';
 import React from 'react';
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
-import {trainingSection, questions} from "../utils/const.js";
+import {trainingSection, aboutProject} from "../utils/const.js";
 import Header from "./Header.js";
 import HeaderLink from "./HeaderLink.js";
 import HeaderLinks from "./HeaderLinks.js"
@@ -40,13 +40,18 @@ function HomePage(
           <SectionList>
             <SectionItem
               objectToRender={trainingSection}
-              width={'80%'}
+              width={'48%'}
             >
               <Training
                 trainingCard={trainingCard}
                 changeTrainingCardUIState={changeTrainingCardUIState}
                 arrayOfQuestionsForTraining={arrayOfQuestionsForTraining}
               />
+            </SectionItem>
+            <SectionItem
+              objectToRender={aboutProject}
+              width={'48%'}
+            > 
             </SectionItem>
           </SectionList>
         </SectionListContainer>
