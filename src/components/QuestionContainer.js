@@ -86,7 +86,6 @@ function QuestionContainer({
           <Question
             composition={question.questionComposition}
             className={'question__title'}
-            string={null}
           />
         </div>
       }
@@ -94,10 +93,10 @@ function QuestionContainer({
       {/* Ответ */}
       {cardState.isAnswerShown &&
         <div className="question__container question__container--answer">
+          Ответ:
           <Question
             composition={question.answerComposition}
             className={'question__text'}
-            string={'Ответ: '}
           />
         </div>
       }
