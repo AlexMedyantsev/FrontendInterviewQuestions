@@ -2,7 +2,7 @@ import React from 'react'
 import QuestionContainer from './QuestionContainer'
 import PropTypes from 'prop-types';
 
-function QuestionList({questions, color, width, hasAnswerButtons, hasCardStateButtons}) {
+function QuestionList({questions, color, width, hasAnswerButtons, hasShowAnswerButton, hasCardStateButtons}) {
   return (
     <ul className="question__list">
       {questions.map((question) => {
@@ -12,6 +12,7 @@ function QuestionList({questions, color, width, hasAnswerButtons, hasCardStateBu
           color={color}
           width={width}
           hasAnswerButtons={hasAnswerButtons}
+          hasShowAnswerButton={hasShowAnswerButton}
           hasCardStateButtons={hasCardStateButtons}
         />
       })}

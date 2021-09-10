@@ -12,7 +12,6 @@ import SectionListContainer from "./SectionListContainer.js";
 import SectionList from "./SectionList.js";
 import SectionItem from "./SectionItem.js";
 import Training from "./Training.js";
-import QuestionList from "./QuestionList.js";
 
 function HomePage(
   {
@@ -40,7 +39,7 @@ function HomePage(
           <SectionList>
             <SectionItem
               objectToRender={trainingSection}
-              width={'48%'}
+              width={'70%'}
             >
               <Training
                 trainingCard={trainingCard}
@@ -50,7 +49,7 @@ function HomePage(
             </SectionItem>
             <SectionItem
               objectToRender={aboutProject}
-              width={'48%'}
+              width={'28%'}
             > 
             </SectionItem>
           </SectionList>

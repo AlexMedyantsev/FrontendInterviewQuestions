@@ -60,6 +60,7 @@ function QuestionsPage({questions, activeQuestionSection, changeActiveQuestionSe
                 questions={questions.filter(question => question.type === activeQuestionSection.name)}
                 width={'48%'}
                 hasAnswerButtons={false}
+                hasShowAnswerButton={false}
                 hasCardStateButtons={true}
               />
             </SectionItem>

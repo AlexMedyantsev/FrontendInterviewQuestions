@@ -53,9 +53,6 @@ function TrainingMainMenu({
 
   return (
     <React.Fragment>
-      {/* <div>
-        <h1>Главное меню</h1>
-      </div> */}
       <TrainingSettings
         trainingCard={trainingCard}
         changeTrainingCardUIState={changeTrainingCardUIState}
