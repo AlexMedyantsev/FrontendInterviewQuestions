@@ -1,5 +1,6 @@
 import '../styles/header.scss';
 import React from 'react'
+import Button from './Button.js'
 
 function TrainingQuizResults({
   trainingCard,
@@ -19,10 +20,11 @@ function TrainingQuizResults({
   return (
     <React.Fragment>
       <h1>Тренировка завершена</h1>
-      <h2>Поздравляем, вы успешно закрепили {trainingCard.questions.length - 1} вопросов </h2>
-      <button className="training__start-btn" onClick={endTrainingClickHandler}>
-        Закончить
-      </button>
+      <h2>Поздравляем, вы успешно изучили  вопросов ({trainingCard.questions.length}) </h2>
+      <Button
+        callback={endTrainingClickHandler}
+        text={'Завершить тренировку'}
+      />
     </React.Fragment>
   );
 }

@@ -29,6 +29,7 @@ function TrainingQuiz({
         color={'red'}
         width={'100%'}
         hasAnswerButtons={true}
+        hasShowAnswerButton={true}
         hasCardStateButtons={false}
       />
     </React.Fragment>

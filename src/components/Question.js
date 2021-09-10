@@ -2,7 +2,7 @@ import CodeSnippet from './CodeSnippet.js';
 import PropTypes from 'prop-types'
 import React from 'react'
 
-function Question({composition, string, className}) {
+function Question({composition, className}) {
   return (
     <React.Fragment>
       {composition.map((item) => {
@@ -12,7 +12,6 @@ function Question({composition, string, className}) {
             key={item.text}
             className={className}
           >
-            {string}
             {item.text}
           </pre>;
         }

@@ -10,6 +10,8 @@ import styled from 'styled-components';
 
 const Div = styled(motion.div)`
 width: ${props => props.width};
+display: flex;
+flex-direction:column;
 @media (max-width: 768px) {
   min-width: 100%;
 }
@@ -22,6 +24,7 @@ function QuestionContainer({
   width,
   hasAnswerButtons,
   hasCardStateButtons,
+  hasShowAnswerButton,
   setActiveQuestionArrayIndex,
   changeQuestionScore,
   trainingCard
@@ -33,12 +36,9 @@ function QuestionContainer({
     {
       isAnswerShown: false,
       isOpen: false,
+      isHovered: false,
     }
   )
-
-  let rollOutCardHandler = () => {
-    changeCardState({...cardState, isOpen: !cardState.isOpen})
-  }
 
   let rollOutAnswerHandler = () => {
     changeCardState({...cardState, isAnswerShown: !cardState.isAnswerShown})
@@ -51,12 +51,26 @@ function QuestionContainer({
   let rightAnswerClickHandler = () => {
     changeQuestionScore({question: question, valueToAdd: 1})
     activateTrigger(trigger + 1)
+    changeCardState({...cardState, isAnswerShown: !cardState.isAnswerShown})
+    window.scrollTo(0, 0)
   }
+
 
   let wrongAnswerClickHandler = () => {
     changeQuestionScore({question: question, valueToAdd: -1})
     activateTrigger(trigger + 1)
+    changeCardState({...cardState, isAnswerShown: !cardState.isAnswerShown})
+    window.scrollTo(0, 0)
   }
+
+  let cardHoverOverHandler = () => {
+    changeCardState({...cardState, isHovered: true})
+  }
+
+  let cardHoverOutHandler = () => {
+    changeCardState({...cardState, isHovered: false})
+  }
+
 
   useEffect(() => {
     console.log(trigger)
@@ -64,8 +78,6 @@ function QuestionContainer({
       let newIndex = trainingCard.activeQuestionIndex + 1;
       setActiveQuestionArrayIndex(newIndex)
     }
-    // let newIndex = trainingCard.activeQuestionIndex + 1;
-    // setActiveQuestionArrayIndex(newIndex)
   }, [trigger])
 
   useEffect(() => {
@@ -77,16 +89,20 @@ function QuestionContainer({
       width={width}
       // animate={cardState.isOpen ? {width: '47%'} : {width: '30%'}}
       className={cardState.isOpen ? "question" : "question question--rolled"}
+      onClick={!cardState.isAnswerShown && rollOutAnswerHandler}
+      onMouseOver={cardHoverOverHandler}
+      onMouseOut={cardHoverOutHandler}
       style={{backgroundColor: color}}
     >
 
       {/* Вопрос */}
       {
-        <div className="question__container question__container--question">
+        <div
+          className="question__container question__container--question"
+        >
           <Question
             composition={question.questionComposition}
             className={'question__title'}
-            string={null}
           />
         </div>
       }
@@ -94,10 +110,10 @@ function QuestionContainer({
       {/* Ответ */}
       {cardState.isAnswerShown &&
         <div className="question__container question__container--answer">
+          Ответ:
           <Question
             composition={question.answerComposition}
             className={'question__text'}
-            string={'Ответ: '}
           />
         </div>
       }
@@ -105,11 +121,11 @@ function QuestionContainer({
       <div className="card__buttons-container">
 
         {/* Кнопка разворачивающая/сворачивающая ответ */}
-        {!cardState.isAnswerShown &&
+        {!cardState.isAnswerShown && hasShowAnswerButton &&
           <motion.button
             whileTap={{scale: 0.95}}
             whileHover={{scale: 1.05, backgroundColor: 'rgba(255,255,255,0.85)', transition: {duration: 0.2}}}
-            onClick={() => rollOutAnswerHandler()}
+            onClick={rollOutAnswerHandler}
             className={cardState.isAnswerShown ? 'card-button card-button--close' : 'card-button card-button--open'}
           >
             {cardState.isAnswerShown ? 'Скрыть ответ' : 'Показать ответ'}
@@ -156,6 +172,11 @@ function QuestionContainer({
         }
       </div>
 
+      <div
+        className="question__rollout"
+      >{!cardState.isAnswerShown && cardState.isHovered && !hasShowAnswerButton &&
+        <div className="question__rollout-icon"></div>}
+      </div>
     </Div>
   )
 }
