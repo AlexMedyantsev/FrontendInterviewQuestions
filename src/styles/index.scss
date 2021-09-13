@@ -4,6 +4,7 @@
 
 @import './header.scss';
 @import './blocks/Form.scss';
+@import './blocks/About.scss';
 @import './blocks/Main.scss';
 @import './blocks/Section.scss';
 @import './blocks/SmallSection.scss';
@@ -41,6 +42,10 @@ code {
     monospace;
 }
 
+.code pre {
+  border-radius: 15px;
+}
+
 html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -63,4 +68,12 @@ a {
   font-family: 'SF-Pro-Display-Medium';
 }
 
-pre { white-space: pre-wrap }
+pre {
+  white-space: pre-wrap
+}
+
+html,
+body {
+  position: relative;
+  overflow-x: hidden;
+}

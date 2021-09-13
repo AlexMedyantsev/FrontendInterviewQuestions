@@ -90,8 +90,8 @@ export const sectionTabs = [
 ]
 
 export const trainingSection = {
-  name: 'Начать Тренировку',
-  outsideTitleText: 'Начать Тренировку',
+  name: 'Тренировка',
+  outsideTitleText: 'Тренировка',
   outsideTitleColor: colors.lightPink,
   insideTitleText: 'Lorem Ipsum Dolor',
   insideTitleColor: colors.lightPink,

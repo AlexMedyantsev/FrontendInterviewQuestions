@@ -42,11 +42,11 @@
 @media (max-width: 768px) {
   .small__section-container {
     width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
   }
 
   .section__small-list {
-    overflow-x: scroll;
+    overflow-x: auto;
     justify-content: flex-start;
   }
 

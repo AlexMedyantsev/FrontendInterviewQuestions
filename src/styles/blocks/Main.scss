@@ -15,7 +15,10 @@
   margin-top: 20px;
   margin-bottom: 30px;
   border-radius: 10px;
-  overflow: hidden;
+  // overflow: hidden;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
 }
 
 @media (max-width: 768px) {
@@ -26,6 +29,4 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
-  
-}
+@media (min-width: 768px) and (max-width: 1024px) {}

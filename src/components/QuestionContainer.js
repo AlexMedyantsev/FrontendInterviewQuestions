@@ -15,6 +15,9 @@ flex-direction:column;
 @media (max-width: 768px) {
   min-width: 100%;
 }
+@media (min-width: 768px) and (max-width: 1124px) {
+  min-width: 100%;
+}
 `;
 
 function QuestionContainer({
