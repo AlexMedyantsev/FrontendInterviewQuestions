@@ -1,5 +1,6 @@
 import '../styles/header.scss';
 import React, {useEffect} from 'react'
+import PropTypes from 'prop-types';
 import Button from './Button';
 import TrainingSettings from "./TrainingSettings.js"
 
@@ -13,19 +14,18 @@ function TrainingMainMenu({
   questions
 }) {
 
-  let generateArrayOfQuestionForTraining = (questions) => {
-    let finalArray = [];
-    let maxQuestionAmount = trainingCard.settings.questionAmount
+  const generateArrayOfQuestionForTraining = (questions) => {
+    const finalArray = [];
+    const maxQuestionAmount = trainingCard.settings.questionAmount
 
     // Фильтруем вопросы по типу языков программирования, которые указаны в настройках
-    let sortedByLanguageQuestions = questions.filter(q =>
+    const sortedByLanguageQuestions = questions.filter(q =>
       trainingCard.settings.questionTypes.includes(q.type))
 
     // Получаем вопросы основываясь на score
-    sortedByLanguageQuestions.map(q => console.log(q.score))
-    let questionsWithNegativeScore = sortedByLanguageQuestions.filter(q => q.score < 0)
-    let questionsWithNeutralScore = sortedByLanguageQuestions.filter(q => q.score === 0)
-    let questionsWithPositiveScore = sortedByLanguageQuestions.filter(q => q.score > 0)
+    const questionsWithNegativeScore = sortedByLanguageQuestions.filter(q => q.score < 0)
+    const questionsWithNeutralScore = sortedByLanguageQuestions.filter(q => q.score === 0)
+    const questionsWithPositiveScore = sortedByLanguageQuestions.filter(q => q.score > 0)
 
     // Если есть вопросы по какой-то из категорий score пушим их в finalArray
     questionsWithNegativeScore.length > 0 ? finalArray.push(...questionsWithNegativeScore) : ''
@@ -35,13 +35,13 @@ function TrainingMainMenu({
     // В конце дулаем splice и получаем ровно столько вопросов сколько указано в настройках
     // Из-за порядка в котором вопросы добавляются в массив - приоритет следующий:
     // Сначала идут вопросы с негативным скором, затем с нулевым, а после с положительным
-    let splicedFinalArray = finalArray.splice(0, maxQuestionAmount)
+    const splicedFinalArray = finalArray.splice(0, maxQuestionAmount)
 
     return splicedFinalArray
   }
 
-  let startClickHandler = () => {
-    let arrayOfQuestions = generateArrayOfQuestionForTraining(questions)
+  const startClickHandler = () => {
+    const arrayOfQuestions = generateArrayOfQuestionForTraining(questions)
     setArrayOfQuestionsForTraining(arrayOfQuestions)
   }
 
@@ -66,6 +66,24 @@ function TrainingMainMenu({
       />
     </React.Fragment >
   );
+}
+
+TrainingMainMenu.propTypes = {
+  trainingCard: PropTypes.shape({
+    UIState: PropTypes.string.isRequired,
+    settings: PropTypes.shape({
+      questionTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
+      questionAmount: PropTypes.number.isRequired,
+    }),
+    questions: PropTypes.array.isRequired,
+    activeQuestionIndex: PropTypes.number.isRequired
+  }),
+  changeTrainingCardUIState: PropTypes.func.isRequired,
+  changeTrainingCardQuestonAmount: PropTypes.func.isRequired,
+  setArrayOfQuestionsForTraining: PropTypes.func.isRequired,
+  addTrainingCardQuestionType: PropTypes.func.isRequired,
+  removeTrainingCardQuestionType: PropTypes.func.isRequired,
+  questions: PropTypes.arrayOf(PropTypes.object),
 }
 
 export default TrainingMainMenu

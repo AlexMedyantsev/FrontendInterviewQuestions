@@ -12,7 +12,7 @@ function SmallTabListContainer({children, triggerProp}) {
 
 SmallTabListContainer.propTypes = {
   children: PropTypes.node.isRequired,
-  triggerProp: PropTypes.string.isRequired
+  triggerProp: PropTypes.object.isRequired
 }
 
 export default SmallTabListContainer;

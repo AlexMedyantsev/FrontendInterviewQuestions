@@ -28,6 +28,7 @@ function QuestionContainer({
   hasAnswerButtons,
   hasCardStateButtons,
   hasShowAnswerButton,
+  hasQuestionCount,
   setActiveQuestionArrayIndex,
   changeQuestionScore,
   trainingCard
@@ -43,15 +44,15 @@ function QuestionContainer({
     }
   )
 
-  let rollOutAnswerHandler = () => {
+  const rollOutAnswerHandler = () => {
     changeCardState({...cardState, isAnswerShown: !cardState.isAnswerShown})
   }
 
-  let closeAllHandler = () => {
+  const closeAllHandler = () => {
     changeCardState({isOpen: false, isAnswerShown: false})
   }
 
-  let rightAnswerClickHandler = () => {
+  const rightAnswerClickHandler = () => {
     changeQuestionScore({question: question, valueToAdd: 1})
     activateTrigger(trigger + 1)
     changeCardState({...cardState, isAnswerShown: !cardState.isAnswerShown})
@@ -59,26 +60,25 @@ function QuestionContainer({
   }
 
 
-  let wrongAnswerClickHandler = () => {
+  const wrongAnswerClickHandler = () => {
     changeQuestionScore({question: question, valueToAdd: -1})
     activateTrigger(trigger + 1)
     changeCardState({...cardState, isAnswerShown: !cardState.isAnswerShown})
     window.scrollTo(0, 0)
   }
 
-  let cardHoverOverHandler = () => {
+  const cardHoverOverHandler = () => {
     changeCardState({...cardState, isHovered: true})
   }
 
-  let cardHoverOutHandler = () => {
+  const cardHoverOutHandler = () => {
     changeCardState({...cardState, isHovered: false})
   }
 
 
   useEffect(() => {
-    console.log(trigger)
     if (!isFirstRender) {
-      let newIndex = trainingCard.activeQuestionIndex + 1;
+      const newIndex = trainingCard.activeQuestionIndex + 1;
       setActiveQuestionArrayIndex(newIndex)
     }
   }, [trigger])
@@ -92,7 +92,7 @@ function QuestionContainer({
       width={width}
       // animate={cardState.isOpen ? {width: '47%'} : {width: '30%'}}
       className={cardState.isOpen ? "question" : "question question--rolled"}
-      onClick={!cardState.isAnswerShown && rollOutAnswerHandler}
+      onClick={!cardState.isAnswerShown ? rollOutAnswerHandler : undefined}
       onMouseOver={cardHoverOverHandler}
       onMouseOut={cardHoverOutHandler}
       style={{backgroundColor: color}}
@@ -129,7 +129,7 @@ function QuestionContainer({
             whileTap={{scale: 0.95}}
             whileHover={{scale: 1.05, backgroundColor: 'rgba(255,255,255,0.85)', transition: {duration: 0.2}}}
             onClick={rollOutAnswerHandler}
-            className={cardState.isAnswerShown ? 'card-button card-button--close' : 'card-button card-button--open'}
+            className={'card-button card-button--close'}
           >
             {cardState.isAnswerShown ? 'Скрыть ответ' : 'Показать ответ'}
           </motion.button>
@@ -142,7 +142,7 @@ function QuestionContainer({
             whileTap={{scale: 0.95}}
             whileHover={{scale: 1.05, backgroundColor: 'rgba(255,255,255,0.85)', transition: {duration: 0.2}}}
             onClick={() => closeAllHandler()}
-            className={cardState.isOpen ? 'card-button card-button--close' : 'card-button card-button--open'}
+            className={'card-button card-button--close'}
           >
             Свернуть карточку
           </motion.button>
@@ -153,7 +153,7 @@ function QuestionContainer({
           cardState.isAnswerShown && hasAnswerButtons &&
           <motion.button
             whileTap={{scale: 0.95}}
-            whileHover={{scale: 1.05, backgroundColor: 'rgba(255,255,255,0.85)', transition: {duration: 0.2}}}
+            whileHover={{scale: 1.05, backgroundColor: 'rgba(255, 69, 48, 0.95)', transition: {duration: 0.2}}}
             onClick={() => rightAnswerClickHandler()}
             className={cardState.isOpen ? 'card-button card-button--right card-button--close' : 'card-button card-button--right card-button--open'}
           >
@@ -173,6 +173,11 @@ function QuestionContainer({
             Нужно повторить
           </motion.button>
         }
+
+        {
+          hasQuestionCount && 
+            <span className="question__count">{trainingCard.activeQuestionIndex + 1}/{trainingCard.questions.length}</span>
+        }
       </div>
 
       <div
@@ -185,13 +190,29 @@ function QuestionContainer({
 }
 
 QuestionContainer.propTypes = {
+  trainingCard: PropTypes.shape({
+    UIState: PropTypes.string.isRequired,
+    settings: PropTypes.shape({
+      questionTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
+      questionAmount: PropTypes.number.isRequired,
+    }),
+    questions: PropTypes.array.isRequired,
+    activeQuestionIndex: PropTypes.number.isRequired
+  }),
   question: PropTypes.shape({
     questionTitle: PropTypes.string.isRequired,
     questionComposition: PropTypes.array.isRequired,
     answerComposition: PropTypes.array.isRequired,
-
   }),
-  color: PropTypes.string.isRequired
+  questions: PropTypes.array.isRequired,
+  color: PropTypes.string.isRequired,
+  width: PropTypes.string.isRequired,
+  hasAnswerButtons: PropTypes.bool.isRequired,
+  hasCardStateButtons: PropTypes.bool.isRequired,
+  hasShowAnswerButton: PropTypes.bool.isRequired,
+  hasQuestionCount: PropTypes.bool.isRequired,
+  setActiveQuestionArrayIndex: PropTypes.func.isRequired,
+  changeQuestionScore: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => {

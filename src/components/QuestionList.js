@@ -2,9 +2,10 @@ import React from 'react'
 import QuestionContainer from './QuestionContainer'
 import PropTypes from 'prop-types';
 
-function QuestionList({questions,
-  color,
+function QuestionList({
+  questions,
   width,
+  color,
   hasAnswerButtons,
   hasShowAnswerButton,
   hasCardStateButtons
@@ -15,8 +16,8 @@ function QuestionList({questions,
         return <QuestionContainer
           key={question.questionTitle}
           question={question}
-          color={color}
           width={width}
+          color={color}
           hasAnswerButtons={hasAnswerButtons}
           hasShowAnswerButton={hasShowAnswerButton}
           hasCardStateButtons={hasCardStateButtons}
@@ -28,7 +29,11 @@ function QuestionList({questions,
 
 QuestionList.propTypes = {
   questions: PropTypes.array.isRequired,
-  color: PropTypes.string.isRequired,
+  color: PropTypes.string,
+  width: PropTypes.string.isRequired,
+  hasAnswerButtons: PropTypes.bool.isRequired,
+  hasShowAnswerButton: PropTypes.bool.isRequired,
+  hasCardStateButtons: PropTypes.bool.isRequired,
 }
 
 export default QuestionList

@@ -1,6 +1,7 @@
 @import "../global/variables.scss";
 
 .question {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,11 +47,12 @@
   }
 
   &--right {
-    background-color: $lightGreen
+    background-color: $darkPink;
+    color: black;
   }
 
   &--wrong {
-    background-color: $lightTeal
+    background-color: white;
   }
 }
 
@@ -108,6 +110,12 @@
   background-image: url('../../images/arrow-down.svg');
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.question__count {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
 }
 
 @media (max-width: 768px) {

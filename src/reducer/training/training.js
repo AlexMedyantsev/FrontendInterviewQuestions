@@ -13,7 +13,6 @@ const trainingCard = {
 
 export const initialState = {
   trainingCard: trainingCard,
-  // questions: questions,
 };
 
 export const ActionType = {

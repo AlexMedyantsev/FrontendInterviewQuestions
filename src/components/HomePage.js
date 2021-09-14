@@ -18,8 +18,6 @@ function HomePage(
   {
     trainingCard,
     changeTrainingCardUIState,
-    arrayOfQuestionsForTraining,
-    questions
   }
 ) {
   return (
@@ -27,8 +25,8 @@ function HomePage(
       <Header>
         <HeaderLinks>
           <HeaderLink linkTo={'/'} active={true}>Главная</HeaderLink>
-          <HeaderLink linkTo={'/questions'}>Вопросы</HeaderLink>
-          <HeaderLink linkTo={'/progress'}>Прогресс</HeaderLink>
+          <HeaderLink linkTo={'/questions'} active={false}>Вопросы</HeaderLink>
+          <HeaderLink linkTo={'/progress'} active={false}>Прогресс</HeaderLink>
         </HeaderLinks>
         <div className="header__account">
           <div className="header__account-image"></div>
@@ -44,8 +42,6 @@ function HomePage(
             >
               <Training
                 trainingCard={trainingCard}
-                changeTrainingCardUIState={changeTrainingCardUIState}
-                arrayOfQuestionsForTraining={arrayOfQuestionsForTraining}
               />
             </SectionItem>
             <SectionItem
@@ -63,16 +59,20 @@ function HomePage(
 }
 
 HomePage.propTypes = {
-  changeActiveQuestionSection: PropTypes.func.isRequired,
-  activeQuestionSection: PropTypes.string.isRequired,
+  trainingCard: PropTypes.shape({
+    UIState: PropTypes.string.isRequired,
+    settings: PropTypes.shape({
+      questionTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
+      questionAmount: PropTypes.number.isRequired,
+    }),
+    questions: PropTypes.array.isRequired,
+    activeQuestionIndex: PropTypes.number.isRequired
+  }),
 }
 
 const mapStateToProps = (state) => {
   return {
-    activeQuestionSection: state.UI.activeQuestionSection,
     trainingCard: state.UI.trainingCard,
-    questions: state.UI.questions,
-    arrayOfQuestionsForTraining: state.UI.arrayOfQuestionsForTraining,
   }
 }
 

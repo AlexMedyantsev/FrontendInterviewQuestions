@@ -1,9 +1,8 @@
 import '../styles/header.scss';
 import {connect} from "react-redux"
-import {ActionCreator as ActionCreatorUI} from "../reducer/ui/ui.js";
+import PropTypes from 'prop-types';
 import {ActionCreator as ActionCreatorTraining} from "../reducer/training/training.js";
 import TrainingMainMenu from "./TrainingMainMenu"
-import TrainingSettings from "./TrainingSettings"
 import TrainingQuiz from "./TrainingQuiz"
 import TrainingQuizResults from "./TrainingQuizResults"
 
@@ -51,6 +50,28 @@ function Training({
       })()}
     </div>
   );
+}
+
+Training.propTypes = {
+  trainingCard: PropTypes.shape({
+    UIState: PropTypes.string.isRequired,
+    settings: PropTypes.shape({
+      questionTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
+      questionAmount: PropTypes.number.isRequired,
+    }),
+    questions: PropTypes.array.isRequired,
+    activeQuestionIndex: PropTypes.number.isRequired
+  }),
+  changeTrainingCardUIState: PropTypes.func.isRequired,
+  changeTrainingCardQuestonAmount: PropTypes.func.isRequired,
+  arrayOfQuestionsForTraining: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setArrayOfQuestionsForTraining: PropTypes.func.isRequired,
+  emptyArrayOfQuestionsForTraining: PropTypes.func.isRequired,
+  setActiveQuestionArrayIndex: PropTypes.func.isRequired,
+  addTrainingCardQuestionType: PropTypes.func.isRequired,
+  removeTrainingCardQuestionType: PropTypes.func.isRequired,
+  questions: PropTypes.arrayOf(PropTypes.object)
+
 }
 
 const mapStateToProps = (state) => {

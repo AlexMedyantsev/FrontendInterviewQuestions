@@ -1,5 +1,6 @@
 import '../styles/header.scss';
 import React from 'react'
+import PropTypes from 'prop-types';
 import Checkbox from "./Checkbox.js"
 import {trainingCardQuestionTypes} from "../utils/const.js"
 
@@ -28,6 +29,7 @@ function TrainingSettings({
           <div className="form__container">
             {trainingCardQuestionTypes.map((type) => {
               return <Checkbox
+                key={type}
                 value={type}
                 array={trainingCard.settings.questionTypes}
                 addCallback={addCallback}
@@ -71,6 +73,22 @@ function TrainingSettings({
       </form>
     </React.Fragment>
   );
+}
+
+TrainingSettings.propTypes = {
+  trainingCard: PropTypes.shape({
+    UIState: PropTypes.string.isRequired,
+    settings: PropTypes.shape({
+      questionTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
+      questionAmount: PropTypes.number.isRequired,
+    }),
+    questions: PropTypes.array.isRequired,
+    activeQuestionIndex: PropTypes.number.isRequired
+  }),
+  changeTrainingCardUIState: PropTypes.func.isRequired,
+  changeTrainingCardQuestonAmount: PropTypes.func.isRequired,
+  addCallback: PropTypes.func.isRequired,
+  removeCallback: PropTypes.func.isRequired,
 }
 
 export default TrainingSettings;

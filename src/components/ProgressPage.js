@@ -17,8 +17,8 @@ function ProgressPage({questions}) {
     <React.Fragment>
       <Header>
         <HeaderLinks>
-          <HeaderLink linkTo={'/'}>Главная</HeaderLink>
-          <HeaderLink linkTo={'/questions'}>Вопросы</HeaderLink>
+          <HeaderLink linkTo={'/'} active={false}>Главная</HeaderLink>
+          <HeaderLink linkTo={'/questions'} active={false}>Вопросы</HeaderLink>
           <HeaderLink linkTo={'/progress'} active={true}>Прогресс</HeaderLink>
         </HeaderLinks>
         <div className="header__account">

@@ -13,12 +13,12 @@ function Progress({color, language, questions}) {
   const [progressBarValue, changeProgressBarValue] = useState(0)
 
   useEffect(() => {
-    let filteredQuestionsByLanguage = questions.filter(q => q.type === language)
+    const filteredQuestionsByLanguage = questions.filter(q => q.type === language)
 
-    let filteredQuestionsWithNegativeOrNeutralScore = filteredQuestionsByLanguage.filter(q => q.score <= 0)
-    let filteredQuestionsWithPositiveScore = filteredQuestionsByLanguage.filter(q => q.score > 0)
+    const filteredQuestionsWithNegativeOrNeutralScore = filteredQuestionsByLanguage.filter(q => q.score <= 0)
+    const filteredQuestionsWithPositiveScore = filteredQuestionsByLanguage.filter(q => q.score > 0)
 
-    let percentage = Math.round(100 / filteredQuestionsByLanguage.length * filteredQuestionsWithPositiveScore.length)
+    const percentage = Math.round(100 / filteredQuestionsByLanguage.length * filteredQuestionsWithPositiveScore.length)
     changeProgressBarValue(percentage)
   }, []);
 

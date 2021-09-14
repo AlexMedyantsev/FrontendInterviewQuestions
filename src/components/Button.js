@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import {motion} from "framer-motion"
 
 function Button({callback, text}) {
 
-  let buttonClickHandler = () => {
+  const buttonClickHandler = () => {
     callback();
   }
 
@@ -22,6 +23,11 @@ function Button({callback, text}) {
     >
       {text}
     </motion.button>)
+}
+
+Button.propTypes = {
+  callback: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
 }
 
 export default Button

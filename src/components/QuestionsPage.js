@@ -17,7 +17,12 @@ import SectionList from "./SectionList.js";
 import SectionItem from "./SectionItem.js";
 import QuestionList from "./QuestionList.js";
 
-function QuestionsPage({questions, activeQuestionSection, changeActiveQuestionSection}) {
+function QuestionsPage({
+  questions,
+  activeQuestionSection,
+  changeActiveQuestionSection
+}) {
+
   useEffect(() => {
     changeActiveQuestionSection({name: sectionTabs[2].name, color: sectionTabs[2].outsideTitleColor});
   }, []);
@@ -26,9 +31,9 @@ function QuestionsPage({questions, activeQuestionSection, changeActiveQuestionSe
     <React.Fragment>
       <Header>
         <HeaderLinks>
-          <HeaderLink linkTo={'/'}>Главная</HeaderLink>
+          <HeaderLink linkTo={'/'} active={false}>Главная</HeaderLink>
           <HeaderLink linkTo={'/questions'} active={true}>Вопросы</HeaderLink>
-          <HeaderLink linkTo={'/progress'}>Прогресс</HeaderLink>
+          <HeaderLink linkTo={'/progress'} active={false}>Прогресс</HeaderLink>
         </HeaderLinks>
         <div className="header__account">
           <div className="header__account-image"></div>
@@ -53,8 +58,6 @@ function QuestionsPage({questions, activeQuestionSection, changeActiveQuestionSe
                 outsideTitleText: activeQuestionSection.name,
                 outsideTitleColor: activeQuestionSection.color,
               }}
-              outsideTitleText={activeQuestionSection.name}
-              outsideTitleColor={activeQuestionSection.color}
             >
               <QuestionList
                 questions={questions.filter(question => question.type === activeQuestionSection.name)}
@@ -62,6 +65,7 @@ function QuestionsPage({questions, activeQuestionSection, changeActiveQuestionSe
                 hasAnswerButtons={false}
                 hasShowAnswerButton={false}
                 hasCardStateButtons={true}
+                hasQuestionCount={false}
               />
             </SectionItem>
           </SectionList>
@@ -72,8 +76,11 @@ function QuestionsPage({questions, activeQuestionSection, changeActiveQuestionSe
 }
 
 QuestionsPage.propTypes = {
-  changeActiveQuestionSection: PropTypes.func.isRequired,
-  activeQuestionSection: PropTypes.string.isRequired,
+  activeQuestionSection: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+  }),
+  questions: PropTypes.arrayOf(PropTypes.object)
 }
 
 const mapStateToProps = (state) => {
