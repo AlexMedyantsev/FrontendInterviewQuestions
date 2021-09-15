@@ -5,7 +5,7 @@ const trainingCard = {
   UIState: 'mainMenu',
   settings: {
     questionTypes: ['HTML', 'CSS', 'JS', 'React'],
-    questionAmount: 15,
+    questionAmount: 5,
   },
   questions: [],
   activeQuestionIndex: 0,

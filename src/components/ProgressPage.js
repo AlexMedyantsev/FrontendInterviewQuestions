@@ -9,6 +9,7 @@ import SectionListContainer from "./SectionListContainer.js";
 import SectionList from "./SectionList.js";
 import SectionItem from "./SectionItem.js";
 import {sectionTabs, questions} from "../utils/const.js";
+import {getQuestions} from '../reducer/data/selectors.js';
 
 import Progress from "./Progress.js";
 
@@ -70,7 +71,7 @@ function ProgressPage({questions}) {
 
 const mapStateToProps = (state) => {
   return {
-    questions: state.DATA.questions
+    questions: getQuestions(state)
   }
 }
 

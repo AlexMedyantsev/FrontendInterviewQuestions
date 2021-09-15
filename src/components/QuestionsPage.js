@@ -3,6 +3,8 @@ import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {ActionCreator as ActionCreatorUI} from "../reducer/ui/ui.js";
+import {getActiveQuestionSection} from '../reducer/ui/selectors.js';
+import {getQuestions} from '../reducer/data/selectors.js';
 import {sectionTabs} from "../utils/const.js";
 
 import Header from "./Header.js";
@@ -85,8 +87,8 @@ QuestionsPage.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    activeQuestionSection: state.UI.activeQuestionSection,
-    questions: state.DATA.questions
+    activeQuestionSection: getActiveQuestionSection(state),
+    questions: getQuestions(state)
   }
 }
 

@@ -8,7 +8,8 @@ function QuestionList({
   color,
   hasAnswerButtons,
   hasShowAnswerButton,
-  hasCardStateButtons
+  hasCardStateButtons,
+  hasQuestionCount,
 }) {
   return (
     <ul className="question__list">
@@ -18,6 +19,7 @@ function QuestionList({
           question={question}
           width={width}
           color={color}
+          hasQuestionCount={hasQuestionCount}
           hasAnswerButtons={hasAnswerButtons}
           hasShowAnswerButton={hasShowAnswerButton}
           hasCardStateButtons={hasCardStateButtons}
@@ -34,6 +36,7 @@ QuestionList.propTypes = {
   hasAnswerButtons: PropTypes.bool.isRequired,
   hasShowAnswerButton: PropTypes.bool.isRequired,
   hasCardStateButtons: PropTypes.bool.isRequired,
+  hasQuestionCount: PropTypes.bool.isRequired,
 }
 
 export default QuestionList

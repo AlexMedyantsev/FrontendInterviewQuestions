@@ -13,6 +13,7 @@ import SectionList from "./SectionList.js";
 import SectionItem from "./SectionItem.js";
 import Training from "./Training.js";
 import AboutProject from "./AboutProject.js";
+import {getTrainingCard} from '../reducer/training/selectors.js';
 
 function HomePage(
   {
@@ -72,7 +73,7 @@ HomePage.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    trainingCard: state.UI.trainingCard,
+    trainingCard: getTrainingCard(state),
   }
 }
 

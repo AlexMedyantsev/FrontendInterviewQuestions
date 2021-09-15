@@ -2,6 +2,8 @@ import '../styles/header.scss';
 import {connect} from "react-redux"
 import PropTypes from 'prop-types';
 import {ActionCreator as ActionCreatorTraining} from "../reducer/training/training.js";
+import {getTrainingCard} from '../reducer/training/selectors.js';
+import {getQuestions} from '../reducer/data/selectors.js';
 import TrainingMainMenu from "./TrainingMainMenu"
 import TrainingQuiz from "./TrainingQuiz"
 import TrainingQuizResults from "./TrainingQuizResults"
@@ -11,7 +13,6 @@ function Training({
   trainingCard,
   changeTrainingCardUIState,
   changeTrainingCardQuestonAmount,
-  arrayOfQuestionsForTraining,
   setArrayOfQuestionsForTraining,
   emptyArrayOfQuestionsForTraining,
   setActiveQuestionArrayIndex,
@@ -26,7 +27,6 @@ function Training({
           return <TrainingMainMenu
             trainingCard={trainingCard}
             changeTrainingCardUIState={changeTrainingCardUIState}
-            arrayOfQuestionsForTraining={arrayOfQuestionsForTraining}
             setArrayOfQuestionsForTraining={setArrayOfQuestionsForTraining}
             addTrainingCardQuestionType={addTrainingCardQuestionType}
             removeTrainingCardQuestionType={removeTrainingCardQuestionType}
@@ -37,7 +37,6 @@ function Training({
           return <TrainingQuiz
             trainingCard={trainingCard}
             changeTrainingCardUIState={changeTrainingCardUIState}
-            arrayOfQuestionsForTraining={arrayOfQuestionsForTraining}
           />
         } else if (trainingCard.UIState === 'results') {
           return <TrainingQuizResults
@@ -64,7 +63,6 @@ Training.propTypes = {
   }),
   changeTrainingCardUIState: PropTypes.func.isRequired,
   changeTrainingCardQuestonAmount: PropTypes.func.isRequired,
-  arrayOfQuestionsForTraining: PropTypes.arrayOf(PropTypes.object).isRequired,
   setArrayOfQuestionsForTraining: PropTypes.func.isRequired,
   emptyArrayOfQuestionsForTraining: PropTypes.func.isRequired,
   setActiveQuestionArrayIndex: PropTypes.func.isRequired,
@@ -76,9 +74,8 @@ Training.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    trainingCard: state.TRAINING.trainingCard,
-    questions: state.DATA.questions,
-    arrayOfQuestionsForTraining: state.TRAINING.arrayOfQuestionsForTraining,
+    trainingCard: getTrainingCard(state),
+    questions: getQuestions(state),
   }
 }
 

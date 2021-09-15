@@ -3,6 +3,8 @@ import React, {useState, useEffect} from 'react'
 import {connect} from "react-redux"
 import {ActionCreator as ActionCreatorTraining} from "../reducer/training/training.js"
 import {ActionCreator as ActionCreatorData} from "../reducer/data/data.js"
+import {getTrainingCard} from '../reducer/training/selectors.js';
+import {getQuestions} from '../reducer/data/selectors.js';
 import PropTypes from 'prop-types'
 import Question from "./Question.js"
 import {motion} from "framer-motion"
@@ -90,8 +92,7 @@ function QuestionContainer({
   return (
     <Div
       width={width}
-      // animate={cardState.isOpen ? {width: '47%'} : {width: '30%'}}
-      className={cardState.isOpen ? "question" : "question question--rolled"}
+      className={cardState.isAnswerShown ? "question" : "question question--rolled"}
       onClick={!cardState.isAnswerShown ? rollOutAnswerHandler : undefined}
       onMouseOver={cardHoverOverHandler}
       onMouseOut={cardHoverOutHandler}
@@ -217,8 +218,8 @@ QuestionContainer.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    trainingCard: state.TRAINING.trainingCard,
-    questions: state.DATA.questions,
+    trainingCard: getTrainingCard(state),
+    questions: getQuestions(state),
   }
 }
 
