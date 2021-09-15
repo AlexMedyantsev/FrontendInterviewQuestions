@@ -3,6 +3,7 @@ import React, {useEffect} from 'react'
 import PropTypes from 'prop-types';
 import Button from './Button';
 import TrainingSettings from "./TrainingSettings.js"
+import {shuffle} from "../utils/common.js"
 
 function TrainingMainMenu({
   trainingCard,
@@ -22,10 +23,13 @@ function TrainingMainMenu({
     const sortedByLanguageQuestions = questions.filter(q =>
       trainingCard.settings.questionTypes.includes(q.type))
 
+    // Перемешиваем их
+    const ShuffledSortedByLanguageQuestions = shuffle(sortedByLanguageQuestions)
+
     // Получаем вопросы основываясь на score
-    const questionsWithNegativeScore = sortedByLanguageQuestions.filter(q => q.score < 0)
-    const questionsWithNeutralScore = sortedByLanguageQuestions.filter(q => q.score === 0)
-    const questionsWithPositiveScore = sortedByLanguageQuestions.filter(q => q.score > 0)
+    const questionsWithNegativeScore = ShuffledSortedByLanguageQuestions.filter(q => q.score < 0)
+    const questionsWithNeutralScore = ShuffledSortedByLanguageQuestions.filter(q => q.score === 0)
+    const questionsWithPositiveScore = ShuffledSortedByLanguageQuestions.filter(q => q.score > 0)
 
     // Если есть вопросы по какой-то из категорий score пушим их в finalArray
     questionsWithNegativeScore.length > 0 ? finalArray.push(...questionsWithNegativeScore) : ''
