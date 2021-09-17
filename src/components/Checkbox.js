@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types'
+import {useFirstRender} from "../utils/common.js"
 
 
 function Checkbox({
@@ -12,11 +13,15 @@ function Checkbox({
     array.includes(value) ? true : false
   )
 
+  const firstRender = useFirstRender();
+
   useEffect(() => {
-    if (isChecked) {
-      addCallback(value)
-    } else {
-      removeCallback(value)
+    if (!firstRender) {
+      if (isChecked) {
+        addCallback(value)
+      } else {
+        removeCallback(value)
+      }
     }
   }, [isChecked]);
 
