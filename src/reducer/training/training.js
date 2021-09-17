@@ -32,7 +32,7 @@ export const ActionCreator = {
     type: ActionType.CHANGE_TRAINING_CARD_UI_STATE,
     payload: cardUIState,
   }),
-  changeTrainingCardQuestonAmount: (amount) => ({
+  changeTrainingCardQuestionAmount: (amount) => ({
     type: ActionType.CHANGE_TRAINING_CARD_SETTINGS_QUESTION_AMOUNT,
     payload: amount,
   }),
