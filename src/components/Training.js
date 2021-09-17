@@ -12,7 +12,7 @@ import TrainingQuizResults from "./TrainingQuizResults"
 function Training({
   trainingCard,
   changeTrainingCardUIState,
-  changeTrainingCardQuestonAmount,
+  changeTrainingCardQuestionAmount,
   setArrayOfQuestionsForTraining,
   emptyArrayOfQuestionsForTraining,
   setActiveQuestionArrayIndex,
@@ -30,7 +30,7 @@ function Training({
             setArrayOfQuestionsForTraining={setArrayOfQuestionsForTraining}
             addTrainingCardQuestionType={addTrainingCardQuestionType}
             removeTrainingCardQuestionType={removeTrainingCardQuestionType}
-            changeTrainingCardQuestonAmount={changeTrainingCardQuestonAmount}
+            changeTrainingCardQuestionAmount={changeTrainingCardQuestionAmount}
             questions = {questions}
             />
         } else if (trainingCard.UIState === 'quiz') {
@@ -62,7 +62,7 @@ Training.propTypes = {
     activeQuestionIndex: PropTypes.number.isRequired
   }),
   changeTrainingCardUIState: PropTypes.func.isRequired,
-  changeTrainingCardQuestonAmount: PropTypes.func.isRequired,
+  changeTrainingCardQuestionAmount: PropTypes.func.isRequired,
   setArrayOfQuestionsForTraining: PropTypes.func.isRequired,
   emptyArrayOfQuestionsForTraining: PropTypes.func.isRequired,
   setActiveQuestionArrayIndex: PropTypes.func.isRequired,
@@ -87,7 +87,7 @@ const mapDispatchToProps = (dispatch) => (
     setArrayOfQuestionsForTraining: (questions) => dispatch(ActionCreatorTraining.setArrayOfQuestionsForTraining(questions)),
     emptyArrayOfQuestionsForTraining: (index) => dispatch(ActionCreatorTraining.emptyArrayOfQuestionsForTraining(index)),
     setActiveQuestionArrayIndex: (index) => dispatch(ActionCreatorTraining.setActiveQuestionArrayIndex(index)),
-    changeTrainingCardQuestonAmount: (index) => dispatch(ActionCreatorTraining.changeTrainingCardQuestonAmount(index)),
+    changeTrainingCardQuestionAmount: (index) => dispatch(ActionCreatorTraining.changeTrainingCardQuestionAmount(index)),
   }
 )
 

@@ -15,12 +15,7 @@ import Training from "./Training.js";
 import AboutProject from "./AboutProject.js";
 import {getTrainingCard} from '../reducer/training/selectors.js';
 
-function HomePage(
-  {
-    trainingCard,
-    changeTrainingCardUIState,
-  }
-) {
+function HomePage({trainingCard}) {
   return (
     <React.Fragment>
       <Header>

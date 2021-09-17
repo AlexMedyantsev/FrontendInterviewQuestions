@@ -24,7 +24,6 @@ flex-direction:column;
 
 function QuestionContainer({
   question,
-  questions,
   color,
   width,
   hasAnswerButtons,
@@ -93,6 +92,7 @@ function QuestionContainer({
     <Div
       width={width}
       className={cardState.isAnswerShown ? "question" : "question question--rolled"}
+      whileHover={{scale: 1.01, transition: {duration: 0.3}, }}
       onClick={!cardState.isAnswerShown ? rollOutAnswerHandler : undefined}
       onMouseOver={cardHoverOverHandler}
       onMouseOut={cardHoverOutHandler}
@@ -103,6 +103,7 @@ function QuestionContainer({
       {
         <div
           className="question__container question__container--question"
+          onClick={rollOutAnswerHandler}
         >
           <Question
             composition={question.questionComposition}
@@ -176,8 +177,8 @@ function QuestionContainer({
         }
 
         {
-          hasQuestionCount && 
-            <span className="question__count">{trainingCard.activeQuestionIndex + 1}/{trainingCard.questions.length}</span>
+          hasQuestionCount &&
+          <span className="question__count">{trainingCard.activeQuestionIndex + 1}/{trainingCard.questions.length}</span>
         }
       </div>
 
@@ -205,7 +206,6 @@ QuestionContainer.propTypes = {
     questionComposition: PropTypes.array.isRequired,
     answerComposition: PropTypes.array.isRequired,
   }),
-  questions: PropTypes.array.isRequired,
   color: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired,
   hasAnswerButtons: PropTypes.bool.isRequired,

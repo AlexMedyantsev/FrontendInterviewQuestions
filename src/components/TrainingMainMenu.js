@@ -8,7 +8,7 @@ import {shuffle} from "../utils/common.js"
 function TrainingMainMenu({
   trainingCard,
   changeTrainingCardUIState,
-  changeTrainingCardQuestonAmount,
+  changeTrainingCardQuestionAmount,
   setArrayOfQuestionsForTraining,
   addTrainingCardQuestionType,
   removeTrainingCardQuestionType,
@@ -62,7 +62,7 @@ function TrainingMainMenu({
         changeTrainingCardUIState={changeTrainingCardUIState}
         addCallback={addTrainingCardQuestionType}
         removeCallback={removeTrainingCardQuestionType}
-        changeTrainingCardQuestonAmount={changeTrainingCardQuestonAmount}
+        changeTrainingCardQuestionAmount={changeTrainingCardQuestionAmount}
       />
       <Button
         callback={startClickHandler}
@@ -83,7 +83,7 @@ TrainingMainMenu.propTypes = {
     activeQuestionIndex: PropTypes.number.isRequired
   }),
   changeTrainingCardUIState: PropTypes.func.isRequired,
-  changeTrainingCardQuestonAmount: PropTypes.func.isRequired,
+  changeTrainingCardQuestionAmount: PropTypes.func.isRequired,
   setArrayOfQuestionsForTraining: PropTypes.func.isRequired,
   addTrainingCardQuestionType: PropTypes.func.isRequired,
   removeTrainingCardQuestionType: PropTypes.func.isRequired,
