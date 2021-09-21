@@ -35,30 +35,32 @@ function TrainingSettings({
           <legend className="form__legend">Выберите категории по которым будут заданы вопросы</legend>
           <div className="form__container">
             {trainingCardQuestionTypes.map((type) => {
-              return <Checkbox
-                key={type}
-                value={type}
-                array={trainingCard.settings.questionTypes}
-                addCallback={addCallback}
-                removeCallback={removeCallback}
-              />
+              return <div className="form__checkbox-wrapper">
+                <Checkbox
+                  key={type}
+                  value={type}
+                  array={trainingCard.settings.questionTypes}
+                  addCallback={addCallback}
+                  removeCallback={removeCallback}
+                />
+              </div>
             })}
           </div>
         </section>
         <section className="form__section">
           <legend className="form__legend">Количество вопросов:</legend>
           <div onClick={questionAmountButtonClickhandler} className=''>
-            <SquareButton 
+            <SquareButton
               value={5}
               valueThatTriggersActiveClass={trainingCard.settings.questionAmount}
               callback={questionAmountButtonClickhandler}
             />
-            <SquareButton 
+            <SquareButton
               value={10}
               valueThatTriggersActiveClass={trainingCard.settings.questionAmount}
               callback={questionAmountButtonClickhandler}
             />
-            <SquareButton 
+            <SquareButton
               value={15}
               valueThatTriggersActiveClass={trainingCard.settings.questionAmount}
               callback={questionAmountButtonClickhandler}

@@ -12,6 +12,7 @@
 
 .code {
   width: 100%;
+  max-width: 100%;
   margin-top: 20px;
   margin-bottom: 30px;
   border-radius: 10px;
@@ -19,6 +20,11 @@
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+  overflow: auto;
+}
+
+.code pre {
+  border-radius: 15px;
 }
 
 @media (max-width: 768px) {

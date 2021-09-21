@@ -12,13 +12,16 @@ import styled from 'styled-components';
 
 const Div = styled(motion.div)`
 width: ${props => props.width};
+max-width: ${props => props.width};
 display: flex;
 flex-direction:column;
 @media (max-width: 768px) {
   min-width: 100%;
+  max-width: 100%;
 }
 @media (min-width: 768px) and (max-width: 1124px) {
   min-width: 100%;
+  max-width: 100%;
 }
 `;
 
