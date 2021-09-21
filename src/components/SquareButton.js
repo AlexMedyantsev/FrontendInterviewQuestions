@@ -1,8 +1,15 @@
 import React from 'react';
+import {motion} from "framer-motion"
 
 function SquareButton({value, valueThatTriggersActiveClass, callback}) {
   return (
-    <button
+    <motion.button
+      whileHover={{
+        scale: 1.04
+      }}
+      whileTap={{
+        scale: 0.96
+      }}
       className={valueThatTriggersActiveClass === value ?
         "training__question-amount-btn training__question-amount-btn--active" :
         "training__question-amount-btn"
@@ -10,7 +17,7 @@ function SquareButton({value, valueThatTriggersActiveClass, callback}) {
       onClick={(e) => callback(value)(e)}
     >
       {value}
-    </button>
+    </motion.button>
   )
 }
 
