@@ -19,14 +19,20 @@ import SectionList from "./SectionList.js";
 import SectionItem from "./SectionItem.js";
 import QuestionList from "./QuestionList.js";
 
+import {useFirstRender} from "../utils/common.js"
+
 function QuestionsPage({
   questions,
   activeQuestionSection,
   changeActiveQuestionSection
 }) {
 
+  const firstRender = useFirstRender()
+
   useEffect(() => {
-    changeActiveQuestionSection({name: sectionTabs[2].name, color: sectionTabs[2].outsideTitleColor});
+    if (firstRender) {
+      changeActiveQuestionSection({name: sectionTabs[2].name, color: sectionTabs[2].outsideTitleColor});
+    }
   }, []);
 
   return (

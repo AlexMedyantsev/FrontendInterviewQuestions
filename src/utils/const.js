@@ -304,46 +304,9 @@ if (object.hasOwnProperty('someProperty')) {
   },
   {
     type: 'CSS',
-    questionTitle: 'Какие типы данных есть в CSS?',
-    questionCode: `.red {
-  color: red;
-}`,
-    questionAnswer: 'Вот такие типы данных есть в CSS',
-    answerCode: `.red {
-  color: red;
-}`,
-    get questionComposition() {
-      return [
-        {
-          text: this.questionTitle,
-          type: 'text',
-        },
-        {
-          code: this.questionCode,
-          codeType: 'css',
-          type: 'code',
-        },
-      ]
-    },
-    get answerComposition() {
-      return [
-        {
-          text: this.questionAnswer,
-          type: 'text',
-        }, {
-          code: this.answerCode,
-          codeType: 'css',
-          type: 'code',
-        }
-      ]
-    },
-    score: 0,
-  },
-  {
-    type: 'CSS',
     questionTitle: 'Как работает наследование в CSS',
     questionCode: null,
-    questionAnswer: 'Наследование работает так:',
+    questionAnswer: 'это способность элементов-потомков перенимать правила форматирования (свойства CSS), которые присвоены их предкам ',
     answerCode: null,
     get questionComposition() {
       return [
@@ -376,7 +339,17 @@ if (object.hasOwnProperty('someProperty')) {
     type: 'CSS',
     questionTitle: 'Как работают селекторы CSS? Назовите правила согласно которым применяются стили',
     questionCode: null,
-    questionAnswer: 'Селекторы применяются следующим образом:',
+    questionAnswer: `
+Селекторы применяются следующим образом:
+
+У селекторов есть специфичность: 
+  Селектор тега: 1
+  Селектор класса: 10
+  Селектор ID: 100
+  Inline-стиль: 1000
+
+!important перекрывает все стили и является самым специфичным, но его использование не поощряется
+`,
     answerCode: null,
     get questionComposition() {
       return [
@@ -950,41 +923,6 @@ White-space — это свойство, позволяющее менять к�
   },
   {
     type: 'HTML',
-    questionTitle: `Как разместить знак copyright на веб-странице, ведь его нет на клавиатуре?`,
-    questionCode: null,
-    questionAnswer: `
-Знак copyright относится к спецсимволам. Чтобы разместить его на веб-странице, нужно в соответствующем фрагменте HTML-кода набрать на клавиатуре последовательность &copy или &#169.
-`,
-    answerCode: null,
-    get questionComposition() {
-      return [
-        {
-          text: this.questionTitle,
-          type: 'text',
-        },
-        {
-          code: this.questionCode,
-          codeType: 'html',
-          type: 'code',
-        },
-      ]
-    },
-    get answerComposition() {
-      return [
-        {
-          text: this.questionAnswer,
-          type: 'text',
-        }, {
-          code: this.answerCode,
-          codeType: 'html',
-          type: 'code',
-        }
-      ]
-    },
-    score: 0,
-  },
-  {
-    type: 'HTML',
     questionTitle: `Что из себя представляют атрибуты тега < li> — элемента списка?`,
     questionCode: null,
     questionAnswer: `
@@ -1171,47 +1109,17 @@ Grid - ,
   },
   {
     type: 'CSS',
-    questionTitle: `Keyframes. Для чего нужно и как его использовать?`,
-    questionCode: null,
-    questionAnswer: `
-`,
-    answerCode: null,
-    get questionComposition() {
-      return [
-        {
-          text: this.questionTitle,
-          type: 'text',
-        },
-        {
-          code: this.questionCode,
-          codeType: 'html',
-          type: 'code',
-        },
-      ]
-    },
-    get answerComposition() {
-      return [
-        {
-          text: this.questionAnswer,
-          type: 'text',
-        }, {
-          code: this.answerCode,
-          codeType: 'html',
-          type: 'code',
-        }
-      ]
-    },
-    score: 0,
-  },
-  {
-    type: 'CSS',
     questionTitle: `Какие значения бывают у свойства position. Расскажите подробно о каждом из них`,
     questionCode: null,
     questionAnswer: `
 Static - дефолтное значение, элемент нельзя двигать с помощью left top и т.д
+
 Relative - элемент теперь можно двигать с помощтю left top и т.д. Он сдвигается на эти значения относительного своего положения
+
 Absolute -  элемент пропадает из общего потока и поизиционируется относительно ближайшего спозиционированного родителя. Если его нет позиционируется от body.
+
 Fixed - элемент пропадает из общего потока и при прокручивании остается на ней на одном и том же месте
+
 Sticky - Элемент также как и fixed пропадает из потока
 `,
     answerCode: null,
@@ -2048,10 +1956,361 @@ React — это библиотека JavaScript с открытым исход�
       ]
     },
     score: 0,
+  },
+  {
+    type: 'React',
+
+    questionTitle: `В чем разница между контроллируемым и неконтролируемым компонентом?`,
+
+    questionCode: null,
+
+    questionAnswer: `
+ В контролируемом компоненте данные формы обрабатываются состоянием внутри компонента. Состояние внутри компонента служит «единственным источником правды» для элементов ввода, которые отображаются компонентом.
+  `,
+    answerCode: `
+class App extends Component {
+  state = {
+    message: ''
   }
+
+  updateMessage = (newText) => {
+    console.log(newText);
+    this.setState(() => ({
+        message: newText
+    }));
+  }
+
+  render() {
+    return (
+      <div classname="App">
+        <div classname="container">
+          <input 
+            type="text" 
+            placeholder="Your message here.." 
+            value={this.state.message}
+            onchange={(event) => this.updateMessage(event.target.value)}
+          />
+          <p>the message is: {this.state.message}</p>
+        </div>
+      </div>
+    );
+  }
+}`,
+    questionAnswer2: `
+ Неконтролируемые компоненты действуют больше как традиционные элементы формы HTML. Данные для каждого элемента ввода хранятся в DOM, а не в компоненте. Вместо того, чтобы писать обработчик событий для всех ваших обновлений состояния, вы используете ref для получения значений из DOM.
+  `,
+    answerCode2: `
+class App2 extends Component {
+  constructor(props){
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.input = React.createRef();
+  }
+  
+  handleChange = (newText) => {
+      console.log(newText);
+  }
+
+  render() {
+    return (
+      <div classname="App2">
+        <div classname="container">
+          <input 
+            type="text" 
+            placeholder="Your message here.." 
+            ref={this.input}
+            onchange={(event) => this.handleChange(event.target.value)}
+          />
+        </div>
+      </div>
+    );
+  }
+}`,
+
+    get questionComposition() {
+      return [
+        {
+          text: this.questionTitle,
+          type: 'text',
+        },
+        {
+          code: this.questionCode,
+          codeType: 'javascript',
+          type: 'code',
+        },
+      ]
+    },
+    get answerComposition() {
+      return [
+        {
+          text: this.questionAnswer,
+          type: 'text',
+        }, {
+          code: this.answerCode,
+          codeType: 'javascript',
+          type: 'code',
+        },
+        {
+          text: this.questionAnswer2,
+          type: 'text',
+        }, {
+          code: this.answerCode2,
+          codeType: 'javascript',
+          type: 'code',
+        }
+      ]
+    },
+    score: 0,
+  },
+  {
+    type: 'React',
+
+    questionTitle: `Что такое Refs в React?`,
+
+    questionCode: null,
+
+    questionAnswer: `
+  
+  `,
+    answerCode: null,
+
+    get questionComposition() {
+      return [
+        {
+          text: this.questionTitle,
+          type: 'text',
+        },
+        {
+          code: this.questionCode,
+          codeType: 'javascript',
+          type: 'code',
+        },
+      ]
+    },
+    get answerComposition() {
+      return [
+        {
+          text: this.questionAnswer,
+          type: 'text',
+        }, {
+          code: this.answerCode,
+          codeType: 'javascript',
+          type: 'code',
+        }
+      ]
+    },
+    score: 0,
+  },
+  {
+    type: 'React',
+
+    questionTitle: `Зачем в React нужны ключи (keys)`,
+
+    questionCode: null,
+
+    questionAnswer: `
+Мы используем их при работе со списками, к примеру при .map() маппинге списка, каждому элементу списка указывается свой уникальный key
+
+Ключи помогают React определять, какие элементы были изменены, добавлены или удалены. Их необходимо указывать, чтобы React мог сопоставлять элементы массива с течением времени:
+
+Лучший способ выбрать ключ — это использовать строку, которая будет явно отличать элемент списка от его соседей. Чаще всего вы будете использовать ID из ваших данных как ключи:
+    
+Когда у вас нет заданных ID для списка, то в крайнем случае можно использовать индекс элемента как ключ - но это не рекомендуется
+  `,
+    answerCode: null,
+
+    get questionComposition() {
+      return [
+        {
+          text: this.questionTitle,
+          type: 'text',
+        },
+        {
+          code: this.questionCode,
+          codeType: 'javascript',
+          type: 'code',
+        },
+      ]
+    },
+    get answerComposition() {
+      return [
+        {
+          text: this.questionAnswer,
+          type: 'text',
+        }, {
+          code: this.answerCode,
+          codeType: 'javascript',
+          type: 'code',
+        }
+      ]
+    },
+    score: 0,
+  },
+  {
+    type: 'React',
+
+    questionTitle: `Что такое Context?`,
+
+    questionCode: null,
+
+    questionAnswer: `
+Контекст позволяет передавать данные через дерево компонентов без необходимости передавать пропсы на промежуточных уровнях.
+
+В типичном React-приложении данные передаются сверху вниз (от родителя к дочернему компоненту) с помощью пропсов. Однако, подобный способ использования может быть чересчур громоздким для некоторых типов пропсов (например, выбранный язык, UI-тема), которые необходимо передавать во многие компоненты в приложении. Контекст предоставляет способ делиться такими данными между компонентами без необходимости явно передавать пропсы через каждый уровень дерева.
+
+Оффициальная документация React предупреждает: По возможности не используйте Контекст, так как это усложняет повторное использование компонентов.
+Если вы хотите избавиться от передачи некоторых пропсов на множество уровней вниз, обычно композиция компонентов является более простым решением, чем контекст.
+  `,
+    answerCode: null,
+
+    get questionComposition() {
+      return [
+        {
+          text: this.questionTitle,
+          type: 'text',
+        },
+        {
+          code: this.questionCode,
+          codeType: 'javascript',
+          type: 'code',
+        },
+      ]
+    },
+    get answerComposition() {
+      return [
+        {
+          text: this.questionAnswer,
+          type: 'text',
+        }, {
+          code: this.answerCode,
+          codeType: 'javascript',
+          type: 'code',
+        }
+      ]
+    },
+    score: 0,
+  },
+  {
+    type: 'React',
+
+    questionTitle: `Что такое Компонент высшего порядка (HOC)?`,
+
+    questionCode: null,
+
+    questionAnswer: `
+  
+  `,
+    answerCode: null,
+
+    get questionComposition() {
+      return [
+        {
+          text: this.questionTitle,
+          type: 'text',
+        },
+        {
+          code: this.questionCode,
+          codeType: 'javascript',
+          type: 'code',
+        },
+      ]
+    },
+    get answerComposition() {
+      return [
+        {
+          text: this.questionAnswer,
+          type: 'text',
+        }, {
+          code: this.answerCode,
+          codeType: 'javascript',
+          type: 'code',
+        }
+      ]
+    },
+    score: 0,
+  },
+  {
+    type: 'CSS',
+    questionTitle: `Что такое vh и vw (Viewport Width & Viewport Height) в CSS?`,
+
+    questionCode: null,
+
+    questionAnswer: `
+vh/vw это процентная величина от общей высоты/ширины области просмотра.
+
+1vh/vw равен 1% высоты/ширины области просмотра,
+`,
+    answerCode: null,
+
+    get questionComposition() {
+      return [
+        {
+          text: this.questionTitle,
+          type: 'text',
+        },
+        {
+          code: this.questionCode,
+          codeType: 'css',
+          type: 'code',
+        },
+      ]
+    },
+    get answerComposition() {
+      return [
+        {
+          text: this.questionAnswer,
+          type: 'text',
+        }, {
+          code: this.answerCode,
+          codeType: 'css',
+          type: 'code',
+        }
+      ]
+    },
+    score: 0,
+  },
 ]
 
+let css = {
+  type: 'CSS',
+  questionTitle: `Как получить текущий URL`,
 
+  questionCode: null,
+
+  questionAnswer: `
+Есть два способа:
+`,
+  answerCode:
+    `window.location.href
+document.URL`,
+
+  get questionComposition() {
+    return [
+      {
+        text: this.questionTitle,
+        type: 'text',
+      },
+      {
+        code: this.questionCode,
+        codeType: 'css',
+        type: 'code',
+      },
+    ]
+  },
+  get answerComposition() {
+    return [
+      {
+        text: this.questionAnswer,
+        type: 'text',
+      }, {
+        code: this.answerCode,
+        codeType: 'css',
+        type: 'code',
+      }
+    ]
+  },
+  score: 0,
+}
 
 let js = {
   type: 'JS',
