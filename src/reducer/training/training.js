@@ -5,7 +5,7 @@ const trainingCard = {
   UIState: 'mainMenu',
   settings: {
     questionTypes: ['HTML', 'CSS', 'JS', 'React'],
-    questionAmount: 15,
+    questionAmount: 5,
   },
   questions: [],
   activeQuestionIndex: 0,
@@ -13,7 +13,6 @@ const trainingCard = {
 
 export const initialState = {
   trainingCard: trainingCard,
-  // questions: questions,
 };
 
 export const ActionType = {
@@ -33,7 +32,7 @@ export const ActionCreator = {
     type: ActionType.CHANGE_TRAINING_CARD_UI_STATE,
     payload: cardUIState,
   }),
-  changeTrainingCardQuestonAmount: (amount) => ({
+  changeTrainingCardQuestionAmount: (amount) => ({
     type: ActionType.CHANGE_TRAINING_CARD_SETTINGS_QUESTION_AMOUNT,
     payload: amount,
   }),

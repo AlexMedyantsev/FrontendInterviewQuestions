@@ -1,6 +1,7 @@
 @import "../global/variables.scss";
 
 .question {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,6 +11,7 @@
   margin-bottom: 25px;
   color: white;
   font-family: 'SF-Pro-Display-Bold';
+  overflow: hidden;
 
   &--rolled {
     display: flex;
@@ -46,11 +48,12 @@
   }
 
   &--right {
-    background-color: $lightGreen
+    background-color: $darkPink;
+    color: black;
   }
 
   &--wrong {
-    background-color: $lightTeal
+    background-color: white;
   }
 }
 
@@ -59,6 +62,7 @@
 }
 
 .question__list {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -110,6 +114,12 @@
   background-size: contain;
 }
 
+.question__count {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+}
+
 @media (max-width: 768px) {
   .question {
     margin-left: 0px;
@@ -125,6 +135,7 @@
 
   .question__list {
     justify-content: center;
+    display: flex;
   }
 }
 

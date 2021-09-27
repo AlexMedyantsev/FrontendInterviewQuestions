@@ -3,6 +3,8 @@ import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {ActionCreator as ActionCreatorUI} from "../reducer/ui/ui.js";
+import {getActiveQuestionSection} from '../reducer/ui/selectors.js';
+import {getQuestions} from '../reducer/data/selectors.js';
 import {sectionTabs} from "../utils/const.js";
 
 import Header from "./Header.js";
@@ -17,18 +19,29 @@ import SectionList from "./SectionList.js";
 import SectionItem from "./SectionItem.js";
 import QuestionList from "./QuestionList.js";
 
-function QuestionsPage({questions, activeQuestionSection, changeActiveQuestionSection}) {
+import {useFirstRender} from "../utils/common.js"
+
+function QuestionsPage({
+  questions,
+  activeQuestionSection,
+  changeActiveQuestionSection
+}) {
+
+  const firstRender = useFirstRender()
+
   useEffect(() => {
-    changeActiveQuestionSection({name: sectionTabs[2].name, color: sectionTabs[2].outsideTitleColor});
+    if (firstRender) {
+      changeActiveQuestionSection({name: sectionTabs[2].name, color: sectionTabs[2].outsideTitleColor});
+    }
   }, []);
 
   return (
     <React.Fragment>
       <Header>
         <HeaderLinks>
-          <HeaderLink linkTo={'/'}>Главная</HeaderLink>
+          <HeaderLink linkTo={'/'} active={false}>Главная</HeaderLink>
           <HeaderLink linkTo={'/questions'} active={true}>Вопросы</HeaderLink>
-          <HeaderLink linkTo={'/progress'}>Прогресс</HeaderLink>
+          <HeaderLink linkTo={'/progress'} active={false}>Прогресс</HeaderLink>
         </HeaderLinks>
         <div className="header__account">
           <div className="header__account-image"></div>
@@ -53,8 +66,6 @@ function QuestionsPage({questions, activeQuestionSection, changeActiveQuestionSe
                 outsideTitleText: activeQuestionSection.name,
                 outsideTitleColor: activeQuestionSection.color,
               }}
-              outsideTitleText={activeQuestionSection.name}
-              outsideTitleColor={activeQuestionSection.color}
             >
               <QuestionList
                 questions={questions.filter(question => question.type === activeQuestionSection.name)}
@@ -62,6 +73,7 @@ function QuestionsPage({questions, activeQuestionSection, changeActiveQuestionSe
                 hasAnswerButtons={false}
                 hasShowAnswerButton={false}
                 hasCardStateButtons={true}
+                hasQuestionCount={false}
               />
             </SectionItem>
           </SectionList>
@@ -72,14 +84,17 @@ function QuestionsPage({questions, activeQuestionSection, changeActiveQuestionSe
 }
 
 QuestionsPage.propTypes = {
-  changeActiveQuestionSection: PropTypes.func.isRequired,
-  activeQuestionSection: PropTypes.string.isRequired,
+  activeQuestionSection: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+  }),
+  questions: PropTypes.arrayOf(PropTypes.object)
 }
 
 const mapStateToProps = (state) => {
   return {
-    activeQuestionSection: state.UI.activeQuestionSection,
-    questions: state.DATA.questions
+    activeQuestionSection: getActiveQuestionSection(state),
+    questions: getQuestions(state)
   }
 }
 

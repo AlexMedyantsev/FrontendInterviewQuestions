@@ -43,13 +43,6 @@ function SectionItem({objectToRender: {
 
       {/* Card inside */}
       <div className="section__item-inner-container section__item-inner-container--bottom">
-        {/* <SubTitle
-          hasClickHandler={hasClickHandler}
-          clickHandler={clickHandler}
-          subTitleText={insideTitleText}
-          subTitleColor={insideTitleColor}
-          reduxCallback={changeActiveQuestionSection}
-        /> */}
         {children &&
           React.cloneElement(children, {
             outsideTitleText: outsideTitleText,
@@ -63,11 +56,12 @@ function SectionItem({objectToRender: {
 }
 
 SectionItem.propTypes = {
-  item: PropTypes.shape({
+  objectToRender: PropTypes.shape({
     outsideTitleText: PropTypes.string,
     outsideTitleColor: PropTypes.string,
   }).isRequired,
   children: PropTypes.node.isRequired,
+  width: PropTypes.string.isRequired,
 }
 
 export default SectionItem;

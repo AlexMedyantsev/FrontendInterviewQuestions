@@ -18,7 +18,7 @@ function Question({composition, className}) {
         // Обязательно проверяем на то, есть ли код вообще, чтобы не получить ошибку
         else if (item.type === 'code' && item.code !== null) {
           return <CodeSnippet
-            key={item.questionCode}
+            key={item.code}
             code={item.code}
             codeLanguage={item.codeType}
           />
@@ -30,7 +30,7 @@ function Question({composition, className}) {
 
 Question.propTypes = {
   composition: PropTypes.arrayOf(PropTypes.object).isRequired, 
-  string: PropTypes.string.isRequired
+  className: PropTypes.string.isRequired
 }
 
 export default Question;

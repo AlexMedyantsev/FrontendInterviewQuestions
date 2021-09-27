@@ -1,4 +1,7 @@
 import React, {useEffect, useState} from 'react';
+import PropTypes from 'prop-types'
+import {useFirstRender} from "../utils/common.js"
+
 
 function Checkbox({
   value,
@@ -10,15 +13,19 @@ function Checkbox({
     array.includes(value) ? true : false
   )
 
+  const firstRender = useFirstRender();
+
   useEffect(() => {
-    if (isChecked) {
-      addCallback(value)
-    } else {
-      removeCallback(value)
+    if (!firstRender) {
+      if (isChecked) {
+        addCallback(value)
+      } else {
+        removeCallback(value)
+      }
     }
   }, [isChecked]);
 
-  let handleCheckboxCheck = () => {
+  const handleCheckboxCheck = () => {
     changeIsChecked(!isChecked)
   }
 
@@ -33,9 +40,16 @@ function Checkbox({
         checked={isChecked}
         onChange={handleCheckboxCheck}
       />
-      <label for="scales">{value}</label>
+      <label htmlFor="scales">{value}</label>
     </React.Fragment>
   )
+}
+
+Checkbox.propTypes = {
+  value: PropTypes.string.isRequired,
+  array: PropTypes.array.isRequired,
+  addCallback: PropTypes.func.isRequired,
+  removeCallback: PropTypes.func.isRequired,
 }
 
 export default Checkbox

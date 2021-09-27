@@ -6,6 +6,7 @@ function SmallTabList({arrayToRender, ComponentToRender, reduxCallback, triggerP
     <ul className="section__small-list" style={triggerProp ? {display: 'flex'} : {display: 'none'}}>
       {arrayToRender.map((item) => {
         return <ComponentToRender
+          key={item.name}
           mappedItem={item}
           hasClickHandler={true}
           reduxCallback={reduxCallback}
@@ -17,7 +18,7 @@ function SmallTabList({arrayToRender, ComponentToRender, reduxCallback, triggerP
 }
 SmallTabList.propTypes = {
   arrayToRender: PropTypes.array.isRequired, 
-  componentToRender: PropTypes.func.isRequired, 
+  ComponentToRender: PropTypes.func.isRequired, 
   triggerProp: PropTypes.string.isRequired,
   reduxCallback: PropTypes.func.isRequired
 }
